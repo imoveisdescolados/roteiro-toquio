@@ -62,6 +62,7 @@ const estado = {
   camada: null,
   marcadores: [],
   fav: new Set(),
+  notas: {},
   meuMarcador: null,
 };
 
@@ -75,6 +76,21 @@ function salvarFav() {
   try { localStorage.setItem(FAV_KEY, JSON.stringify([...estado.fav])); } catch (e) {}
 }
 function ehFav(p) { return estado.fav.has(favKey(p)); }
+
+/* ---------------------------- notas pessoais ---------------------------- */
+const NOTAS_KEY = "guia_toquio_notas";
+function carregarNotas() {
+  try { estado.notas = JSON.parse(localStorage.getItem(NOTAS_KEY) || "{}"); } catch (e) { estado.notas = {}; }
+}
+function salvarNotas() {
+  try { localStorage.setItem(NOTAS_KEY, JSON.stringify(estado.notas)); } catch (e) {}
+}
+function getNota(p) { return estado.notas[favKey(p)] || ""; }
+function setNota(key, texto) {
+  const t = (texto || "").trim();
+  if (t) estado.notas[key] = t; else delete estado.notas[key];
+  salvarNotas();
+}
 
 /* ------------------------------ utilidades ------------------------------ */
 const $ = (s, c = document) => c.querySelector(s);
@@ -326,6 +342,12 @@ document.addEventListener("click", (e) => {
   if (cb) { e.preventDefault(); aplicarClimaChip(cb.dataset.clima); }
 });
 
+// Salva a nota pessoal enquanto digita (no popup do mapa).
+document.addEventListener("input", (e) => {
+  const ta = e.target.closest(".pop__nota");
+  if (ta) setNota(ta.dataset.notakey, ta.value);
+});
+
 function toggleFav(key) {
   if (estado.fav.has(key)) estado.fav.delete(key); else estado.fav.add(key);
   salvarFav();
@@ -390,11 +412,13 @@ function buscaGlobal(q) {
       : esc(p.bairro);
     const sub = zona && norm(zona).indexOf(norm(p.bairro)) === -1 ? ` <span class="busca-item__sub">(${esc(p.bairro)})</span>` : "";
     const maps = p.google_maps ? `<a class="pop__link pop__link--maps" href="${esc(p.google_maps)}" target="_blank" rel="noopener">Google Maps</a>` : "";
+    const nota = getNota(p);
     return `
       <div class="busca-item">
         <div class="busca-item__nome">${esc(p.nome)} <span class="tag">${esc(p.categoria)}</span></div>
         <div class="busca-item__linha">📍 ${zonaLink}${sub}</div>
         <div class="busca-item__linha">🧩 ${comboLinks(zona)}</div>
+        ${nota ? `<div class="busca-item__nota">📝 ${esc(nota)}</div>` : ""}
         ${maps ? `<div class="busca-item__acoes">${maps}</div>` : ""}
       </div>`;
   }).join("");
@@ -424,6 +448,10 @@ function popupHTML(p) {
     <p class="pop__desc" style="font-size:13px"><strong>${esc(p.bairro)}</strong>${endExtra}</p>
     ${p.notas ? `<p class="pop__notas">${esc(p.notas)}</p>` : ""}
     <button type="button" class="pop__fav${fav ? " is-on" : ""}" data-favkey="${esc(favKey(p))}">${fav ? "★ Nos favoritos" : "☆ Salvar nos favoritos"}</button>
+    <label class="pop__nota-wrap">
+      <span class="pop__nota-rot">📝 Sua nota</span>
+      <textarea class="pop__nota" data-notakey="${esc(favKey(p))}" rows="2" placeholder="Ex.: pedir o tamago; fecha 17h; comprar aqui…">${esc(getNota(p))}</textarea>
+    </label>
     <div class="pop__links">${links.join("")}</div>`;
 }
 function iconeCategoria(cat, fav) {
@@ -592,6 +620,7 @@ async function init() {
     return;
   }
   carregarFav();
+  carregarNotas();
   renderDatas();
   initChips();
   montarFiltrar();
