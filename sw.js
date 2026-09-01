@@ -4,7 +4,7 @@
    - tiles do OpenStreetMap: cache-first num cache separado (o que você viu fica salvo)
    - previsão do tempo (open-meteo): rede primeiro (sempre fresca), sem cache
 */
-const VERSAO = "guia-toquio-v1";
+const VERSAO = "guia-toquio-v2";
 const CACHE_APP = VERSAO + "-app";
 const CACHE_TILES = VERSAO + "-tiles";
 
@@ -25,7 +25,13 @@ const CORE = [
 ];
 
 self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(CACHE_APP).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));
+  // cache:"reload" garante que o precache pega os arquivos frescos da rede,
+  // nunca uma versão velha do cache HTTP do navegador.
+  e.waitUntil(
+    caches.open(CACHE_APP)
+      .then((c) => Promise.all(CORE.map((u) => c.add(new Request(u, { cache: "reload" })).catch(() => {}))))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener("activate", (e) => {
@@ -60,9 +66,10 @@ self.addEventListener("fetch", (e) => {
   }
 
   // Mesma origem (app + dados): cache-first, atualiza em segundo plano.
+  // ignoreSearch faz o ?v=N casar com o arquivo base em cache.
   if (url.origin === self.location.origin) {
     e.respondWith(
-      caches.match(req).then((hit) =>
+      caches.match(req, { ignoreSearch: true }).then((hit) =>
         hit || fetch(req).then((resp) => {
           const clone = resp.clone();
           caches.open(CACHE_APP).then((c) => c.put(req, clone));
