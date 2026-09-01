@@ -43,6 +43,22 @@ html, body {
 .view.is-active { display: block; }
 #view-mapa.is-active { display: flex; flex-direction: column; padding: 0; height: calc(100dvh - var(--header-h)); }
 
+/* ---------- Busca global ---------- */
+.busca-global { margin-bottom: 16px; }
+.busca-global__input {
+  width: 100%; font-size: 16px; padding: 13px 16px; min-height: 50px;
+  border: 1.5px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink);
+  box-shadow: var(--shadow);
+}
+.busca-global__input:focus { outline: 2px solid var(--accent); border-color: var(--accent); }
+.busca-res { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+.busca-res__cab { margin: 2px; font-size: 13px; font-weight: 700; color: var(--ink-faint); }
+.busca-item { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; box-shadow: var(--shadow); }
+.busca-item__nome { font-size: 15px; font-weight: 700; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 5px; }
+.busca-item__linha { font-size: 13.5px; color: var(--ink-soft); margin-top: 3px; }
+.busca-item__sub { color: var(--ink-faint); font-size: 12.5px; }
+.busca-item__acoes { margin-top: 9px; }
+
 /* ---------- Montar o dia ---------- */
 .montar__intro { font-size: 14.5px; color: var(--ink-soft); margin: 4px 2px 16px; }
 .grupo { margin-bottom: 16px; }

@@ -29,6 +29,11 @@
   <main id="main">
     <!-- ============ MONTAR O DIA (decisor "lego") ============ -->
     <section id="view-montar" class="view is-active" role="tabpanel" aria-label="Montar o dia">
+      <div class="busca-global">
+        <input type="search" id="busca-global" class="busca-global__input" placeholder="🔎 Pesquisar lugar, loja, templo…" autocomplete="off" enterkeyhint="search" />
+        <div id="busca-global-res" class="busca-res" hidden></div>
+      </div>
+
       <details class="datas" id="datas-box">
         <summary><span class="datas__aviso">⚠️ Presos a data</span> <span class="datas__periodo">19–27 set · toque para ver</span></summary>
         <div id="datas-lista" class="datas__lista"></div>

@@ -72,7 +72,23 @@ function esc(t) {
 }
 const corCategoria = (c) => CORES_CATEGORIA[c] || COR_PADRAO;
 const slug = (s) => (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const norm = (s) => (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const interseca = (arr, set) => (arr || []).some((x) => set.has(x));
+
+// Mapeia o bairro (fino) de um ponto para a zona (do guia). Usa fronteira de
+// palavra pra não confundir "Meguro" com "Nakameguro".
+const _cacheZona = new Map();
+function zonaDoBairro(bairro) {
+  if (_cacheZona.has(bairro)) return _cacheZona.get(bairro);
+  const nb = norm(bairro);
+  const re = new RegExp("(^|[^a-z0-9])" + escapeRe(nb));
+  const z = estado.zonas.find((x) => re.test(norm(x.zona)));
+  const nome = z ? z.zona : null;
+  _cacheZona.set(bairro, nome);
+  return nome;
+}
+const combosPorZona = (zona) => estado.combos.filter((c) => c.zonas.includes(zona));
 
 /* -------------------------------- carga --------------------------------- */
 async function carregarDados() {
@@ -215,7 +231,7 @@ function comboHTML(c) {
   const zonas = c.zonas
     .map((n) => `<button type="button" class="link-zona" data-zona="${esc(n)}">${esc(n)}</button>`).join(" → ");
   return `
-  <details class="combo" style="border-left-color:${ENERGIA_COR[c.energia]}">
+  <details class="combo" data-comboid="${esc(c.id)}" style="border-left-color:${ENERGIA_COR[c.energia]}">
     <summary>
       <div class="ficha__topo">
         <span class="ficha__nome">${esc(c.nome)}</span>
@@ -281,10 +297,56 @@ function abrirFicha(zonaNome) {
     setTimeout(() => alvo.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
   }
 }
+function abrirCombo(id) {
+  trocarView("combos");
+  const alvo = document.querySelector(`#view-combos [data-comboid="${CSS.escape(id)}"]`);
+  if (alvo) { alvo.open = true; setTimeout(() => alvo.scrollIntoView({ behavior: "smooth", block: "start" }), 80); }
+}
 document.addEventListener("click", (e) => {
-  const link = e.target.closest(".link-zona");
-  if (link) { e.preventDefault(); abrirFicha(link.dataset.zona); }
+  const lz = e.target.closest(".link-zona");
+  if (lz) { e.preventDefault(); abrirFicha(lz.dataset.zona); return; }
+  const lc = e.target.closest(".link-combo");
+  if (lc) { e.preventDefault(); abrirCombo(lc.dataset.comboid); }
 });
+
+/* --------------------------- busca global ------------------------------- */
+function buscaGlobal(q) {
+  const box = $("#busca-global-res");
+  const nq = norm(q).trim();
+  if (nq.length < 2) { box.hidden = true; box.innerHTML = ""; return; }
+
+  const pontos = estado.pontos.filter((p) =>
+    norm(p.nome).includes(nq) || norm(p.categoria).includes(nq) ||
+    norm(p.bairro).includes(nq) || norm(p.descricao).includes(nq));
+
+  const totalPontos = pontos.length;
+  const mostra = pontos.slice(0, 40);
+
+  const linhas = mostra.map((p) => {
+    const zona = zonaDoBairro(p.bairro);
+    const combos = zona ? combosPorZona(zona) : [];
+    const zonaLink = zona
+      ? `<button type="button" class="link-zona" data-zona="${esc(zona)}">${esc(zona)}</button>`
+      : esc(p.bairro);
+    const sub = zona && norm(zona).indexOf(norm(p.bairro)) === -1 ? ` <span class="busca-item__sub">(${esc(p.bairro)})</span>` : "";
+    const combosHTML = combos.length
+      ? combos.map((c) => `<button type="button" class="link-combo" data-comboid="${esc(c.id)}">${esc(c.nome)}</button>`).join(", ")
+      : `<span class="busca-item__sub">nenhum combo</span>`;
+    const maps = p.google_maps ? `<a class="pop__link pop__link--maps" href="${esc(p.google_maps)}" target="_blank" rel="noopener">Google Maps</a>` : "";
+    return `
+      <div class="busca-item">
+        <div class="busca-item__nome">${esc(p.nome)} <span class="tag">${esc(p.categoria)}</span></div>
+        <div class="busca-item__linha">📍 ${zonaLink}${sub}</div>
+        <div class="busca-item__linha">🧩 ${combosHTML}</div>
+        ${maps ? `<div class="busca-item__acoes">${maps}</div>` : ""}
+      </div>`;
+  }).join("");
+
+  box.hidden = false;
+  box.innerHTML = totalPontos
+    ? `<p class="busca-res__cab">${totalPontos} resultado(s)${totalPontos > 40 ? " · mostrando 40" : ""}</p>${linhas}`
+    : `<p class="vazio">Nada encontrado para “${esc(q)}”.</p>`;
+}
 
 /* --------------------------------- mapa --------------------------------- */
 function popupHTML(p) {
@@ -367,6 +429,7 @@ function ligarEventos() {
   });
 
   const debounce = (fn, ms) => { let id; return (...a) => { clearTimeout(id); id = setTimeout(() => fn(...a), ms); }; };
+  $("#busca-global").addEventListener("input", debounce((e) => buscaGlobal(e.target.value), 180));
   $("#busca").addEventListener("input", debounce((e) => { estado.mapaFiltros.busca = e.target.value; aplicarFiltrosMapa(); }, 200));
   $("#f-bairro").addEventListener("change", (e) => { estado.mapaFiltros.bairro = e.target.value; aplicarFiltrosMapa(); });
   $("#f-categoria").addEventListener("change", (e) => { estado.mapaFiltros.categoria = e.target.value; aplicarFiltrosMapa(); });
