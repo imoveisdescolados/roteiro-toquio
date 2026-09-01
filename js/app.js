@@ -310,11 +310,36 @@ document.addEventListener("click", (e) => {
 });
 
 /* --------------------------- busca global ------------------------------- */
+function comboLinks(zona) {
+  const combos = zona ? combosPorZona(zona) : [];
+  return combos.length
+    ? combos.map((c) => `<button type="button" class="link-combo" data-comboid="${esc(c.id)}">${esc(c.nome)}</button>`).join(", ")
+    : `<span class="busca-item__sub">nenhum combo</span>`;
+}
+
 function buscaGlobal(q) {
   const box = $("#busca-global-res");
   const nq = norm(q).trim();
   if (nq.length < 2) { box.hidden = true; box.innerHTML = ""; return; }
 
+  // Bairros que casam (nome da zona, vibe ou destaques)
+  const zonas = estado.zonas.filter((z) =>
+    norm(z.zona).includes(nq) || norm(z.vibe).includes(nq) ||
+    (z.tags_vibe || []).some((t) => norm(VIBES[t] || t).includes(nq)) ||
+    (z.destaques || []).some((d) => norm(d).includes(nq))
+  ).sort((a, b) => ORDEM_ENERGIA.indexOf(a.energia) - ORDEM_ENERGIA.indexOf(b.energia) || a.zona.localeCompare(b.zona, "pt"));
+
+  const bairrosHTML = zonas.map((z) => `
+      <div class="busca-item">
+        <div class="busca-item__nome">
+          <button type="button" class="link-zona busca-item__link" data-zona="${esc(z.zona)}">${esc(z.zona)}</button>
+          ${pilulaEnergia(z.energia)}
+        </div>
+        ${z.vibe ? `<div class="busca-item__linha">${esc(z.vibe)}</div>` : ""}
+        <div class="busca-item__linha">🧩 ${comboLinks(z.zona)}</div>
+      </div>`).join("");
+
+  // Lugares (pontos) que casam
   const pontos = estado.pontos.filter((p) =>
     norm(p.nome).includes(nq) || norm(p.categoria).includes(nq) ||
     norm(p.bairro).includes(nq) || norm(p.descricao).includes(nq));
@@ -329,23 +354,24 @@ function buscaGlobal(q) {
       ? `<button type="button" class="link-zona" data-zona="${esc(zona)}">${esc(zona)}</button>`
       : esc(p.bairro);
     const sub = zona && norm(zona).indexOf(norm(p.bairro)) === -1 ? ` <span class="busca-item__sub">(${esc(p.bairro)})</span>` : "";
-    const combosHTML = combos.length
-      ? combos.map((c) => `<button type="button" class="link-combo" data-comboid="${esc(c.id)}">${esc(c.nome)}</button>`).join(", ")
-      : `<span class="busca-item__sub">nenhum combo</span>`;
     const maps = p.google_maps ? `<a class="pop__link pop__link--maps" href="${esc(p.google_maps)}" target="_blank" rel="noopener">Google Maps</a>` : "";
     return `
       <div class="busca-item">
         <div class="busca-item__nome">${esc(p.nome)} <span class="tag">${esc(p.categoria)}</span></div>
         <div class="busca-item__linha">📍 ${zonaLink}${sub}</div>
-        <div class="busca-item__linha">🧩 ${combosHTML}</div>
+        <div class="busca-item__linha">🧩 ${comboLinks(zona)}</div>
         ${maps ? `<div class="busca-item__acoes">${maps}</div>` : ""}
       </div>`;
   }).join("");
 
   box.hidden = false;
-  box.innerHTML = totalPontos
-    ? `<p class="busca-res__cab">${totalPontos} resultado(s)${totalPontos > 40 ? " · mostrando 40" : ""}</p>${linhas}`
-    : `<p class="vazio">Nada encontrado para “${esc(q)}”.</p>`;
+  if (!zonas.length && !totalPontos) {
+    box.innerHTML = `<p class="vazio">Nada encontrado para “${esc(q)}”.</p>`;
+    return;
+  }
+  box.innerHTML =
+    (zonas.length ? `<p class="busca-res__cab">Bairros (${zonas.length})</p>${bairrosHTML}` : "") +
+    (totalPontos ? `<p class="busca-res__cab">Lugares (${totalPontos}${totalPontos > 40 ? " · mostrando 40" : ""})</p>${linhas}` : "");
 }
 
 /* --------------------------------- mapa --------------------------------- */

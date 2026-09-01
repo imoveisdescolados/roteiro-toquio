@@ -57,6 +57,7 @@ html, body {
 .busca-item__nome { font-size: 15px; font-weight: 700; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 5px; }
 .busca-item__linha { font-size: 13.5px; color: var(--ink-soft); margin-top: 3px; }
 .busca-item__sub { color: var(--ink-faint); font-size: 12.5px; }
+.busca-item__link { font-size: 15px; font-weight: 700; }
 .busca-item__acoes { margin-top: 9px; }
 
 /* ---------- Montar o dia ---------- */
