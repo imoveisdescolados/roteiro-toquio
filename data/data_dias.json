@@ -1,0 +1,74 @@
+[
+  {
+    "data": "19/09/2026 (sáb)",
+    "dia_semana": "Sábado",
+    "bairro_zona": "Chegada — Ebisu",
+    "tema": "Chegada e ambientação",
+    "notas": "Pouso em Narita 17:35; check-in no Airbnb liberado a partir das 16h — na prática chegada à noite. Sem passeio grande; jantar tranquilo por perto (ex.: Ebisu Yokocho).",
+    "status": "Rascunho"
+  },
+  {
+    "data": "20/09/2026 (dom)",
+    "dia_semana": "Domingo",
+    "bairro_zona": "Ginza + Nihonbashi + Tsukiji",
+    "tema": "Feira de antiguidades + compras + comida de rua",
+    "notas": "Oedo Antique Market no Tokyo International Forum (1º e 3º domingo do mês — cai nesse dia). Ginza (Uniqlo flagship, Itoya, Kyukyodo, grandes lojas de departamento) → Nihonbashi (cluster de lojas centenárias: Haibara, Ninben, Kiya) → Tsukiji Outer Market pra comer andando. Início da Silver Week, esperar movimento.",
+    "status": "Rascunho"
+  },
+  {
+    "data": "21/09/2026 (seg)",
+    "dia_semana": "Segunda — feriado (Dia do Respeito aos Idosos)",
+    "bairro_zona": "Harajuku + Omotesando + Aoyama + Shibuya",
+    "tema": "Templo + parque + compras + cruzamento",
+    "notas": "Meiji Jingu (templo/floresta), Yoyogi Park (feriado pode ter apresentações de rua), Takeshita-dori → Omotesando → Aoyama, emendando a pé/trem com Shibuya (Crossing, Shibuya Sky). Silver Week — bastante gente nos pontos turísticos, esperar fila.",
+    "status": "Rascunho"
+  },
+  {
+    "data": "22/09/2026 (ter)",
+    "dia_semana": "Terça — feriado-ponte",
+    "bairro_zona": "Daikanyama + Nakameguro + Meguro + Hiroo",
+    "tema": "Passeio tranquilo, 100% a pé",
+    "notas": "Circuito todo a pé a partir de Ebisu: canal do Rio Meguro e T-Site/Tsutaya em Daikanyama, Teien Art Museum em Meguro, Arisugawa-no-miya Memorial Park em Hiroo. Bom dia pra fugir da lotação da Silver Week nos grandes pontos turísticos — aqui tudo é mais residencial e tranquilo.",
+    "status": "Rascunho"
+  },
+  {
+    "data": "23/09/2026 (qua)",
+    "dia_semana": "Quarta — feriado (Equinócio de Outono)",
+    "bairro_zona": "Ryogoku + Kiyosumi-Shirakawa",
+    "tema": "SUMÔ — dia dedicado + café de especialidade",
+    "notas": "Aki Basho no Ryogoku Kokugikan (torneio roda de 13 a 27/set). Ingressos oficiais esgotados desde 24/ago — resolver via revenda/agência ou plano B (treino matinal numa heya, asageiko). Manhã livre pro Sumida Hokusai Museum; almoço de chanko nabe. À tarde, poucas paradas de trem até Kiyosumi-Shirakawa: Kiyosumi Gardens e Blue Bottle Coffee (primeira loja da marca no Japão).",
+    "status": "PENDENTE — resolver ingresso do sumô"
+  },
+  {
+    "data": "24/09/2026 (qui)",
+    "dia_semana": "Quinta",
+    "bairro_zona": "Roppongi + Azabudai Hills + Toranomon Hills",
+    "tema": "teamLab + museu de arte + arquitetura nova",
+    "notas": "teamLab Borderless (Mori Building Digital Art Museum, em Azabudai Hills) — reserva obrigatória online, sem venda na hora; horários de fim de semana esgotam em ~72h, por isso reservar com 2-3 semanas de antecedência e preferir dia de semana como este. Aberto 8:30-21:00 (fechado terças). Mori Art Museum e Roppongi Hills, arquitetura nova de Azabudai/Toranomon. Trajeto todo a pé a partir de Ebisu. Silver Week já terminou.",
+    "status": "PENDENTE — reservar teamLab"
+  },
+  {
+    "data": "25/09/2026 (sex)",
+    "dia_semana": "Sexta",
+    "bairro_zona": "Akihabara + Ochanomizu + Jimbocho (+ Shinjuku à noite)",
+    "tema": "Eletrônicos/otaku + sebos + vida noturna",
+    "notas": "Akihabara de dia (Yodobashi Akiba, Mandarake/Super Potato), Kanda Myojin → Ochanomizu (instrumentos musicais) → Jimbocho (sebos históricos). À noite, Shinjuku — Linha Yamanote direto, sem baldeação — para Omoide Yokocho, Golden Gai e Kabukicho (izakaya e clima noturno). Se sobrar pique de dia, Shinjuku Gyoen (parque) e o mirante gratuito do Tokyo Metropolitan Government Building também ficam aqui perto.",
+    "status": "Rascunho"
+  },
+  {
+    "data": "26/09/2026 (sáb)",
+    "dia_semana": "Sábado",
+    "bairro_zona": "Ueno + Yanaka/Nezu (+ Asakusa opcional)",
+    "tema": "Templo + museu + mercado de rua",
+    "notas": "Ueno Park e museus, Nezu Shrine (túnel de torii), Yanaka Ginza (Tóquio 'antiga', escapou dos bombardeios). Se sobrar energia/tempo, dá pra descer por Ameyoko → Kappabashi → Asakusa (Senso-ji) em vez de Yanaka — são dois roteiros alternativos a partir de Ueno, não cabem os dois no mesmo dia com calma. Último dia cheio antes do check-out.",
+    "status": "Rascunho"
+  },
+  {
+    "data": "27/09/2026 (dom)",
+    "dia_semana": "Domingo",
+    "bairro_zona": "Check-out — Ebisu",
+    "tema": "Encerramento da etapa Tóquio",
+    "notas": "Check-out até 10h. Sem passeio grande — se sobrar tempo de manhã, algo leve e perto de casa. Segue para a próxima etapa do roteiro (ryokan).",
+    "status": "Rascunho"
+  }
+]

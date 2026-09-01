@@ -1,0 +1,4 @@
+node_modules/
+scripts/geocode.log
+.DS_Store
+Thumbs.db

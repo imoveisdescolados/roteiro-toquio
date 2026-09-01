@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#16202e" />
+  <title>Guia Tóquio — Ebisu</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-header__title">
+      <span class="app-header__kanji" aria-hidden="true">東京</span>
+      <div>
+        <h1>Guia Tóquio</h1>
+        <p>Base em Ebisu · 19–27 set 2026</p>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Seções">
+      <button class="tab is-active" data-view="montar" role="tab" aria-selected="true">Montar o dia</button>
+      <button class="tab" data-view="bairros" role="tab" aria-selected="false">Bairros</button>
+      <button class="tab" data-view="combos" role="tab" aria-selected="false">Combos</button>
+      <button class="tab" data-view="mapa" role="tab" aria-selected="false">Mapa</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ============ MONTAR O DIA (decisor "lego") ============ -->
+    <section id="view-montar" class="view is-active" role="tabpanel" aria-label="Montar o dia">
+      <details class="datas" id="datas-box">
+        <summary><span class="datas__aviso">⚠️ Presos a data</span> <span class="datas__periodo">19–27 set · toque para ver</span></summary>
+        <div id="datas-lista" class="datas__lista"></div>
+      </details>
+
+      <p class="montar__intro">Escolha como você está e o que quer — o guia monta as opções.</p>
+
+      <div class="grupo">
+        <h2 class="grupo__titulo">Energia <span class="grupo__dica">quanto pique você tem</span></h2>
+        <div class="chips" id="chips-energia"></div>
+      </div>
+      <div class="grupo">
+        <h2 class="grupo__titulo">Clima do dia</h2>
+        <div class="chips" id="chips-clima"></div>
+      </div>
+      <div class="grupo">
+        <h2 class="grupo__titulo">Vibe</h2>
+        <div class="chips" id="chips-vibe"></div>
+      </div>
+      <div class="grupo">
+        <h2 class="grupo__titulo">O que fazer</h2>
+        <div class="chips" id="chips-interesse"></div>
+      </div>
+
+      <div class="montar__barra">
+        <span id="montar-contador" class="montar__contador"></span>
+        <button id="montar-limpar" class="btn-limpar" type="button">Limpar</button>
+      </div>
+
+      <div id="montar-resultado" class="resultado"></div>
+    </section>
+
+    <!-- ============ BAIRROS ============ -->
+    <section id="view-bairros" class="view" role="tabpanel" aria-label="Bairros" hidden>
+      <div id="bairros-lista" class="bairros-lista"></div>
+    </section>
+
+    <!-- ============ COMBOS ============ -->
+    <section id="view-combos" class="view" role="tabpanel" aria-label="Combos" hidden>
+      <p class="montar__intro">Roteiros prontos que juntam bairros que funcionam bem no mesmo dia.</p>
+      <div id="combos-lista" class="combos-lista"></div>
+    </section>
+
+    <!-- ============ MAPA ============ -->
+    <section id="view-mapa" class="view" role="tabpanel" aria-label="Mapa de pontos" hidden>
+      <div class="filtros">
+        <input type="search" id="busca" class="filtros__busca" placeholder="Buscar por nome ou bairro…" autocomplete="off" enterkeyhint="search" />
+        <div class="filtros__selects">
+          <select id="f-bairro" class="filtros__select" aria-label="Filtrar por bairro"></select>
+          <select id="f-categoria" class="filtros__select" aria-label="Filtrar por categoria"></select>
+        </div>
+        <div class="filtros__rodape">
+          <span id="contador" class="filtros__contador"></span>
+          <button id="limpar" class="btn-limpar" type="button">Limpar filtros</button>
+        </div>
+      </div>
+      <div id="map" role="application" aria-label="Mapa interativo"></div>
+      <button id="toggle-legenda" class="legenda-toggle" type="button" aria-expanded="false">Legenda de cores</button>
+      <div id="legenda" class="legenda" hidden></div>
+      <p id="aviso-geo" class="aviso-geo" hidden></p>
+    </section>
+  </main>
+
+  <div id="carregando" class="carregando">Carregando guia…</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

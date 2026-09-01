@@ -1,0 +1,1592 @@
+[
+  {
+    "bairro": "Ebisu",
+    "nome": "Uniqlo Ebisu",
+    "descricao": "Loja de roupas casual japonesa, unidade completa com várias seções",
+    "categoria": "Uniqlo",
+    "endereco": "Q Plaza Ebisu, 1F-2F, 1-8-12 Ebisu, Shibuya-ku",
+    "notas": "Lado oeste da estação",
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Uniqlo%20Ebisu%2C%20Q%20Plaza%20Ebisu%2C%201F-2F%2C%201-8-12%20Ebisu%2C%20Shibuya-ku%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ebisu",
+    "nome": "Kapital Ebisu",
+    "descricao": "Marca japonesa de jeans e workwear premium, peças com tingimento e remendos artesanais",
+    "categoria": "Loja tradicional",
+    "endereco": "2-20-2 Ebisuminami, Gaia Ebisu Bldg 1F",
+    "notas": "Cult entre colecionadores de denim",
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Kapital%20Ebisu%2C%202-20-2%20Ebisuminami%2C%20Gaia%20Ebisu%20Bldg%201F%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ebisu",
+    "nome": "Atre Ebisu",
+    "descricao": "Shopping da estação com moda, cosméticos e alimentação",
+    "categoria": "Centro de compras",
+    "endereco": "Direto na estação de Ebisu",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Atre%20Ebisu%2C%20Direto%20na%20esta%C3%A7%C3%A3o%20de%20Ebisu%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ebisu",
+    "nome": "Yebisu Garden Place",
+    "descricao": "Complexo com lojas, restaurantes, museu da cerveja e mirante",
+    "categoria": "Centro de compras",
+    "endereco": "~5 min a pé da estação, lado leste",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Yebisu%20Garden%20Place%2C%20~5%20min%20a%20p%C3%A9%20da%20esta%C3%A7%C3%A3o%2C%20lado%20leste%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ebisu",
+    "nome": "Ebisu Higashi Park",
+    "descricao": "Praça de bairro tranquila, bem perto da hospedagem",
+    "categoria": "Parque",
+    "endereco": "Ebisu Higashi, ao lado do Airbnb",
+    "notas": null,
+    "site_oficial": "https://www.city.shibuya.tokyo.jp/shisetsu/koen/kuritsu-koen/park_ebisuhigashi.html",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ebisu%20Higashi%20Park%2C%20Ebisu%20Higashi%2C%20ao%20lado%20do%20Airbnb%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Daikanyama",
+    "nome": "Daikanyama T-Site (Tsutaya Books)",
+    "descricao": "Livraria/loja de discos e filmes com arquitetura premiada, um dos pontos mais fotografados do bairro",
+    "categoria": "Loja de interesse",
+    "endereco": "Ligado à estação por passarela",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Daikanyama%20T-Site%20%28Tsutaya%20Books%29%2C%20Ligado%20%C3%A0%20esta%C3%A7%C3%A3o%20por%20passarela%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Daikanyama",
+    "nome": "Log Road Daikanyama",
+    "descricao": "Antiga linha de trem convertida em fileira de lojas e restaurantes",
+    "categoria": "Centro de compras",
+    "endereco": "Perto da estação",
+    "notas": "Inclui a Spring Valley Brewery Tokyo",
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Log%20Road%20Daikanyama%2C%20Perto%20da%20esta%C3%A7%C3%A3o%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Daikanyama",
+    "nome": "The Conran Shop Daikanyama",
+    "descricao": "Loja de móveis e artigos de design para casa",
+    "categoria": "Loja de interesse",
+    "endereco": "Próximo à Hillside Terrace",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=The%20Conran%20Shop%20Daikanyama%2C%20Pr%C3%B3ximo%20%C3%A0%20Hillside%20Terrace%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Daikanyama",
+    "nome": "Hillside Terrace",
+    "descricao": "Complexo de baixa altura com lojas e galerias de arte",
+    "categoria": "Centro de compras",
+    "endereco": "Daikanyama",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Hillside%20Terrace%2C%20Daikanyama%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Daikanyama",
+    "nome": "17dixsept",
+    "descricao": "Mini shopping com moda e cafés",
+    "categoria": "Centro de compras",
+    "endereco": "Ligado à Estação Daikanyama",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=17dixsept%2C%20Ligado%20%C3%A0%20Esta%C3%A7%C3%A3o%20Daikanyama%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Daikanyama",
+    "nome": "Okura",
+    "descricao": "Jeans e roupas tingidas à mão com índigo natural (ai-zome), técnica artesanal japonesa",
+    "categoria": "Loja tradicional",
+    "endereco": "Ruas atrás da Hillside Terrace",
+    "notas": "Culto entre designers",
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Okura%2C%20Ruas%20atr%C3%A1s%20da%20Hillside%20Terrace%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Daikanyama",
+    "nome": "Kamawanu Daikanyama",
+    "descricao": "Tenugui — panos de algodão estampados/tingidos à mão, artesanato têxtil tradicional",
+    "categoria": "Loja tradicional",
+    "endereco": "23-1 Sarugakucho",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Kamawanu%20Daikanyama%2C%2023-1%20Sarugakucho%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nakameguro",
+    "nome": "Traveler's Factory Nakameguro",
+    "descricao": "Loja-conceito do Traveler's Notebook (cadernos de viagem), com carimbos e câmeras vintage",
+    "categoria": "Papelaria",
+    "endereco": "3-3-13-10 Kamimeguro",
+    "notas": "Fechado às terças",
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Traveler%27s%20Factory%20Nakameguro%2C%203-3-13-10%20Kamimeguro%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nakameguro",
+    "nome": "SML (Standard Manufacturer Laboratory)",
+    "descricao": "Cerâmica e vidro artesanal japonês (mingei/artesanato popular) a preço acessível, também é galeria",
+    "categoria": "Loja tradicional",
+    "endereco": "1-15-1 Aobadai",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=SML%20%28Standard%20Manufacturer%20Laboratory%29%2C%201-15-1%20Aobadai%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nakameguro",
+    "nome": "Brick & Mortar",
+    "descricao": "Acessórios, cosméticos e decoração, com exposições e pop-ups rotativos",
+    "categoria": "Loja de interesse",
+    "endereco": "1-4-4 Nakameguro",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Brick%20%26%20Mortar%2C%201-4-4%20Nakameguro%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nakameguro",
+    "nome": "1LDK",
+    "descricao": "Select shop de moda e lifestyle, roupas e objetos curados",
+    "categoria": "Loja de interesse",
+    "endereco": "Faixa do Rio Meguro",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=1LDK%2C%20Faixa%20do%20Rio%20Meguro%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nakameguro",
+    "nome": "Margem do Rio Meguro",
+    "descricao": "Caminho arborizado ao longo do canal, com cafés e lojinhas — bonito o ano todo, famoso na florada",
+    "categoria": "Rua especial",
+    "endereco": "Nakameguro",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Margem%20do%20Rio%20Meguro%2C%20Nakameguro%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Hiroo",
+    "nome": "National Azabu",
+    "descricao": "Supermercado internacional histórico, clientela expatriada, curioso de visitar mesmo sem comprar",
+    "categoria": "Loja de interesse",
+    "endereco": "Hiroo",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=National%20Azabu%2C%20Hiroo%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Hiroo",
+    "nome": "Arisugawa-no-miya Memorial Park",
+    "descricao": "Parque com vale, lago e trilhas — bem menos turístico que os grandes parques de Tóquio",
+    "categoria": "Parque",
+    "endereco": "Hiroo",
+    "notas": null,
+    "site_oficial": "https://www.city.minato.tokyo.jp/shisetsu/koen/azabu/03.html",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Arisugawa-no-miya%20Memorial%20Park%2C%20Hiroo%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Meguro",
+    "nome": "Meguro Fudoson (Ryusen-ji)",
+    "descricao": "Templo budista histórico do período Edo, um dos cinco 'Fudo' coloridos que protegiam a cidade",
+    "categoria": "Templo/Santuário",
+    "endereco": "Perto da Estação Meguro",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Meguro%20Fudoson%20%28Ryusen-ji%29%2C%20Perto%20da%20Esta%C3%A7%C3%A3o%20Meguro%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Meguro",
+    "nome": "Teien Art Museum",
+    "descricao": "Museu num prédio art déco de 1933, com jardim — bem menos concorrido que os grandes museus de Ueno",
+    "categoria": "Atração/Museu",
+    "endereco": "Meguro",
+    "notas": null,
+    "site_oficial": "https://www.teien-art-museum.ne.jp/en/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Teien%20Art%20Museum%2C%20Meguro%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Meguro",
+    "nome": "Meguro Museum of Art",
+    "descricao": "Museu municipal de arte, exposições temporárias",
+    "categoria": "Atração/Museu",
+    "endereco": "Meguro",
+    "notas": null,
+    "site_oficial": "https://www.mmat.jp/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Meguro%20Museum%20of%20Art%2C%20Meguro%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shibuya",
+    "nome": "Uniqlo Shibuya Dogenzaka",
+    "descricao": "Loja de roupas casual japonesa, uma das maiores da região",
+    "categoria": "Uniqlo",
+    "endereco": "Shibuya Prime Bldg, 2-29-5 Dogenzaka",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Uniqlo%20Shibuya%20Dogenzaka%2C%20Shibuya%20Prime%20Bldg%2C%202-29-5%20Dogenzaka%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shibuya",
+    "nome": "Loft Shibuya",
+    "descricao": "Grande loja de papelaria e artigos de casa (zakka), vários andares",
+    "categoria": "Papelaria",
+    "endereco": "Jinnan, perto da estação",
+    "notas": "Uma das maiores lojas da rede Loft",
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Loft%20Shibuya%2C%20Jinnan%2C%20perto%20da%20esta%C3%A7%C3%A3o%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shibuya",
+    "nome": "Bic Camera Shibuya",
+    "descricao": "Rede de eletrônicos, câmeras e eletrodomésticos",
+    "categoria": "Eletrônicos",
+    "endereco": "Saída Leste e saída Hachiko",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Bic%20Camera%20Shibuya%2C%20Sa%C3%ADda%20Leste%20e%20sa%C3%ADda%20Hachiko%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shibuya",
+    "nome": "d47 design travel store",
+    "descricao": "Vitrine de artesanato e produtos das 47 províncias do Japão",
+    "categoria": "Loja tradicional",
+    "endereco": "Shibuya Hikarie, 8F",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=d47%20design%20travel%20store%2C%20Shibuya%20Hikarie%2C%208F%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shibuya",
+    "nome": "Nakagawa Masashichi Shoten",
+    "descricao": "Têxteis tradicionais japoneses modernizados, famoso pelo pano multiuso 'Hana Fukin'",
+    "categoria": "Loja tradicional",
+    "endereco": "Shibuya Scramble Square, 11F",
+    "notas": "Empresa de Nara com 300 anos",
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Nakagawa%20Masashichi%20Shoten%2C%20Shibuya%20Scramble%20Square%2C%2011F%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shibuya",
+    "nome": "Hyozaemon",
+    "descricao": "Hashi (talheres) de laca e madrepérola, trabalho artesanal",
+    "categoria": "Loja tradicional",
+    "endereco": "Shibuya Scramble Square, 14F",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Hyozaemon%2C%20Shibuya%20Scramble%20Square%2C%2014F%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shibuya",
+    "nome": "Shibuya Scramble Square",
+    "descricao": "Torre com shopping e mirante sobre o cruzamento",
+    "categoria": "Centro de compras",
+    "endereco": "Em cima da estação",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Shibuya%20Scramble%20Square%2C%20Em%20cima%20da%20esta%C3%A7%C3%A3o%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shibuya",
+    "nome": "Shibuya Hikarie",
+    "descricao": "Shopping com moda, restaurantes e teatro",
+    "categoria": "Centro de compras",
+    "endereco": "Ao lado da estação",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Shibuya%20Hikarie%2C%20Ao%20lado%20da%20esta%C3%A7%C3%A3o%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shibuya",
+    "nome": "Shibuya PARCO",
+    "descricao": "Moda e cultura pop, marcas japonesas emergentes",
+    "categoria": "Centro de compras",
+    "endereco": "Perto de Center Gai",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Shibuya%20PARCO%2C%20Perto%20de%20Center%20Gai%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shibuya",
+    "nome": "Shibuya109",
+    "descricao": "Ícone da moda jovem tóquiota desde os anos 2000",
+    "categoria": "Centro de compras",
+    "endereco": "Cruzamento de Shibuya",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Shibuya109%2C%20Cruzamento%20de%20Shibuya%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shibuya",
+    "nome": "Tokyu Plaza Shibuya",
+    "descricao": "Shopping com terraço panorâmico",
+    "categoria": "Centro de compras",
+    "endereco": "Perto do cruzamento",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Tokyu%20Plaza%20Shibuya%2C%20Perto%20do%20cruzamento%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shibuya",
+    "nome": "Miyashita Park",
+    "descricao": "Parque suspenso sobre um shopping térreo, com pista de skate e área verde",
+    "categoria": "Parque",
+    "endereco": "Shibuya",
+    "notas": null,
+    "site_oficial": "https://www.miyashita-park.tokyo/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Miyashita%20Park%2C%20Shibuya%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shibuya",
+    "nome": "Konno Hachimangu",
+    "descricao": "Santuário xintoísta histórico do bairro, respiro tranquilo perto do centro de Shibuya",
+    "categoria": "Templo/Santuário",
+    "endereco": "Shibuya",
+    "notas": null,
+    "site_oficial": "https://www.konno-hachimangu.jp/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Konno%20Hachimangu%2C%20Shibuya%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Harajuku",
+    "nome": "Uniqlo Harajuku",
+    "descricao": "Loja completa dentro do complexo WITH Harajuku, direto na estação",
+    "categoria": "Uniqlo",
+    "endereco": "WITH Harajuku, 1-14-30 Jingumae",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Uniqlo%20Harajuku%2C%20WITH%20Harajuku%2C%201-14-30%20Jingumae%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Harajuku",
+    "nome": "Kiddy Land Harajuku",
+    "descricao": "5 andares de personagens e papelaria (Snoopy, Sanrio, Ghibli, Disney)",
+    "categoria": "Papelaria",
+    "endereco": "6-1-9 Jingumae, na Omotesando",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Kiddy%20Land%20Harajuku%2C%206-1-9%20Jingumae%2C%20na%20Omotesando%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Harajuku",
+    "nome": "Takeshita-dori",
+    "descricao": "Rua de moda jovem/kawaii, lojinhas independentes, brechó, crepe",
+    "categoria": "Rua especial",
+    "endereco": "Saída principal de Harajuku",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Takeshita-dori%2C%20Sa%C3%ADda%20principal%20de%20Harajuku%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Harajuku",
+    "nome": "Cat Street",
+    "descricao": "Rua de streetwear e design entre Harajuku e Omotesando (BAPE, Journal Standard)",
+    "categoria": "Rua especial",
+    "endereco": "Entre Harajuku e Omotesando",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Cat%20Street%2C%20Entre%20Harajuku%20e%20Omotesando%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Harajuku",
+    "nome": "WITH Harajuku",
+    "descricao": "Complexo com IKEA Harajuku, Uniqlo e cafés",
+    "categoria": "Centro de compras",
+    "endereco": "Direto na estação",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=WITH%20Harajuku%2C%20Direto%20na%20esta%C3%A7%C3%A3o%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Harajuku",
+    "nome": "Meiji Jingu",
+    "descricao": "Principal santuário xintoísta de Tóquio, cercado por uma floresta densa plantada há mais de 100 anos",
+    "categoria": "Templo/Santuário",
+    "endereco": "Entrada perto da Estação Harajuku",
+    "notas": null,
+    "site_oficial": "https://www.meijijingu.or.jp/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Meiji%20Jingu%2C%20Entrada%20perto%20da%20Esta%C3%A7%C3%A3o%20Harajuku%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Harajuku",
+    "nome": "Yoyogi Park",
+    "descricao": "Um dos maiores parques de Tóquio — piqueniques e apresentações de rua nos fins de semana e feriados",
+    "categoria": "Parque",
+    "endereco": "Ao lado do Meiji Jingu",
+    "notas": null,
+    "site_oficial": "https://www.tokyo-park.or.jp/park/yoyogi/index.html",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Yoyogi%20Park%2C%20Ao%20lado%20do%20Meiji%20Jingu%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Omotesando",
+    "nome": "Apple Store Omotesando",
+    "descricao": "Loja-conceito da Apple",
+    "categoria": "Eletrônicos",
+    "endereco": "Jingumae 4-chome, perto do cruzamento",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Apple%20Store%20Omotesando%2C%20Jingumae%204-chome%2C%20perto%20do%20cruzamento%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Omotesando",
+    "nome": "Dior / Louis Vuitton / Tod's / Prada",
+    "descricao": "Grifes de luxo com fachadas assinadas por arquitetos famosos (SANAA, Toyo Ito, Herzog & de Meuron) — vale pela arquitetura",
+    "categoria": "Loja de interesse",
+    "endereco": "Ao longo da Omotesando-dori",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Dior%20/%20Louis%20Vuitton%20/%20Tod%27s%20/%20Prada%2C%20Ao%20longo%20da%20Omotesando-dori%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Omotesando",
+    "nome": "Omotesando Hills",
+    "descricao": "Shopping projetado por Tadao Ando, moda de grife",
+    "categoria": "Centro de compras",
+    "endereco": "4-12-10 Jingumae",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Omotesando%20Hills%2C%204-12-10%20Jingumae%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Omotesando",
+    "nome": "Oriental Bazaar",
+    "descricao": "Loja de antiguidades e artesanato desde 1916 — quimono, cerâmica, artesanato genuíno",
+    "categoria": "Loja tradicional",
+    "endereco": "5-9-13 Jingumae",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Oriental%20Bazaar%2C%205-9-13%20Jingumae%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Omotesando",
+    "nome": "Omotesando-dori",
+    "descricao": "Avenida arborizada com zelkovas centenárias, uma das ruas mais elegantes de Tóquio",
+    "categoria": "Rua especial",
+    "endereco": "Omotesando",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Omotesando-dori%2C%20Omotesando%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Aoyama",
+    "nome": "Comme des Garçons flagship",
+    "descricao": "Loja-conceito da grife de moda vanguardista japonesa",
+    "categoria": "Loja de interesse",
+    "endereco": "5-2-1 Minami-Aoyama",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Comme%20des%20Gar%C3%A7ons%20flagship%2C%205-2-1%20Minami-Aoyama%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Aoyama",
+    "nome": "Issey Miyake boutiques",
+    "descricao": "Moda japonesa de design, tecidos plissados icônicos",
+    "categoria": "Loja de interesse",
+    "endereco": "Região de Aoyama/Jingumae",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Issey%20Miyake%20boutiques%2C%20Regi%C3%A3o%20de%20Aoyama/Jingumae%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Aoyama",
+    "nome": "Spiral / Spiral Market",
+    "descricao": "Complexo cultural com loja de design de objetos e decoração",
+    "categoria": "Loja de interesse",
+    "endereco": "5-6-23 Minami-Aoyama",
+    "notas": "Prédio de Fumihiko Maki",
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Spiral%20/%20Spiral%20Market%2C%205-6-23%20Minami-Aoyama%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Aoyama",
+    "nome": "Japan Traditional Crafts Aoyama Square",
+    "descricao": "Vitrine oficial (apoio do governo) de artesanato certificado de todo o Japão — cerâmica, laca, têxteis",
+    "categoria": "Loja tradicional",
+    "endereco": "Minami-Aoyama, perto de Aoyama-Itchome",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Japan%20Traditional%20Crafts%20Aoyama%20Square%2C%20Minami-Aoyama%2C%20perto%20de%20Aoyama-Itchome%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Aoyama",
+    "nome": "Aoyama Reien (Cemitério de Aoyama)",
+    "descricao": "Grande área verde histórica no meio da cidade, famosa pelas cerejeiras — funciona como um parque aberto",
+    "categoria": "Parque",
+    "endereco": "Aoyama",
+    "notas": null,
+    "site_oficial": "https://www.tokyo-park.or.jp/reien/park/index072.html",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Aoyama%20Reien%20%28Cemit%C3%A9rio%20de%20Aoyama%29%2C%20Aoyama%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Roppongi",
+    "nome": "Uniqlo Tokyo Midtown",
+    "descricao": "Loja completa dentro do Tokyo Midtown",
+    "categoria": "Uniqlo",
+    "endereco": "Tokyo Midtown, 9-7-1 Akasaka",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Uniqlo%20Tokyo%20Midtown%2C%20Tokyo%20Midtown%2C%209-7-1%20Akasaka%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Roppongi",
+    "nome": "Roppongi Tsutaya Books",
+    "descricao": "Livraria com seção de papelaria e artigos de design",
+    "categoria": "Papelaria",
+    "endereco": "Roppongi Hills, Keyakizaka-dori",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Roppongi%20Tsutaya%20Books%2C%20Roppongi%20Hills%2C%20Keyakizaka-dori%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Roppongi",
+    "nome": "THE COVER NIPPON",
+    "descricao": "Artesanato tradicional japonês com curadoria moderna — cerâmica, têxtil, chá, laca",
+    "categoria": "Loja tradicional",
+    "endereco": "Tokyo Midtown Galleria, B1",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=THE%20COVER%20NIPPON%2C%20Tokyo%20Midtown%20Galleria%2C%20B1%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Roppongi",
+    "nome": "Roppongi Hills",
+    "descricao": "Torre Mori com shopping, museu de arte e boutiques de luxo",
+    "categoria": "Centro de compras",
+    "endereco": "6-10-1 Roppongi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Roppongi%20Hills%2C%206-10-1%20Roppongi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Roppongi",
+    "nome": "Tokyo Midtown",
+    "descricao": "Complexo comercial, de escritórios e gastronomia",
+    "categoria": "Centro de compras",
+    "endereco": "9-7-1 Akasaka",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Tokyo%20Midtown%2C%209-7-1%20Akasaka%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Roppongi",
+    "nome": "Keyakizaka-dori",
+    "descricao": "Avenida arborizada de Roppongi Hills com boutiques de luxo, bonita à noite com a iluminação",
+    "categoria": "Rua especial",
+    "endereco": "Roppongi Hills",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Keyakizaka-dori%2C%20Roppongi%20Hills%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Roppongi",
+    "nome": "Zojoji + Tokyo Tower",
+    "descricao": "Templo histórico da família Tokugawa, com a Tokyo Tower ao fundo — extensão fácil a partir de Roppongi",
+    "categoria": "Templo/Santuário",
+    "endereco": "Perto de Onarimon/Shiba-koen, curta viagem a partir de Roppongi",
+    "notas": null,
+    "site_oficial": "https://www.zojoji.or.jp/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Zojoji%20%2B%20Tokyo%20Tower%2C%20Perto%20de%20Onarimon/Shiba-koen%2C%20curta%20viagem%20a%20partir%20de%20Roppongi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Roppongi",
+    "nome": "Mori Art Museum",
+    "descricao": "Museu de arte contemporânea no topo do Mori Tower, dentro do Roppongi Hills",
+    "categoria": "Atração/Museu",
+    "endereco": "Roppongi",
+    "notas": null,
+    "site_oficial": "https://www.mori.art.museum/jp/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Mori%20Art%20Museum%2C%20Roppongi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Azabudai Hills",
+    "nome": "Azabudai Hills Mall (Garden Plaza)",
+    "descricao": "Shopping do complexo mais novo de Tóquio, foco em gastronomia e arquitetura",
+    "categoria": "Centro de compras",
+    "endereco": "Complexo Mori JP Tower",
+    "notas": "Aberto em 2023",
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Azabudai%20Hills%20Mall%20%28Garden%20Plaza%29%2C%20Complexo%20Mori%20JP%20Tower%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Azabudai Hills",
+    "nome": "Mori Garden",
+    "descricao": "Jardim japonês clássico dentro do Roppongi Hills, com lagoa e carpas — não fica no Azabudai Hills, apesar do nome parecido",
+    "categoria": "Parque",
+    "endereco": "Roppongi Hills",
+    "notas": null,
+    "site_oficial": "https://www.roppongihills.com/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Mori%20Garden%2C%20Roppongi%20Hills%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Azabudai Hills",
+    "nome": "teamLab Borderless",
+    "descricao": "Museu de arte digital imersivo (Mori Building Digital Art Museum) — 6 espaços interligados, 10.000m², obras como 'Forest of Resonating Lamps' e 'Universe of Water Particles'",
+    "categoria": "Atração/Museu",
+    "endereco": "Azabudai Hills",
+    "notas": "Reserva obrigatória online, sem venda na hora — horários de fim de semana esgotam em ~72h, reservar com 2-3 semanas de antecedência. Aberto 8:30-21:00, fechado às terças. ¥3.800-4.800 adulto. Melhor horário: o mais cedo possível num dia de semana",
+    "site_oficial": "https://www.teamlab.art/e/tokyo/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=teamLab%20Borderless%2C%20Azabudai%20Hills%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Toranomon Hills",
+    "nome": "Toranomon Hills Station Tower",
+    "descricao": "Torre com praça de alimentação e lojas, foco em gastronomia",
+    "categoria": "Centro de compras",
+    "endereco": "1-2-3 Toranomon",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Toranomon%20Hills%20Station%20Tower%2C%201-2-3%20Toranomon%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ginza",
+    "nome": "Uniqlo Ginza (UNIQLO TOKYO)",
+    "descricao": "Flagship de 12 andares, uma das maiores lojas Uniqlo do mundo",
+    "categoria": "Uniqlo",
+    "endereco": "Chuo-dori, perto da saída A2 da Estação Ginza",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Uniqlo%20Ginza%20%28UNIQLO%20TOKYO%29%2C%20Chuo-dori%2C%20perto%20da%20sa%C3%ADda%20A2%20da%20Esta%C3%A7%C3%A3o%20Ginza%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ginza",
+    "nome": "Ginza Itoya (G. Itoya)",
+    "descricao": "Papelaria icônica desde 1904, 12 andares cada um com um tema (canetas, papel, arte)",
+    "categoria": "Papelaria",
+    "endereco": "Chuo-dori",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ginza%20Itoya%20%28G.%20Itoya%29%2C%20Chuo-dori%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ginza",
+    "nome": "Mitsukoshi Ginza",
+    "descricao": "Loja de departamento tradicional, origem em 1673 como loja de quimono",
+    "categoria": "Centro de compras",
+    "endereco": "Chuo-dori",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Mitsukoshi%20Ginza%2C%20Chuo-dori%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ginza",
+    "nome": "Matsuya Ginza",
+    "descricao": "Grande loja de departamento",
+    "categoria": "Centro de compras",
+    "endereco": "Chuo-dori",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Matsuya%20Ginza%2C%20Chuo-dori%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ginza",
+    "nome": "Wako",
+    "descricao": "Loja de luxo e relojoaria no prédio-ícone da torre do relógio, desde 1881",
+    "categoria": "Loja tradicional",
+    "endereco": "Cruzamento principal de Ginza",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Wako%2C%20Cruzamento%20principal%20de%20Ginza%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ginza",
+    "nome": "Ginza Six",
+    "descricao": "Maior complexo de Ginza, moda de grife, inclui Tsutaya Books",
+    "categoria": "Centro de compras",
+    "endereco": "Chuo-dori",
+    "notas": "Projeto de Kengo Kuma",
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ginza%20Six%2C%20Chuo-dori%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ginza",
+    "nome": "Kyukyodo",
+    "descricao": "Incenso, papel washi e material de caligrafia, desde 1663",
+    "categoria": "Loja tradicional",
+    "endereco": "Chuo-dori",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Kyukyodo%2C%20Chuo-dori%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ginza",
+    "nome": "Ginza Natsuno",
+    "descricao": "Hashi (palitos) artesanais",
+    "categoria": "Loja tradicional",
+    "endereco": "Ginza",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ginza%20Natsuno%2C%20Ginza%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ginza",
+    "nome": "Chuo-dori (calçadão)",
+    "descricao": "Rua principal de Ginza vira calçadão sem carros nas tardes de fim de semana",
+    "categoria": "Rua especial",
+    "endereco": "Ginza",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Chuo-dori%20%28cal%C3%A7ad%C3%A3o%29%2C%20Ginza%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nihonbashi",
+    "nome": "Nihombashi Mitsukoshi (loja principal)",
+    "descricao": "Primeira loja de departamento do Japão, origem em 1673, prédio histórico de 1904",
+    "categoria": "Centro de compras",
+    "endereco": "Nihonbashi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Nihombashi%20Mitsukoshi%20%28loja%20principal%29%2C%20Nihonbashi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nihonbashi",
+    "nome": "Nihombashi Takashimaya S.C.",
+    "descricao": "Loja de departamento em prédio Art Déco de 1933, patrimônio cultural",
+    "categoria": "Centro de compras",
+    "endereco": "Nihonbashi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Nihombashi%20Takashimaya%20S.C.%2C%20Nihonbashi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nihonbashi",
+    "nome": "Maruzen Nihonbashi",
+    "descricao": "Livraria e papelaria pioneira desde 1869",
+    "categoria": "Papelaria",
+    "endereco": "Nihonbashi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Maruzen%20Nihonbashi%2C%20Nihonbashi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nihonbashi",
+    "nome": "Haibara",
+    "descricao": "Papel washi artesanal desde 1806",
+    "categoria": "Loja tradicional",
+    "endereco": "Nihonbashi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Haibara%2C%20Nihonbashi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nihonbashi",
+    "nome": "Ninben",
+    "descricao": "Katsuobushi (flocos de bonito seco) desde 1699",
+    "categoria": "Loja tradicional",
+    "endereco": "Nihonbashi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ninben%2C%20Nihonbashi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nihonbashi",
+    "nome": "Kiya",
+    "descricao": "Facas e tesouras desde 1792",
+    "categoria": "Loja tradicional",
+    "endereco": "Nihonbashi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Kiya%2C%20Nihonbashi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nihonbashi",
+    "nome": "Ubukeya",
+    "descricao": "Facas e pinças desde 1783",
+    "categoria": "Loja tradicional",
+    "endereco": "Nihonbashi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ubukeya%2C%20Nihonbashi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nihonbashi",
+    "nome": "Kuroeya",
+    "descricao": "Laca japonesa (urushi) desde 1689",
+    "categoria": "Loja tradicional",
+    "endereco": "Nihonbashi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Kuroeya%2C%20Nihonbashi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nihonbashi",
+    "nome": "Ibasen",
+    "descricao": "Leques artesanais desde 1590",
+    "categoria": "Loja tradicional",
+    "endereco": "Nihonbashi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ibasen%2C%20Nihonbashi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nihonbashi",
+    "nome": "Yamamotoyama",
+    "descricao": "Chá japonês, empresa centenária",
+    "categoria": "Loja tradicional",
+    "endereco": "Nihonbashi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Yamamotoyama%2C%20Nihonbashi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nihonbashi",
+    "nome": "Eitaro Sohonpo",
+    "descricao": "Doces tradicionais wagashi desde 1857",
+    "categoria": "Loja tradicional",
+    "endereco": "Nihonbashi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Eitaro%20Sohonpo%2C%20Nihonbashi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Nihonbashi",
+    "nome": "COREDO Muromachi",
+    "descricao": "Complexo que reúne várias lojas tradicionais centenárias da região",
+    "categoria": "Centro de compras",
+    "endereco": "Nihonbashi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=COREDO%20Muromachi%2C%20Nihonbashi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Tsukiji",
+    "nome": "Tsukiji Masamoto",
+    "descricao": "Facas profissionais de cozinha, renomada entre chefs",
+    "categoria": "Loja tradicional",
+    "endereco": "Tsukiji Outer Market",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Tsukiji%20Masamoto%2C%20Tsukiji%20Outer%20Market%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Tsukiji",
+    "nome": "Barracas do Tsukiji Outer Market",
+    "descricao": "Comida de rua e produtos regionais — tamagoyaki, nori, katsuobushi, secos",
+    "categoria": "Loja de interesse",
+    "endereco": "Tsukiji Outer Market",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Barracas%20do%20Tsukiji%20Outer%20Market%2C%20Tsukiji%20Outer%20Market%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Tsukiji",
+    "nome": "Namiyoke Inari Shrine",
+    "descricao": "Pequeno santuário que 'protege' o mercado, bem na entrada do Outer Market",
+    "categoria": "Templo/Santuário",
+    "endereco": "Tsukiji Outer Market",
+    "notas": null,
+    "site_oficial": "https://www.namiyoke.or.jp/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Namiyoke%20Inari%20Shrine%2C%20Tsukiji%20Outer%20Market%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Tsukiji",
+    "nome": "Hama-rikyu Gardens",
+    "descricao": "Jardim tradicional de água salgada do período Edo, com casa de chá — caminhada curta de Tsukiji ou Ginza",
+    "categoria": "Parque",
+    "endereco": "Entre Tsukiji e a baía",
+    "notas": null,
+    "site_oficial": "https://www.tokyo-park.or.jp/park/hama-rikyu/index.html",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Hama-rikyu%20Gardens%2C%20Entre%20Tsukiji%20e%20a%20ba%C3%ADa%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Akihabara",
+    "nome": "Yodobashi Akiba",
+    "descricao": "9 andares de eletrônicos — PCs, câmeras, eletrodomésticos, brinquedos",
+    "categoria": "Eletrônicos",
+    "endereco": "Direto na Estação Akihabara",
+    "notas": "Maior loja única do bairro",
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Yodobashi%20Akiba%2C%20Direto%20na%20Esta%C3%A7%C3%A3o%20Akihabara%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Akihabara",
+    "nome": "Sofmap",
+    "descricao": "Eletrônicos e informática, usados e novos",
+    "categoria": "Eletrônicos",
+    "endereco": "Akihabara",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Sofmap%2C%20Akihabara%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Akihabara",
+    "nome": "Laox",
+    "descricao": "Eletrônicos duty-free voltado a turistas",
+    "categoria": "Eletrônicos",
+    "endereco": "Akihabara",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Laox%2C%20Akihabara%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Akihabara",
+    "nome": "Mandarake",
+    "descricao": "Mangá, anime, figures e colecionáveis usados",
+    "categoria": "Loja de interesse",
+    "endereco": "Akihabara",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Mandarake%2C%20Akihabara%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Akihabara",
+    "nome": "Super Potato",
+    "descricao": "Games e consoles retrô",
+    "categoria": "Loja de interesse",
+    "endereco": "Akihabara",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Super%20Potato%2C%20Akihabara%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Akihabara",
+    "nome": "Kanda Myojin",
+    "descricao": "Santuário histórico, padroeiro dos comerciantes e, hoje, também da cultura otaku",
+    "categoria": "Templo/Santuário",
+    "endereco": "Perto de Akihabara",
+    "notas": null,
+    "site_oficial": "https://www.kandamyoujin.or.jp/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Kanda%20Myojin%2C%20Perto%20de%20Akihabara%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ochanomizu",
+    "nome": "Kurosawa Gakki",
+    "descricao": "Instrumentos musicais, várias lojas especializadas (acústicos, elétricos, vintage)",
+    "categoria": "Loja de interesse",
+    "endereco": "Meidai-dori (Ochanomizu Guitar Street)",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Kurosawa%20Gakki%2C%20Meidai-dori%20%28Ochanomizu%20Guitar%20Street%29%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ochanomizu",
+    "nome": "Ishibashi Music Ochanomizu",
+    "descricao": "Loja principal de instrumentos musicais",
+    "categoria": "Loja de interesse",
+    "endereco": "Meidai-dori",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ishibashi%20Music%20Ochanomizu%2C%20Meidai-dori%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ochanomizu",
+    "nome": "Shimokura Gakki",
+    "descricao": "Instrumentos musicais",
+    "categoria": "Loja de interesse",
+    "endereco": "Meidai-dori",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Shimokura%20Gakki%2C%20Meidai-dori%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ochanomizu",
+    "nome": "Yushima Seido",
+    "descricao": "Antigo templo confucionista, um recanto de silêncio raro em Tóquio",
+    "categoria": "Templo/Santuário",
+    "endereco": "Ochanomizu",
+    "notas": null,
+    "site_oficial": "http://www.seido.or.jp/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Yushima%20Seido%2C%20Ochanomizu%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Jimbocho",
+    "nome": "Kitazawa Bookstore",
+    "descricao": "Livros raros de literatura e filosofia, desde 1902",
+    "categoria": "Loja tradicional",
+    "endereco": "Jimbocho",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Kitazawa%20Bookstore%2C%20Jimbocho%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Jimbocho",
+    "nome": "Isseido Booksellers",
+    "descricao": "Manuscritos raros, mapas antigos, livros em inglês no andar de cima, desde 1903",
+    "categoria": "Loja tradicional",
+    "endereco": "Jimbocho",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Isseido%20Booksellers%2C%20Jimbocho%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Jimbocho",
+    "nome": "Ohya Shobo",
+    "descricao": "Livros do período Edo e gravuras ukiyo-e (Hokusai, Hiroshige)",
+    "categoria": "Loja tradicional",
+    "endereco": "Jimbocho",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ohya%20Shobo%2C%20Jimbocho%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Jimbocho",
+    "nome": "Komiyama",
+    "descricao": "Livros de fotografia e design, desde 1939",
+    "categoria": "Loja tradicional",
+    "endereco": "Jimbocho",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Komiyama%2C%20Jimbocho%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Jimbocho",
+    "nome": "Yaguchi Shoten",
+    "descricao": "Material de cinema e teatro antigo, desde 1918",
+    "categoria": "Loja tradicional",
+    "endereco": "Jimbocho",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Yaguchi%20Shoten%2C%20Jimbocho%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Jimbocho",
+    "nome": "Bohemian's Guild",
+    "descricao": "Livraria de arte e design, 98 anos de história",
+    "categoria": "Loja tradicional",
+    "endereco": "Jimbocho",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Bohemian%27s%20Guild%2C%20Jimbocho%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Jimbocho",
+    "nome": "Kanda-Ogawamachi",
+    "descricao": "Distrito de artigos esportivos, especializado em esqui e outdoor",
+    "categoria": "Loja de interesse",
+    "endereco": "Adjacente a Jimbocho",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Kanda-Ogawamachi%2C%20Adjacente%20a%20Jimbocho%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shinjuku",
+    "nome": "Uniqlo Shinjuku",
+    "descricao": "Novo flagship global, reaberto em outubro/2024",
+    "categoria": "Uniqlo",
+    "endereco": "Shinjuku 3-chome, perto da Isetan",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Uniqlo%20Shinjuku%2C%20Shinjuku%203-chome%2C%20perto%20da%20Isetan%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shinjuku",
+    "nome": "Sekaido Shinjuku",
+    "descricao": "Grande loja multi-andares de papelaria e material de arte",
+    "categoria": "Papelaria",
+    "endereco": "Saída leste",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Sekaido%20Shinjuku%2C%20Sa%C3%ADda%20leste%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shinjuku",
+    "nome": "Yodobashi Camera (flagship)",
+    "descricao": "Cluster original da rede, eletrônicos e câmeras",
+    "categoria": "Eletrônicos",
+    "endereco": "Saída oeste",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Yodobashi%20Camera%20%28flagship%29%2C%20Sa%C3%ADda%20oeste%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shinjuku",
+    "nome": "Bic Camera Shinjuku",
+    "descricao": "Eletrônicos e eletrodomésticos, várias filiais",
+    "categoria": "Eletrônicos",
+    "endereco": "Saída oeste e leste",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Bic%20Camera%20Shinjuku%2C%20Sa%C3%ADda%20oeste%20e%20leste%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shinjuku",
+    "nome": "Isetan Shinjuku",
+    "descricao": "Templo da moda japonesa desde 1886",
+    "categoria": "Centro de compras",
+    "endereco": "Shinjuku 3-chome",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Isetan%20Shinjuku%2C%20Shinjuku%203-chome%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shinjuku",
+    "nome": "Takashimaya Times Square",
+    "descricao": "Grande complexo comercial",
+    "categoria": "Centro de compras",
+    "endereco": "Saída sul",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Takashimaya%20Times%20Square%2C%20Sa%C3%ADda%20sul%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shinjuku",
+    "nome": "Lumine 1 / 2 / Est",
+    "descricao": "Moda jovem e contemporânea, direto na estação",
+    "categoria": "Centro de compras",
+    "endereco": "Direto na estação",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Lumine%201%20/%202%20/%20Est%2C%20Direto%20na%20esta%C3%A7%C3%A3o%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shinjuku",
+    "nome": "Odakyu / Keio (dept. stores)",
+    "descricao": "Lojas de departamento tradicionais",
+    "categoria": "Centro de compras",
+    "endereco": "Saída oeste",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Odakyu%20/%20Keio%20%28dept.%20stores%29%2C%20Sa%C3%ADda%20oeste%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shinjuku",
+    "nome": "Shinjuku Gyoen",
+    "descricao": "Um dos parques mais bonitos de Tóquio, mistura de jardim japonês, francês e inglês",
+    "categoria": "Parque",
+    "endereco": "Shinjuku",
+    "notas": null,
+    "site_oficial": "https://fng.or.jp/shinjuku/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Shinjuku%20Gyoen%2C%20Shinjuku%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shinjuku",
+    "nome": "Hanazono Shrine",
+    "descricao": "Santuário no meio de Shinjuku, com feira de antiguidades quase todo domingo",
+    "categoria": "Templo/Santuário",
+    "endereco": "Shinjuku, perto de Kabukicho",
+    "notas": null,
+    "site_oficial": "http://hanazono-jinja.or.jp/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Hanazono%20Shrine%2C%20Shinjuku%2C%20perto%20de%20Kabukicho%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shinjuku",
+    "nome": "Omoide Yokocho",
+    "descricao": "Viela estreita de bares e yakitori, clima de pós-guerra preservado",
+    "categoria": "Rua especial",
+    "endereco": "Saída oeste de Shinjuku",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Omoide%20Yokocho%2C%20Sa%C3%ADda%20oeste%20de%20Shinjuku%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shinjuku",
+    "nome": "Golden Gai",
+    "descricao": "Labirinto de mais de 200 microbares, cada um com poucos lugares",
+    "categoria": "Rua especial",
+    "endereco": "Perto de Kabukicho",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Golden%20Gai%2C%20Perto%20de%20Kabukicho%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ueno",
+    "nome": "Matsuzakaya Ueno",
+    "descricao": "Loja de departamento com origem em 1611 como loja de quimono",
+    "categoria": "Centro de compras",
+    "endereco": "Ueno",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Matsuzakaya%20Ueno%2C%20Ueno%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ueno",
+    "nome": "Takeya (Ameyoko)",
+    "descricao": "Loja de desconto com cerca de 200 mil itens, desde 1947",
+    "categoria": "Centro de compras",
+    "endereco": "Ameyoko",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Takeya%20%28Ameyoko%29%2C%20Ameyoko%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ueno",
+    "nome": "Niki no Kashi Big Kan",
+    "descricao": "Doces variados a preço de atacado",
+    "categoria": "Loja de interesse",
+    "endereco": "Ameyoko",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Niki%20no%20Kashi%20Big%20Kan%2C%20Ameyoko%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ueno",
+    "nome": "Kama-Asa / Tsubaya (Kappabashi)",
+    "descricao": "Facas profissionais, com afiação e gravação na hora",
+    "categoria": "Loja tradicional",
+    "endereco": "Kappabashi, caminho Ueno-Asakusa",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Kama-Asa%20/%20Tsubaya%20%28Kappabashi%29%2C%20Kappabashi%2C%20caminho%20Ueno-Asakusa%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ueno",
+    "nome": "Ganso Shokuhin Sample-ya (Kappabashi)",
+    "descricao": "Criadora original das réplicas de comida em plástico usadas em vitrines de restaurante",
+    "categoria": "Loja de interesse",
+    "endereco": "Kappabashi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ganso%20Shokuhin%20Sample-ya%20%28Kappabashi%29%2C%20Kappabashi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ueno",
+    "nome": "Kanechiki-en (Yanaka Ginza)",
+    "descricao": "Chá verde e cerâmica",
+    "categoria": "Loja tradicional",
+    "endereco": "Yanaka Ginza",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Kanechiki-en%20%28Yanaka%20Ginza%29%2C%20Yanaka%20Ginza%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ueno",
+    "nome": "Echigoya Honten (Yanaka Ginza)",
+    "descricao": "Saquê",
+    "categoria": "Loja tradicional",
+    "endereco": "Yanaka Ginza",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Echigoya%20Honten%20%28Yanaka%20Ginza%29%2C%20Yanaka%20Ginza%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ueno",
+    "nome": "Ueno Park",
+    "descricao": "Grande parque com museus, zoológico e o Lago Shinobazu",
+    "categoria": "Parque",
+    "endereco": "Ueno",
+    "notas": null,
+    "site_oficial": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ueno%20Park%2C%20Ueno%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ueno",
+    "nome": "Ueno Toshogu",
+    "descricao": "Santuário dourado dedicado a Tokugawa Ieyasu, dentro do Ueno Park",
+    "categoria": "Templo/Santuário",
+    "endereco": "Ueno Park",
+    "notas": null,
+    "site_oficial": "https://www.uenotoshogu.com/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ueno%20Toshogu%2C%20Ueno%20Park%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ueno",
+    "nome": "Nezu Shrine",
+    "descricao": "Santuário famoso pelo túnel de torii vermelhos, bem menos turístico",
+    "categoria": "Templo/Santuário",
+    "endereco": "Nezu, entre Ueno e Yanaka",
+    "notas": null,
+    "site_oficial": "https://nedujinja.or.jp/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Nezu%20Shrine%2C%20Nezu%2C%20entre%20Ueno%20e%20Yanaka%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ueno",
+    "nome": "Yanaka Ginza",
+    "descricao": "Rua de comércio old-school que escapou dos bombardeios — Tóquio 'antiga' de verdade",
+    "categoria": "Rua especial",
+    "endereco": "Yanaka",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Yanaka%20Ginza%2C%20Yanaka%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ueno",
+    "nome": "Ameyoko",
+    "descricao": "Rua de mercado agitada entre Ueno e Okachimachi, de peixe a roupa",
+    "categoria": "Rua especial",
+    "endereco": "Entre Ueno e Okachimachi",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ameyoko%2C%20Entre%20Ueno%20e%20Okachimachi%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ryogoku",
+    "nome": "Ryogoku Kokugikan",
+    "descricao": "Arena do sumô, sede do Aki Basho (torneio de setembro)",
+    "categoria": "Atração/Museu",
+    "endereco": "Ryogoku",
+    "notas": "Ingressos esgotados desde 24/ago — ver revenda/agência ou treino matinal (asageiko)",
+    "site_oficial": "https://kokugikan.sumo.or.jp/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ryogoku%20Kokugikan%2C%20Ryogoku%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Ryogoku",
+    "nome": "Sumida Hokusai Museum",
+    "descricao": "Museu dedicado ao mestre Hokusai, prédio moderno de Kazuyo Sejima",
+    "categoria": "Atração/Museu",
+    "endereco": "Ryogoku",
+    "notas": null,
+    "site_oficial": "https://hokusai-museum.jp/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Sumida%20Hokusai%20Museum%2C%20Ryogoku%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shimokitazawa",
+    "nome": "Chicago",
+    "descricao": "Rede grande de brechó, forte em kimono e yukata",
+    "categoria": "Loja de interesse",
+    "endereco": "Shimokitazawa",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Chicago%2C%20Shimokitazawa%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shimokitazawa",
+    "nome": "Flamingo",
+    "descricao": "Roupas vintage americanas dos anos 1940-80, foco masculino",
+    "categoria": "Loja de interesse",
+    "endereco": "Shimokitazawa",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Flamingo%2C%20Shimokitazawa%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shimokitazawa",
+    "nome": "Haight & Ashbury",
+    "descricao": "Vintage de alto padrão, peças selecionadas",
+    "categoria": "Loja de interesse",
+    "endereco": "Shimokitazawa",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Haight%20%26%20Ashbury%2C%20Shimokitazawa%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shimokitazawa",
+    "nome": "New York Joe Exchange",
+    "descricao": "Compra, venda e troca de roupas, funciona numa antiga casa de banho pública",
+    "categoria": "Loja de interesse",
+    "endereco": "Shimokitazawa",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=New%20York%20Joe%20Exchange%2C%20Shimokitazawa%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shimokitazawa",
+    "nome": "Ocean BLVD",
+    "descricao": "Roupas artesanais/vintage e bicicletas",
+    "categoria": "Loja de interesse",
+    "endereco": "Shimokitazawa",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ocean%20BLVD%2C%20Shimokitazawa%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shimokitazawa",
+    "nome": "Village Vanguard Shimokitazawa",
+    "descricao": "Loja original do conceito 'livraria-subcultura' japonês — livros, música, objetos bizarros",
+    "categoria": "Loja de interesse",
+    "endereco": "Shimokitazawa",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Village%20Vanguard%20Shimokitazawa%2C%20Shimokitazawa%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Shimokitazawa",
+    "nome": "Reload / Mikan Shimokitazawa",
+    "descricao": "Mini shoppings a céu aberto perto da estação",
+    "categoria": "Centro de compras",
+    "endereco": "Perto da estação",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Reload%20/%20Mikan%20Shimokitazawa%2C%20Perto%20da%20esta%C3%A7%C3%A3o%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Kagurazaka",
+    "nome": "Hyogo Yokocho",
+    "descricao": "Viela histórica onde viviam mercadores de armas no período Sengoku",
+    "categoria": "Rua especial",
+    "endereco": "Kagurazaka",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Hyogo%20Yokocho%2C%20Kagurazaka%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Kagurazaka",
+    "nome": "Kakurenbo Yokocho",
+    "descricao": "Viela labiríntica com cercas de madeira escura — fácil se perder, no bom sentido",
+    "categoria": "Rua especial",
+    "endereco": "Kagurazaka",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Kakurenbo%20Yokocho%2C%20Kagurazaka%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Kagurazaka",
+    "nome": "Geisha Alley (Kenban Yokocho)",
+    "descricao": "Escadaria de pedra que leva a um salão tradicional de prática de shamisen",
+    "categoria": "Rua especial",
+    "endereco": "Kagurazaka",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Geisha%20Alley%20%28Kenban%20Yokocho%29%2C%20Kagurazaka%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Kagurazaka",
+    "nome": "Bishamonten Zenkokuji",
+    "descricao": "Templo budista de 1595, onde se reza para Bishamonten em busca de sorte financeira",
+    "categoria": "Templo/Santuário",
+    "endereco": "Kagurazaka",
+    "notas": null,
+    "site_oficial": "https://kagurazaka-bishamonten.com/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Bishamonten%20Zenkokuji%2C%20Kagurazaka%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Kagurazaka",
+    "nome": "Tokyo Daijingu Shrine",
+    "descricao": "Santuário famoso por conexões românticas, berço da tradição de casamento xintoísta",
+    "categoria": "Templo/Santuário",
+    "endereco": "Kagurazaka",
+    "notas": null,
+    "site_oficial": "https://www.tokyodaijingu.or.jp/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Tokyo%20Daijingu%20Shrine%2C%20Kagurazaka%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Kagurazaka",
+    "nome": "AKOMEYA TOKYO in la kagu",
+    "descricao": "Comida japonesa, utensílios de cozinha e produtos sazonais, num armazém redesenhado por arquiteto",
+    "categoria": "Loja de interesse",
+    "endereco": "Kagurazaka",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=AKOMEYA%20TOKYO%20in%20la%20kagu%2C%20Kagurazaka%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Kagurazaka",
+    "nome": "Ki no Zen",
+    "descricao": "Confeitaria de 160 anos, reaberta em 2025 — bavaroise de matchá e doces tradicionais",
+    "categoria": "Loja tradicional",
+    "endereco": "Kagurazaka",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Ki%20no%20Zen%2C%20Kagurazaka%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Odaiba",
+    "nome": "DiverCity Tokyo Plaza",
+    "descricao": "Shopping à beira da baía, com a estátua gigante do Gundam na entrada",
+    "categoria": "Centro de compras",
+    "endereco": "Odaiba",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=DiverCity%20Tokyo%20Plaza%2C%20Odaiba%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Odaiba",
+    "nome": "Aqua City Odaiba",
+    "descricao": "Shopping com vista da Rainbow Bridge",
+    "categoria": "Centro de compras",
+    "endereco": "Odaiba",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Aqua%20City%20Odaiba%2C%20Odaiba%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Odaiba",
+    "nome": "Odaiba Marine Park",
+    "descricao": "Parque à beira da baía com vista da Rainbow Bridge e da réplica da Estátua da Liberdade",
+    "categoria": "Parque",
+    "endereco": "Odaiba",
+    "notas": null,
+    "site_oficial": "https://www.tptc.co.jp/park/01_02",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Odaiba%20Marine%20Park%2C%20Odaiba%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Odaiba",
+    "nome": "Miraikan",
+    "descricao": "Museu de ciência e inovação, interativo e bom pra quem curte tecnologia",
+    "categoria": "Atração/Museu",
+    "endereco": "Odaiba",
+    "notas": null,
+    "site_oficial": "https://www.miraikan.jst.go.jp/",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Miraikan%2C%20Odaiba%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Kichijoji",
+    "nome": "Inokashira Park",
+    "descricao": "Grande parque com lago de barquinhos, Benten Shrine e trilhas",
+    "categoria": "Parque",
+    "endereco": "Kichijoji",
+    "notas": null,
+    "site_oficial": "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/seibuk/inokashira",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Inokashira%20Park%2C%20Kichijoji%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Kichijoji",
+    "nome": "Harmonica Yokocho",
+    "descricao": "Viela de bares minúsculos do pós-guerra, anima ao anoitecer",
+    "categoria": "Rua especial",
+    "endereco": "Kichijoji",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Harmonica%20Yokocho%2C%20Kichijoji%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Kichijoji",
+    "nome": "Sun Road",
+    "descricao": "Rua de comércio coberta, principal artéria de compras de Kichijoji",
+    "categoria": "Centro de compras",
+    "endereco": "Kichijoji",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Sun%20Road%2C%20Kichijoji%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Kichijoji",
+    "nome": "Daiyagai",
+    "descricao": "Outra rua de comércio coberta, mais popular e local",
+    "categoria": "Centro de compras",
+    "endereco": "Kichijoji",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Daiyagai%2C%20Kichijoji%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Sangenjaya",
+    "nome": "Sankaku Chitai",
+    "descricao": "Labirinto de vielas estreitas com bares e botecos pequenos",
+    "categoria": "Rua especial",
+    "endereco": "Sangenjaya",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Sankaku%20Chitai%2C%20Sangenjaya%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Sangenjaya",
+    "nome": "Setagaya Line (Estação Sangenjaya)",
+    "descricao": "Bondinho retrô de Tóquio, ponto final da linha aqui — passeio charmoso em si",
+    "categoria": "Rua especial",
+    "endereco": "Sangenjaya",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Setagaya%20Line%20%28Esta%C3%A7%C3%A3o%20Sangenjaya%29%2C%20Sangenjaya%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Kiyosumi-Shirakawa",
+    "nome": "Kiyosumi Gardens",
+    "descricao": "Jardim tradicional japonês de 37.000 m², com pedras de passagem sobre o lago e carpas",
+    "categoria": "Parque",
+    "endereco": "Kiyosumi-Shirakawa",
+    "notas": null,
+    "site_oficial": "https://www.tokyo-park.or.jp/park/kiyosumi/index.html",
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Kiyosumi%20Gardens%2C%20Kiyosumi-Shirakawa%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Kiyosumi-Shirakawa",
+    "nome": "Blue Bottle Coffee (Kiyosumi-Shirakawa)",
+    "descricao": "Primeira loja da Blue Bottle no Japão, numa antiga casa de armazém reformada",
+    "categoria": "Loja de interesse",
+    "endereco": "Kiyosumi-Shirakawa",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Blue%20Bottle%20Coffee%20%28Kiyosumi-Shirakawa%29%2C%20Kiyosumi-Shirakawa%2C%20Tokyo%2C%20Japan"
+  },
+  {
+    "bairro": "Kiyosumi-Shirakawa",
+    "nome": "Arise Coffee Roasters",
+    "descricao": "Torrefação independente, uma das pioneiras do bairro",
+    "categoria": "Loja de interesse",
+    "endereco": "Kiyosumi-Shirakawa",
+    "notas": null,
+    "site_oficial": null,
+    "google_maps": "https://www.google.com/maps/search/?api=1&query=Arise%20Coffee%20Roasters%2C%20Kiyosumi-Shirakawa%2C%20Tokyo%2C%20Japan"
+  }
+]

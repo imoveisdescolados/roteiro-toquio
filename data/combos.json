@@ -1,0 +1,112 @@
+[
+  {
+    "id": "calmo-a-pe",
+    "nome": "Circuito calmo, 100% a pé",
+    "energia": "leve",
+    "clima": ["sol", "nublado"],
+    "tags_vibe": ["calmo", "design", "natureza"],
+    "tempo": "dia inteiro (ou meio dia)",
+    "zonas": ["Daikanyama + Nakameguro", "Meguro / Teien Art Museum", "Hiroo"],
+    "roteiro": "Ebisu → Daikanyama (~10 min) → Nakameguro → Meguro → Hiroo, tudo a pé, voltando por outro caminho.",
+    "porque": "Não pega trem nenhum — perfeito pra um dia preguiçoso, pra fugir da multidão da Silver Week ou pra descansar as pernas."
+  },
+  {
+    "id": "templo-floresta-cruzamento",
+    "nome": "Templo, floresta e cruzamento",
+    "energia": "media",
+    "clima": ["sol", "nublado"],
+    "tags_vibe": ["natureza", "badalado", "arquitetura"],
+    "tempo": "dia inteiro",
+    "zonas": ["Harajuku + Omotesando + Aoyama", "Shibuya"],
+    "roteiro": "Trem até Harajuku → Meiji Jingu e Yoyogi → Takeshita → Omotesando → Aoyama → emenda a pé/trem em Shibuya (Crossing, Shibuya Sky).",
+    "porque": "Começa no verde e no sagrado do Meiji, passa pelas ruas de grife e termina no caos elétrico de Shibuya. Um dia de 'se perder andando'."
+  },
+  {
+    "id": "luxo-tradicao",
+    "nome": "Luxo e tradição",
+    "energia": "media",
+    "clima": ["chuva", "nublado", "sol"],
+    "tags_vibe": ["luxo", "tradicional", "gastronomico"],
+    "tempo": "dia inteiro",
+    "zonas": ["Ginza + Nihonbashi + Tsukiji"],
+    "roteiro": "Trem até Ginza (flagships, Itoya) → Nihonbashi (lojas centenárias: Haibara, Ninben, Kiya) → Tsukiji Outer Market pra comer andando.",
+    "porque": "Flagships e lojas de departamento cobertas + o cluster de lojas de 300 anos + comida de rua. No domingo, cai junto com a feira de antiguidades (ver Datas)."
+  },
+  {
+    "id": "colinas-de-arte",
+    "nome": "Colinas de arte (à prova de chuva)",
+    "energia": "leve",
+    "clima": ["chuva", "nublado", "sol"],
+    "tags_vibe": ["arquitetura", "cultural", "luxo"],
+    "tempo": "dia inteiro",
+    "zonas": ["Roppongi + Azabudai Hills + Toranomon Hills"],
+    "roteiro": "A pé de Ebisu (via Hiroo) até Roppongi → Mori Art Museum → teamLab Borderless (Azabudai Hills) → arquitetura de Toranomon Hills.",
+    "porque": "Museus, teamLab e malls todos cobertos, e dá pra chegar a pé de casa — o plano ideal se o tempo fechar. O teamLab precisa reserva e fecha às terças (ver Datas)."
+  },
+  {
+    "id": "otaku-neon",
+    "nome": "Otaku de dia, neon à noite",
+    "energia": "media",
+    "clima": ["chuva", "nublado"],
+    "tags_vibe": ["otaku", "badalado", "cultural"],
+    "tempo": "dia + noite",
+    "zonas": ["Akihabara + Ochanomizu + Jimbocho", "Shinjuku"],
+    "roteiro": "Akihabara (Yodobashi, Mandarake) → Kanda Myojin → Ochanomizu (violões) → Jimbocho (sebos) → à noite, trem direto pra Shinjuku (Golden Gai, Omoide Yokocho).",
+    "porque": "De dia é quase tudo dentro de prédio (bom pra chuva); à noite muda de cidade nos becos de Shinjuku, sem baldeação."
+  },
+  {
+    "id": "toquio-antiga",
+    "nome": "Tóquio antiga",
+    "energia": "media",
+    "clima": ["sol", "nublado"],
+    "tags_vibe": ["tradicional", "cultural", "natureza"],
+    "tempo": "dia inteiro",
+    "zonas": ["Ueno + Yanaka/Nezu/Sendagi"],
+    "roteiro": "Trem até Ueno → parque e museus → Nezu Shrine (túnel de torii) → Yanaka Ginza. Alternativa: descer por Ameyoko → Kappabashi → Asakusa (Senso-ji).",
+    "porque": "O lado que escapou dos bombardeios: museus, um santuário fotogênico e ruas de bairro à moda antiga. São dois roteiros alternativos — não cabem os dois no mesmo dia com calma."
+  },
+  {
+    "id": "cafe-arte-sumo",
+    "nome": "Café, arte e sumô",
+    "energia": "puxada",
+    "clima": ["chuva", "nublado", "sol"],
+    "tags_vibe": ["cultural", "gastronomico", "tradicional"],
+    "tempo": "dia inteiro",
+    "zonas": ["Ryogoku (dia do sumô)", "Kiyosumi-Shirakawa"],
+    "roteiro": "Ryogoku (Sumida Hokusai Museum + sumô, se houver ingresso; almoço de chanko nabe) → poucas paradas até Kiyosumi-Shirakawa (Blue Bottle, jardim, MOT).",
+    "porque": "Casa a arena do sumô com o point de café de especialidade + jardim + arte. Depende do calendário do torneio (ver Datas)."
+  },
+  {
+    "id": "vintage-boemia",
+    "nome": "Vintage e boemia",
+    "energia": "puxada",
+    "clima": ["sol", "nublado"],
+    "tags_vibe": ["vintage", "badalado", "calmo"],
+    "tempo": "tarde / noite",
+    "zonas": ["Shimokitazawa", "Sangenjaya"],
+    "roteiro": "Shimokitazawa (brechós, Reload/Mikan) de tarde → Sangenjaya à noite (becos do Sankaku Chitai). Ambos a partir de Shibuya.",
+    "porque": "O lado alternativo e jovem de Tóquio: garimpo de brechó de dia, bares minúsculos à noite."
+  },
+  {
+    "id": "dia-na-baia",
+    "nome": "Dia na baía",
+    "energia": "puxada",
+    "clima": ["sol", "chuva"],
+    "tags_vibe": ["natureza", "arquitetura"],
+    "tempo": "dia à parte",
+    "zonas": ["Odaiba"],
+    "roteiro": "Yamanote até Shimbashi + Yurikamome (monotrilho com vista da baía) → DiverCity (Gundam), Miraikan, orla e Rainbow Bridge.",
+    "porque": "Não é bairro de vielas: é passeio de atrações grandes e espaçadas, bom pra família. Shoppings enormes salvam a chuva; a orla e a ponte pedem sol."
+  },
+  {
+    "id": "vielas-de-gueixa",
+    "nome": "Vielas de gueixa",
+    "energia": "puxada",
+    "clima": ["sol", "nublado"],
+    "tags_vibe": ["tradicional", "calmo", "gastronomico"],
+    "tempo": "meio período / fim de tarde",
+    "zonas": ["Kagurazaka"],
+    "roteiro": "Trem via Meguro + Linha Namboku até Kagurazaka → escadarias de pedra (Hyogo/Kakurenbo Yokocho), Bishamonten Zenkokuji, Tokyo Daijingu, Canal Cafe.",
+    "porque": "A baldeação mais simples da lista (troca já em zona caminhável de casa) pra um clima de vielas históricas e restaurantes escondidos."
+  }
+]

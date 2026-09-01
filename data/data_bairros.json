@@ -1,0 +1,182 @@
+[
+  {
+    "zona": "Ebisu (base)",
+    "como_chegar": "É onde vocês ficam — 0 min",
+    "tempo": "0 min",
+    "atracoes": "Yebisu Garden Place (museu da cerveja, mirante), Tokyo Photographic Art Museum, Ebisu Yokocho",
+    "compras": "Uniqlo Ebisu, Kapital (jeans culto), Atre Ebisu e Yebisu Garden Place",
+    "comida_vida_noturna": "Ebisu Yokocho (viela de bares e comida), restaurantes no entorno",
+    "notas": "Ponto de partida e chegada de quase todo dia",
+    "tipo_acesso": "base"
+  },
+  {
+    "zona": "Daikanyama + Nakameguro",
+    "como_chegar": "A pé: Ebisu → Daikanyama (~10 min) → Nakameguro (+10 min). Alternativa: 1 parada de trem (Tokyu Toyoko Line)",
+    "tempo": "15-20 min a pé",
+    "atracoes": "T-Site/Tsutaya Books, Log Road Daikanyama, canal do Rio Meguro, Starbucks Reserve Roastery",
+    "compras": "T-Site/Tsutaya, Traveler's Factory (papelaria), Okura e Kamawanu (têxtil tradicional), SML (cerâmica)",
+    "comida_vida_noturna": "Cafés de design, restaurantes à beira do canal",
+    "notas": "Circuito 100% a pé, dá pra fazer de volta por outro caminho",
+    "tipo_acesso": "walkable"
+  },
+  {
+    "zona": "Hiroo",
+    "como_chegar": "A pé: ~15 min. Alternativa: Linha Hibiya, 1 parada",
+    "tempo": "15 min a pé / 3 min metrô",
+    "atracoes": "Arisugawa-no-miya Memorial Park",
+    "compras": "National Azabu (supermercado internacional) — bairro mais residencial, pouco comércio",
+    "comida_vida_noturna": "Área residencial, poucos bares",
+    "notas": "Bairro mais tranquilo, bom pra passeio sem pressa",
+    "tipo_acesso": "walkable"
+  },
+  {
+    "zona": "Meguro / Teien Art Museum",
+    "como_chegar": "A pé: ~20-25 min. Alternativa: Linha Yamanote, 1 parada",
+    "tempo": "20-25 min a pé / 3 min trem",
+    "atracoes": "Teien Art Museum (prédio art déco + jardim), Meguro Museum of Art",
+    "compras": "Sem comércio de destaque — foco é o museu",
+    "comida_vida_noturna": "-",
+    "notas": "Museu menos concorrido que os grandes de Ueno",
+    "tipo_acesso": "walkable"
+  },
+  {
+    "zona": "Shibuya",
+    "como_chegar": "A pé: ~25-30 min (2 km). Alternativa: Linha Yamanote, 1 parada (2 min)",
+    "tempo": "25-30 min a pé / 2 min trem",
+    "atracoes": "Shibuya Crossing, Shibuya Sky, Miyashita Park",
+    "compras": "Uniqlo, Loft (papelaria), Bic Camera (eletrônicos), Scramble Square/Hikarie/109/PARCO, lojas tradicionais dentro do Scramble Square (Nakagawa Masashichi, Hyozaemon)",
+    "comida_vida_noturna": "Vida noturna intensa, muitos bares e izakayas",
+    "notas": "No limite do 'a pé confortável'; ótimo se quiser esticar a caminhada",
+    "tipo_acesso": "walkable"
+  },
+  {
+    "zona": "Harajuku + Omotesando + Aoyama",
+    "como_chegar": "Trem: Linha Yamanote direto até Harajuku (~8 min). Depois caminhada interessante: Takeshita-dori → Omotesando-dori → Aoyama → (opcional: Nishi-Azabu de volta a pé até Hiroo/Ebisu)",
+    "tempo": "8 min trem + caminhada de ~1-2h",
+    "atracoes": "Meiji Jingu, Nezu Museum (jardim)",
+    "compras": "Uniqlo Harajuku, Kiddy Land (papelaria/personagens), Apple Store, Oriental Bazaar (tradicional desde 1916), Omotesando Hills, grifes com arquitetura marcante, Aoyama Crafts Square",
+    "comida_vida_noturna": "Cafés de Aoyama e Omotesando",
+    "notas": "Um dos melhores dias para 'se perder' andando",
+    "tipo_acesso": "direct_train"
+  },
+  {
+    "zona": "Roppongi + Azabudai Hills + Toranomon Hills",
+    "como_chegar": "A pé direto: Ebisu → Hiroo → Roppongi (~25-30 min). Alternativa: Linha Hibiya, 2 paradas (~5 min)",
+    "tempo": "25-30 min a pé / 5 min metrô",
+    "atracoes": "Mori Art Museum, Roppongi Hills, arquitetura nova de Azabudai/Toranomon Hills",
+    "compras": "Uniqlo Tokyo Midtown, Roppongi Tsutaya Books, THE COVER NIPPON (artesanato), Roppongi Hills, Tokyo Midtown, Azabudai Hills Mall",
+    "comida_vida_noturna": "Vida noturna de Roppongi (bares, clubes)",
+    "notas": "Dá pra fazer tudo a pé, do Airbnb até aqui e entre os três pontos",
+    "tipo_acesso": "walkable"
+  },
+  {
+    "zona": "Ginza + Nihonbashi + Tsukiji",
+    "como_chegar": "Trem: Linha Hibiya direto até Ginza (~15 min) ou Yamanote até Yurakucho. Depois caminhada: Ginza → Nihonbashi → Tsukiji Outer Market",
+    "tempo": "15 min trem + caminhada de ~1h",
+    "atracoes": "Nihonbashi (ponte histórica), lojas de departamento tradicionais",
+    "compras": "Uniqlo Ginza (flagship 12 andares), Itoya (papelaria icônica), Kyukyodo, Mitsukoshi/Matsuya/Ginza Six, e em Nihonbashi um cluster de lojas centenárias (Haibara, Ninben, Kiya, Ibasen)",
+    "comida_vida_noturna": "Tsukiji Outer Market (comida de rua, facas artesanais)",
+    "notas": "Tsukiji é também parada direta na Linha Hibiya",
+    "tipo_acesso": "direct_train"
+  },
+  {
+    "zona": "Akihabara + Ochanomizu + Jimbocho",
+    "como_chegar": "Trem: Linha Hibiya ou Yamanote direto até Akihabara (~20 min). Depois caminhada: Kanda Myojin → Ochanomizu → Jimbocho (~25-30 min)",
+    "tempo": "20 min trem + caminhada de ~30 min",
+    "atracoes": "Kanda Myojin (santuário), Catedral de Nikolai, Yasukuni Shrine (opcional)",
+    "compras": "Yodobashi Akiba (eletrônicos), Mandarake/Super Potato, instrumentos musicais em Ochanomizu, sebos históricos em Jimbocho",
+    "comida_vida_noturna": "Poucas opções à noite, mais diurno",
+    "notas": "Bom contraste: eletrônico/pop de um lado, livros usados do outro",
+    "tipo_acesso": "direct_train"
+  },
+  {
+    "zona": "Ueno + Yanaka/Nezu/Sendagi",
+    "como_chegar": "Trem: Linha Hibiya ou Yamanote direto até Ueno (~20 min). Depois caminhada: Nezu Shrine → Yanaka Ginza (~30-40 min)",
+    "tempo": "20 min trem + caminhada de ~40 min",
+    "atracoes": "Ueno Park e museus, Nezu Shrine (túnel de torii)",
+    "compras": "Matsuzakaya, Ameyoko (Takeya), facas em Kappabashi, chá/saquê tradicionais em Yanaka Ginza",
+    "comida_vida_noturna": "Poucas opções à noite",
+    "notas": "Alternativa: descer por Ameyoko → Kappabashi → Asakusa (Senso-ji) em vez de Yanaka",
+    "tipo_acesso": "direct_train"
+  },
+  {
+    "zona": "Ryogoku (dia do sumô)",
+    "como_chegar": "Trem: Linha Yamanote/Hibiya até Akihabara + baldeação para JR Sobu Line até Ryogoku",
+    "tempo": "~30 min, 1 baldeação",
+    "atracoes": "Ryogoku Kokugikan (Aki Basho), Sumida Hokusai Museum",
+    "compras": "-",
+    "comida_vida_noturna": "Restaurantes de chanko nabe (caldo tradicional dos lutadores)",
+    "notas": "Ingressos do torneio esgotados desde 24/ago — resolver revenda/agência",
+    "tipo_acesso": "transfer"
+  },
+  {
+    "zona": "Shinjuku",
+    "como_chegar": "Trem: Linha Yamanote direto (~15 min)",
+    "tempo": "15 min trem",
+    "atracoes": "Shinjuku Gyoen (parque), mirante gratuito do Tokyo Metropolitan Government Building",
+    "compras": "Uniqlo (novo flagship global), Sekaido (papelaria), Yodobashi/Bic Camera (eletrônicos), Isetan, Takashimaya Times Square, Lumine",
+    "comida_vida_noturna": "Omoide Yokocho, Golden Gai, Kabukicho — forte vida noturna",
+    "notas": "Bom candidato pra fechar uma noite",
+    "tipo_acesso": "direct_train"
+  },
+  {
+    "zona": "Shimokitazawa",
+    "como_chegar": "Trem: Linha Yamanote até Shibuya + baldeação para Keio Inokashira Line",
+    "tempo": "~20 min, 1 baldeação",
+    "atracoes": "-",
+    "compras": "Brechós e vintage (Chicago, Flamingo, Haight & Ashbury), Village Vanguard, Reload/Mikan",
+    "comida_vida_noturna": "Bares pequenos, clima alternativo",
+    "notas": "Único bairro da lista que não dá pra emendar a pé — é só trem mesmo",
+    "tipo_acesso": "transfer"
+  },
+  {
+    "zona": "Kagurazaka",
+    "como_chegar": "A pé/Yamanote até Meguro (~5 min, já é zona caminhável) + Linha Namboku direto até Iidabashi/Kagurazaka, 9 paradas sem baldeação extra",
+    "tempo": "~20-25 min, 1 troca em Meguro",
+    "atracoes": "Bishamonten Zenkokuji (templo de 1595), Tokyo Daijingu Shrine, vielas de pedra da era das gueixas (Hyogo Yokocho, Kakurenbo Yokocho)",
+    "compras": "AKOMEYA TOKYO in la kagu (comida e utensílios), Ki no Zen (confeitaria de 160 anos)",
+    "comida_vida_noturna": "Canal Cafe (à beira do canal), diversos restaurantes escondidos nas vielas",
+    "notas": "Precisa 1 baldeação (em Meguro), mas é a mais simples de todas — o ponto de troca já é zona caminhável de casa",
+    "tipo_acesso": "transfer"
+  },
+  {
+    "zona": "Odaiba",
+    "como_chegar": "Yamanote até Shimbashi + baldeação para o Yurikamome (monotrilho automatizado, vista da baía) — ou Yamanote até Osaki + baldeação para a Linha Rinkai",
+    "tempo": "~30-35 min, 1 baldeação",
+    "atracoes": "Rainbow Bridge, Odaiba Marine Park, réplica da Estátua da Liberdade, Miraikan (museu de ciência)",
+    "compras": "DiverCity Tokyo Plaza (com o Gundam gigante na entrada), Aqua City Odaiba",
+    "comida_vida_noturna": "Praça de alimentação nos shoppings, Joypolis e Legoland Discovery para quem tiver criança",
+    "notas": "Diferente das outras zonas: não é bairro de vielas pra caminhar, é ilha artificial com atrações grandes e espaçadas, ligadas por monotrilho — funciona mais como um dia de passeio à parte do que uma caminhada",
+    "tipo_acesso": "transfer"
+  },
+  {
+    "zona": "Kichijoji",
+    "como_chegar": "A pé/Yamanote até Shibuya (já é zona conhecida) + Linha Keio Inokashira direto até Kichijoji, sem baldeação extra",
+    "tempo": null,
+    "atracoes": null,
+    "compras": null,
+    "comida_vida_noturna": "Harmonica Yokocho (viela de bares minúsculos do pós-guerra, anima ao anoitecer)",
+    "notas": "Constantemente eleito pelos japoneses um dos bairros mais desejados pra morar em Tóquio — clima de bairro real, sem ser badalado",
+    "tipo_acesso": "transfer"
+  },
+  {
+    "zona": "Sangenjaya",
+    "como_chegar": "A pé/Yamanote até Shibuya + Linha Tokyu Den-en-toshi, 2 paradas direto, sem baldeação extra",
+    "tempo": null,
+    "atracoes": null,
+    "compras": null,
+    "comida_vida_noturna": "Sankaku Chitai (labirinto de vielas com bares pequenos)",
+    "notas": "Como um Shimokitazawa mais underground e residencial, menos turístico",
+    "tipo_acesso": "transfer"
+  },
+  {
+    "zona": "Kiyosumi-Shirakawa",
+    "como_chegar": "Precisa de baldeação de verdade — via Linha Hanzomon ou Toei Oedo Line (não há trajeto de linha única a partir de Ebisu)",
+    "tempo": null,
+    "atracoes": null,
+    "compras": null,
+    "comida_vida_noturna": "Blue Bottle Coffee (primeira loja do Japão, numa antiga casa de armazém), torrefações independentes (Arise Coffee Roasters)",
+    "notas": "Point de café de especialidade + arte contemporânea + jardim — combinação rara de encontrar junto",
+    "tipo_acesso": "transfer"
+  }
+]
