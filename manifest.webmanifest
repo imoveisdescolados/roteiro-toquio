@@ -1,0 +1,15 @@
+{
+  "name": "Guia Tóquio — Ebisu",
+  "short_name": "Guia Tóquio",
+  "description": "Guia pessoal de Tóquio: bairros, combos e mapa (19–27 set 2026).",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "pt-BR",
+  "background_color": "#16202e",
+  "theme_color": "#16202e",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

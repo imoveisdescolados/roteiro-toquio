@@ -1,0 +1,74 @@
+/* Service worker — deixa o guia funcionar offline e instalável.
+   Estratégia:
+   - app shell + dados (mesma origem): cache-first
+   - tiles do OpenStreetMap: cache-first num cache separado (o que você viu fica salvo)
+   - previsão do tempo (open-meteo): rede primeiro (sempre fresca), sem cache
+*/
+const VERSAO = "guia-toquio-v1";
+const CACHE_APP = VERSAO + "-app";
+const CACHE_TILES = VERSAO + "-tiles";
+
+const CORE = [
+  "./",
+  "./index.html",
+  "./css/style.css",
+  "./js/app.js",
+  "./manifest.webmanifest",
+  "./icon.svg",
+  "./vendor/leaflet/leaflet.css",
+  "./vendor/leaflet/leaflet.js",
+  "./data/data_bairros.json",
+  "./data/bairros_guia.json",
+  "./data/combos.json",
+  "./data/datas.json",
+  "./data/data_pontos_interesse_geo.json",
+];
+
+self.addEventListener("install", (e) => {
+  e.waitUntil(caches.open(CACHE_APP).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));
+});
+
+self.addEventListener("activate", (e) => {
+  e.waitUntil(
+    caches.keys().then((chaves) =>
+      Promise.all(chaves.filter((k) => !k.startsWith(VERSAO)).map((k) => caches.delete(k)))
+    ).then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener("fetch", (e) => {
+  const req = e.request;
+  if (req.method !== "GET") return;
+  const url = new URL(req.url);
+
+  // Tiles do mapa: cache-first, guarda o que foi visto.
+  if (/tile\.openstreetmap\.org$/.test(url.hostname)) {
+    e.respondWith(
+      caches.open(CACHE_TILES).then((c) =>
+        c.match(req).then((hit) =>
+          hit || fetch(req).then((resp) => { c.put(req, resp.clone()); return resp; }).catch(() => hit)
+        )
+      )
+    );
+    return;
+  }
+
+  // Previsão do tempo: sempre da rede (não faz sentido offline).
+  if (url.hostname.endsWith("open-meteo.com")) {
+    e.respondWith(fetch(req).catch(() => new Response("{}", { headers: { "Content-Type": "application/json" } })));
+    return;
+  }
+
+  // Mesma origem (app + dados): cache-first, atualiza em segundo plano.
+  if (url.origin === self.location.origin) {
+    e.respondWith(
+      caches.match(req).then((hit) =>
+        hit || fetch(req).then((resp) => {
+          const clone = resp.clone();
+          caches.open(CACHE_APP).then((c) => c.put(req, clone));
+          return resp;
+        }).catch(() => hit)
+      )
+    );
+  }
+});

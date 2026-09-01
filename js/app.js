@@ -57,11 +57,24 @@ const estado = {
   combos: [],
   datas: [],
   sel: { energia: new Set(), clima: new Set(), vibe: new Set(), interesse: new Set() },
-  mapaFiltros: { bairro: "", categoria: "", busca: "" },
+  mapaFiltros: { bairro: "", categoria: "", busca: "", soFav: false },
   map: null,
   camada: null,
   marcadores: [],
+  fav: new Set(),
+  meuMarcador: null,
 };
+
+/* ------------------------------ favoritos ------------------------------- */
+const FAV_KEY = "guia_toquio_fav";
+const favKey = (p) => `${p.nome}|${p.bairro}`;
+function carregarFav() {
+  try { JSON.parse(localStorage.getItem(FAV_KEY) || "[]").forEach((k) => estado.fav.add(k)); } catch (e) {}
+}
+function salvarFav() {
+  try { localStorage.setItem(FAV_KEY, JSON.stringify([...estado.fav])); } catch (e) {}
+}
+function ehFav(p) { return estado.fav.has(favKey(p)); }
 
 /* ------------------------------ utilidades ------------------------------ */
 const $ = (s, c = document) => c.querySelector(s);
@@ -306,8 +319,30 @@ document.addEventListener("click", (e) => {
   const lz = e.target.closest(".link-zona");
   if (lz) { e.preventDefault(); abrirFicha(lz.dataset.zona); return; }
   const lc = e.target.closest(".link-combo");
-  if (lc) { e.preventDefault(); abrirCombo(lc.dataset.comboid); }
+  if (lc) { e.preventDefault(); abrirCombo(lc.dataset.comboid); return; }
+  const fb = e.target.closest(".pop__fav");
+  if (fb) { e.preventDefault(); toggleFav(fb.dataset.favkey); return; }
+  const cb = e.target.closest(".clima-agora__btn");
+  if (cb) { e.preventDefault(); aplicarClimaChip(cb.dataset.clima); }
 });
+
+function toggleFav(key) {
+  if (estado.fav.has(key)) estado.fav.delete(key); else estado.fav.add(key);
+  salvarFav();
+  const item = estado.marcadores.find((m) => favKey(m.ponto) === key);
+  if (item) {
+    const fav = estado.fav.has(key);
+    item.marker.setIcon(iconeCategoria(item.ponto.categoria, fav));
+    const pop = item.marker.getPopup();
+    if (pop && pop.isOpen()) pop.setContent(popupHTML(item.ponto));
+  }
+  atualizarBotaoFav();
+  if (estado.mapaFiltros.soFav) aplicarFiltrosMapa();
+}
+function atualizarBotaoFav() {
+  const b = $("#fav-toggle");
+  if (b) b.textContent = `★ Favoritos (${estado.fav.size})`;
+}
 
 /* --------------------------- busca global ------------------------------- */
 function comboLinks(zona) {
@@ -381,16 +416,22 @@ function popupHTML(p) {
   if (p.site_oficial) links.push(`<a class="pop__link pop__link--site" href="${esc(p.site_oficial)}" target="_blank" rel="noopener">Site oficial</a>`);
   if (p.google_maps) links.push(`<a class="pop__link pop__link--maps" href="${esc(p.google_maps)}" target="_blank" rel="noopener">Ver no Google Maps</a>`);
   const endExtra = p.endereco && p.endereco.trim().toLowerCase() !== (p.bairro || "").trim().toLowerCase() ? " · " + esc(p.endereco) : "";
+  const fav = ehFav(p);
   return `
     <h3>${esc(p.nome)}</h3>
     <span class="pop__cat" style="background:${cor}">${esc(p.categoria)}</span>
     <p class="pop__desc">${esc(p.descricao)}</p>
     <p class="pop__desc" style="font-size:13px"><strong>${esc(p.bairro)}</strong>${endExtra}</p>
     ${p.notas ? `<p class="pop__notas">${esc(p.notas)}</p>` : ""}
+    <button type="button" class="pop__fav${fav ? " is-on" : ""}" data-favkey="${esc(favKey(p))}">${fav ? "★ Nos favoritos" : "☆ Salvar nos favoritos"}</button>
     <div class="pop__links">${links.join("")}</div>`;
 }
-function iconeCategoria(cat) {
-  return L.divIcon({ className: "", html: `<div class="pin" style="background:${corCategoria(cat)}"></div>`, iconSize: [22, 22], iconAnchor: [11, 22], popupAnchor: [0, -20] });
+function iconeCategoria(cat, fav) {
+  return L.divIcon({
+    className: "",
+    html: `<div class="pin${fav ? " pin--fav" : ""}" style="background:${corCategoria(cat)}"></div>`,
+    iconSize: [22, 22], iconAnchor: [11, 22], popupAnchor: [0, -20],
+  });
 }
 function initMapa() {
   estado.map = L.map("map", { zoomControl: true }).setView([35.6465, 139.7101], 12);
@@ -399,8 +440,8 @@ function initMapa() {
 
   const comGeo = estado.pontos.filter((p) => p.lat != null && p.lng != null);
   estado.marcadores = comGeo.map((ponto) => {
-    const marker = L.marker([ponto.lat, ponto.lng], { icon: iconeCategoria(ponto.categoria) });
-    marker.bindPopup(popupHTML(ponto), { maxWidth: 280 });
+    const marker = L.marker([ponto.lat, ponto.lng], { icon: iconeCategoria(ponto.categoria, ehFav(ponto)) });
+    marker.bindPopup(() => popupHTML(ponto), { maxWidth: 280 });
     return { ponto, marker };
   });
   const semGeo = estado.pontos.length - comGeo.length;
@@ -415,13 +456,15 @@ function aplicarFiltrosMapa() {
   const bounds = [];
   for (const { ponto, marker } of estado.marcadores) {
     let ok = true;
+    if (estado.mapaFiltros.soFav && !ehFav(ponto)) ok = false;
     if (bairro && ponto.bairro !== bairro) ok = false;
     if (categoria && ponto.categoria !== categoria) ok = false;
     if (q && !(ponto.nome + " " + ponto.bairro).toLowerCase().includes(q)) ok = false;
     if (ok) { estado.camada.addLayer(marker); bounds.push([ponto.lat, ponto.lng]); visiveis++; }
   }
   const total = estado.marcadores.length;
-  $("#contador").textContent = visiveis === total ? `${total} pontos` : `${visiveis} de ${total} pontos`;
+  const rotulo = estado.mapaFiltros.soFav ? "favorito(s)" : "pontos";
+  $("#contador").textContent = visiveis === total ? `${total} pontos` : `${visiveis} de ${total} ${rotulo}`;
   if (bounds.length && bounds.length < total) estado.map.fitBounds(bounds, { padding: [40, 40], maxZoom: 16 });
 }
 function preencherSelectsMapa() {
@@ -435,6 +478,66 @@ function renderLegenda() {
   const usados = [...new Set(estado.pontos.map((p) => p.categoria))];
   $("#legenda").innerHTML = Object.keys(CORES_CATEGORIA).filter((c) => usados.includes(c))
     .map((c) => `<div class="legenda__item"><span class="legenda__cor" style="background:${corCategoria(c)}"></span>${esc(c)}</div>`).join("");
+}
+
+/* ---------------------------- clima ao vivo ----------------------------- */
+const CLIMA_LABEL = { sol: "dia de sol", nublado: "nublado", chuva: "dia de chuva" };
+const wmoParaClima = (code) => (code <= 2 ? "sol" : code <= 48 ? "nublado" : "chuva");
+
+async function carregarClima() {
+  const box = $("#clima-agora");
+  try {
+    const url = "https://api.open-meteo.com/v1/forecast?latitude=35.6465&longitude=139.7101" +
+      "&current=temperature_2m,weather_code&daily=weather_code&timezone=Asia%2FTokyo&forecast_days=3";
+    const r = await fetch(url);
+    if (!r.ok) throw new Error("clima");
+    const d = await r.json();
+    if (!d.current) throw new Error("clima");
+    const cat = wmoParaClima(d.current.weather_code);
+    const temp = Math.round(d.current.temperature_2m);
+    const prox = (d.daily && d.daily.weather_code ? d.daily.weather_code.slice(1, 3) : [])
+      .map((c) => CLIMA_EMOJI[wmoParaClima(c)]).join(" ");
+    box.hidden = false;
+    box.innerHTML = `
+      <div class="clima-agora__info">
+        <span class="clima-agora__emoji">${CLIMA_EMOJI[cat]}</span>
+        <div><strong>Agora em Tóquio</strong> · ${temp}° · ${CLIMA_LABEL[cat]}
+          ${prox ? `<span class="clima-agora__prox">próximos dias: ${prox}</span>` : ""}</div>
+      </div>
+      <button type="button" class="clima-agora__btn" data-clima="${cat}">Ver opções</button>`;
+  } catch (e) {
+    box.hidden = true; // offline ou API fora do ar: simplesmente não mostra
+  }
+}
+
+function aplicarClimaChip(cat) {
+  estado.sel.clima = new Set([cat]);
+  $$("#chips-clima .chip").forEach((c) => c.classList.toggle("is-on", c.dataset.val === cat));
+  trocarView("montar");
+  montarFiltrar();
+  setTimeout(() => $("#montar-resultado").scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+}
+
+/* --------------------------- perto de mim ------------------------------- */
+function pertoDeMim() {
+  const btn = $("#perto");
+  if (!navigator.geolocation) { alert("Seu navegador não suporta geolocalização."); return; }
+  btn.disabled = true; btn.textContent = "📍 Localizando…";
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+      if (estado.meuMarcador) estado.map.removeLayer(estado.meuMarcador);
+      estado.meuMarcador = L.circleMarker([lat, lng], { radius: 8, color: "#1a73e8", fillColor: "#1a73e8", fillOpacity: .9, weight: 3 })
+        .addTo(estado.map).bindPopup("Você está aqui").openPopup();
+      estado.map.setView([lat, lng], 15);
+      btn.disabled = false; btn.textContent = "📍 Perto de mim";
+    },
+    () => {
+      btn.disabled = false; btn.textContent = "📍 Perto de mim";
+      alert("Não consegui pegar sua localização. Verifique a permissão de localização do navegador.");
+    },
+    { enableHighAccuracy: true, timeout: 10000 }
+  );
 }
 
 /* ------------------------------ navegação ------------------------------- */
@@ -460,13 +563,22 @@ function ligarEventos() {
   $("#f-bairro").addEventListener("change", (e) => { estado.mapaFiltros.bairro = e.target.value; aplicarFiltrosMapa(); });
   $("#f-categoria").addEventListener("change", (e) => { estado.mapaFiltros.categoria = e.target.value; aplicarFiltrosMapa(); });
   $("#limpar").addEventListener("click", () => {
-    estado.mapaFiltros = { bairro: "", categoria: "", busca: "" };
+    estado.mapaFiltros = { bairro: "", categoria: "", busca: "", soFav: false };
     $("#busca").value = ""; $("#f-bairro").value = ""; $("#f-categoria").value = "";
+    const ft = $("#fav-toggle"); ft.classList.remove("is-on"); ft.setAttribute("aria-pressed", "false");
     aplicarFiltrosMapa(); estado.map.setView([35.6465, 139.7101], 12);
   });
 
   const toggle = $("#toggle-legenda");
   toggle.addEventListener("click", () => { const leg = $("#legenda"); leg.hidden = !leg.hidden; toggle.setAttribute("aria-expanded", leg.hidden ? "false" : "true"); });
+
+  $("#fav-toggle").addEventListener("click", (e) => {
+    estado.mapaFiltros.soFav = !estado.mapaFiltros.soFav;
+    e.currentTarget.classList.toggle("is-on", estado.mapaFiltros.soFav);
+    e.currentTarget.setAttribute("aria-pressed", estado.mapaFiltros.soFav ? "true" : "false");
+    aplicarFiltrosMapa();
+  });
+  $("#perto").addEventListener("click", pertoDeMim);
 }
 
 /* --------------------------------- init --------------------------------- */
@@ -479,6 +591,7 @@ async function init() {
     el.innerHTML = `Não foi possível carregar os dados.<br><br>${esc(err.message)}<br><br>Abra o site por um servidor (GitHub Pages, Netlify ou <code>node scripts/serve.mjs</code>), não pelo <code>file://</code>.`;
     return;
   }
+  carregarFav();
   renderDatas();
   initChips();
   montarFiltrar();
@@ -488,6 +601,14 @@ async function init() {
   renderLegenda();
   initMapa();
   ligarEventos();
+  atualizarBotaoFav();
   $("#carregando").classList.add("is-hidden");
+
+  carregarClima(); // não bloqueia o carregamento; some sozinho se falhar
 }
 document.addEventListener("DOMContentLoaded", init);
+
+// Service worker (offline + instalável). Caminho relativo p/ funcionar em subpasta.
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}
