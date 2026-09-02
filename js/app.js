@@ -226,7 +226,8 @@ function campo(rotulo, valor) {
 function fichaHTML(z) {
   const combina = (z.combina_com || [])
     .map((n) => `<button type="button" class="link-zona" data-zona="${esc(n)}">${esc(n)}</button>`).join(" · ");
-  const destaques = (z.destaques || []).map((d) => `<li>${esc(d)}</li>`).join("");
+  const imperdiveis = (z.imperdiveis || [])
+    .map((d) => `<li><strong>${esc(d.nome)}</strong> — ${esc(d.nota)}</li>`).join("");
   return `
   <details class="ficha" id="ficha-${slug(z.zona)}" style="border-left-color:${ENERGIA_COR[z.energia]}">
     <summary>
@@ -238,6 +239,8 @@ function fichaHTML(z) {
       <div class="ficha__tags">${chipsTags(z.tags_interesse, INTERESSES)}</div>
     </summary>
     <div class="ficha__corpo">
+      ${z.resumo ? `<p class="ficha__resumo">${esc(z.resumo)}</p>` : ""}
+      ${imperdiveis ? `<div class="ficha__campo"><span class="rotulo">✨ Não perca</span><ul class="ficha__imperdiveis">${imperdiveis}</ul></div>` : ""}
       <div class="ficha__linha">
         ${z.tempo_ideal ? `<span>⏱ ${esc(z.tempo_ideal)}</span>` : ""}
         ${z.movimento ? `<span>📊 ${esc(z.movimento)}</span>` : ""}
@@ -245,7 +248,6 @@ function fichaHTML(z) {
       </div>
       ${campo("Como chegar", z.como_chegar)}
       ${z.clima_nota ? `<p class="ficha__clima">${(z.clima || []).map((c) => CLIMA_EMOJI[c]).join(" ")} ${esc(z.clima_nota)}</p>` : ""}
-      ${destaques ? `<div class="ficha__campo"><span class="rotulo">Destaques</span><ul class="ficha__destaques">${destaques}</ul></div>` : ""}
       ${campo("Atrações", z.atracoes)}
       ${campo("Compras", z.compras)}
       ${campo("Comida / vida noturna", z.comida_vida_noturna)}
