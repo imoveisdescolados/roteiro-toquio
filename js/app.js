@@ -340,7 +340,7 @@ document.addEventListener("click", (e) => {
   if (lc) { e.preventDefault(); abrirCombo(lc.dataset.comboid); return; }
   const fb = e.target.closest(".pop__fav");
   if (fb) { e.preventDefault(); toggleFav(fb.dataset.favkey); return; }
-  const cb = e.target.closest(".clima-agora__btn");
+  const cb = e.target.closest(".clima-dia, .clima-agora__btn");
   if (cb) { e.preventDefault(); aplicarClimaChip(cb.dataset.clima); }
 });
 
@@ -518,23 +518,42 @@ async function carregarClima() {
   const box = $("#clima-agora");
   try {
     const url = "https://api.open-meteo.com/v1/forecast?latitude=35.6465&longitude=139.7101" +
-      "&current=temperature_2m,weather_code&daily=weather_code&timezone=Asia%2FTokyo&forecast_days=3";
+      "&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min" +
+      "&timezone=Asia%2FTokyo&forecast_days=7";
     const r = await fetch(url);
     if (!r.ok) throw new Error("clima");
     const d = await r.json();
-    if (!d.current) throw new Error("clima");
-    const cat = wmoParaClima(d.current.weather_code);
-    const temp = Math.round(d.current.temperature_2m);
-    const prox = (d.daily && d.daily.weather_code ? d.daily.weather_code.slice(1, 3) : [])
-      .map((c) => CLIMA_EMOJI[wmoParaClima(c)]).join(" ");
+    if (!d.current || !d.daily) throw new Error("clima");
+
+    const catNow = wmoParaClima(d.current.weather_code);
+    const tNow = Math.round(d.current.temperature_2m);
+
+    const dias = d.daily.time.map((iso, i) => ({
+      iso,
+      cat: wmoParaClima(d.daily.weather_code[i]),
+      max: Math.round(d.daily.temperature_2m_max[i]),
+      min: Math.round(d.daily.temperature_2m_min[i]),
+    }));
+    const diasHTML = dias.map((x, i) => {
+      const dow = i === 0 ? "Hoje"
+        : new Date(x.iso + "T12:00:00+09:00").toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "");
+      return `<button type="button" class="clima-dia" data-clima="${x.cat}" title="${CLIMA_LABEL[x.cat]}">
+          <span class="clima-dia__dow">${dow}</span>
+          <span class="clima-dia__emoji">${CLIMA_EMOJI[x.cat]}</span>
+          <span class="clima-dia__t">${x.max}°<small>${x.min}°</small></span>
+        </button>`;
+    }).join("");
+
     box.hidden = false;
     box.innerHTML = `
-      <div class="clima-agora__info">
-        <span class="clima-agora__emoji">${CLIMA_EMOJI[cat]}</span>
-        <div><strong>Agora em Tóquio</strong> · ${temp}° · ${CLIMA_LABEL[cat]}
-          ${prox ? `<span class="clima-agora__prox">próximos dias: ${prox}</span>` : ""}</div>
+      <div class="clima-agora__topo">
+        <div class="clima-agora__info">
+          <span class="clima-agora__emoji">${CLIMA_EMOJI[catNow]}</span>
+          <div><strong>Agora em Tóquio</strong> · ${tNow}° · ${CLIMA_LABEL[catNow]}</div>
+        </div>
+        <span class="clima-agora__dica">toque num dia →</span>
       </div>
-      <button type="button" class="clima-agora__btn" data-clima="${cat}">Ver opções</button>`;
+      <div class="clima-dias">${diasHTML}</div>`;
   } catch (e) {
     box.hidden = true; // offline ou API fora do ar: simplesmente não mostra
   }
