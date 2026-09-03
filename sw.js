@@ -4,7 +4,7 @@
    - tiles do OpenStreetMap: cache-first num cache separado (o que você viu fica salvo)
    - previsão do tempo (open-meteo): rede primeiro (sempre fresca), sem cache
 */
-const VERSAO = "guia-toquio-v4";
+const VERSAO = "guia-toquio-v5";
 const CACHE_APP = VERSAO + "-app";
 const CACHE_TILES = VERSAO + "-tiles";
 

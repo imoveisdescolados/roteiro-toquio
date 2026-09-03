@@ -86,10 +86,48 @@ function salvarNotas() {
   try { localStorage.setItem(NOTAS_KEY, JSON.stringify(estado.notas)); } catch (e) {}
 }
 function getNota(p) { return estado.notas[favKey(p)] || ""; }
+function getNotaPorChave(key) { return estado.notas[key] || ""; }
 function setNota(key, texto) {
   const t = (texto || "").trim();
   if (t) estado.notas[key] = t; else delete estado.notas[key];
   salvarNotas();
+}
+
+/* --------------------- bloco de anotações livres ------------------------ */
+const BLOCO_KEY = "guia_toquio_bloco";
+function carregarBloco() {
+  try { const el = $("#anot-texto"); if (el) el.value = localStorage.getItem(BLOCO_KEY) || ""; } catch (e) {}
+}
+
+/* --------------------- lista "Meus favoritos" --------------------------- */
+function renderFavoritos() {
+  const cont = $("#fav-lista");
+  const cnt = $("#fav-count");
+  const keys = [...estado.fav];
+  if (cnt) cnt.textContent = keys.length;
+  if (!cont) return;
+  if (!keys.length) {
+    cont.innerHTML = `<p class="bloco__vazio">Nenhum favorito ainda. Toque na ⭐ de um lugar — no mapa ou na busca — pra ele aparecer aqui em destaque.</p>`;
+    return;
+  }
+  cont.innerHTML = keys.map((k) => {
+    const p = estado.pontoByKey.get(k);
+    if (!p) return "";
+    const zona = zonaDoBairro(p.bairro);
+    const nota = getNotaPorChave(k);
+    const maps = p.google_maps ? `<a class="pop__link pop__link--maps" href="${esc(p.google_maps)}" target="_blank" rel="noopener">Mapa</a>` : "";
+    const zonaLink = zona ? `<button type="button" class="link-zona" data-zona="${esc(zona)}">${esc(zona)}</button>` : esc(p.bairro);
+    return `
+      <div class="fav-item">
+        <button type="button" class="fav-mini is-on" data-favkey="${esc(k)}" title="Remover dos favoritos">★</button>
+        <div class="fav-item__corpo">
+          <div class="fav-item__nome">${esc(p.nome)} <span class="tag">${esc(p.categoria)}</span></div>
+          <div class="busca-item__linha">📍 ${zonaLink}</div>
+          ${nota ? `<div class="busca-item__nota">📝 ${esc(nota)}</div>` : ""}
+          ${maps ? `<div class="busca-item__acoes">${maps}</div>` : ""}
+        </div>
+      </div>`;
+  }).join("");
 }
 
 /* ------------------------------ utilidades ------------------------------ */
@@ -131,6 +169,7 @@ async function carregarDados() {
   ]);
   estado.zonas = bairros.map((b) => ({ ...b, ...(guia[b.zona] || {}), energia: energiaDe(b.tipo_acesso) }));
   estado.pontos = pontos;
+  estado.pontoByKey = new Map(pontos.map((p) => [favKey(p), p]));
   estado.combos = combos;
   estado.datas = datas;
 }
@@ -338,7 +377,7 @@ document.addEventListener("click", (e) => {
   if (lz) { e.preventDefault(); abrirFicha(lz.dataset.zona); return; }
   const lc = e.target.closest(".link-combo");
   if (lc) { e.preventDefault(); abrirCombo(lc.dataset.comboid); return; }
-  const fb = e.target.closest(".pop__fav");
+  const fb = e.target.closest("[data-favkey]");
   if (fb) { e.preventDefault(); toggleFav(fb.dataset.favkey); return; }
   const cb = e.target.closest(".clima-dia, .clima-agora__btn");
   if (cb) { e.preventDefault(); aplicarClimaChip(cb.dataset.clima); }
@@ -361,7 +400,10 @@ function toggleFav(key) {
     if (pop && pop.isOpen()) pop.setContent(popupHTML(item.ponto));
   }
   atualizarBotaoFav();
+  renderFavoritos();
   if (estado.mapaFiltros.soFav) aplicarFiltrosMapa();
+  const bg = $("#busca-global");
+  if (bg && bg.value.trim().length >= 2) buscaGlobal(bg.value); // atualiza estrelas na busca
 }
 function atualizarBotaoFav() {
   const b = $("#fav-toggle");
@@ -417,7 +459,7 @@ function buscaGlobal(q) {
     const nota = getNota(p);
     return `
       <div class="busca-item">
-        <div class="busca-item__nome">${esc(p.nome)} <span class="tag">${esc(p.categoria)}</span></div>
+        <div class="busca-item__nome"><button type="button" class="fav-mini${ehFav(p) ? " is-on" : ""}" data-favkey="${esc(favKey(p))}" title="Favoritar">${ehFav(p) ? "★" : "☆"}</button> ${esc(p.nome)} <span class="tag">${esc(p.categoria)}</span></div>
         <div class="busca-item__linha">📍 ${zonaLink}${sub}</div>
         <div class="busca-item__linha">🧩 ${comboLinks(zona)}</div>
         ${nota ? `<div class="busca-item__nota">📝 ${esc(nota)}</div>` : ""}
@@ -628,6 +670,11 @@ function ligarEventos() {
     aplicarFiltrosMapa();
   });
   $("#perto").addEventListener("click", pertoDeMim);
+
+  const anot = $("#anot-texto");
+  if (anot) anot.addEventListener("input", debounce((e) => {
+    try { localStorage.setItem(BLOCO_KEY, e.target.value); } catch (err) {}
+  }, 300));
 }
 
 /* --------------------------------- init --------------------------------- */
@@ -652,6 +699,8 @@ async function init() {
   initMapa();
   ligarEventos();
   atualizarBotaoFav();
+  renderFavoritos();
+  carregarBloco();
   $("#carregando").classList.add("is-hidden");
 
   carregarClima(); // não bloqueia o carregamento; some sozinho se falhar

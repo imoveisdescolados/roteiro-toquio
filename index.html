@@ -14,7 +14,7 @@
   <meta name="apple-mobile-web-app-title" content="Guia Tóquio" />
 
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
-  <link rel="stylesheet" href="css/style.css?v=4" />
+  <link rel="stylesheet" href="css/style.css?v=5" />
 </head>
 <body>
   <header class="app-header">
@@ -42,6 +42,18 @@
         <input type="search" id="busca-global" class="busca-global__input" placeholder="🔎 Pesquisar lugar, loja, templo…" autocomplete="off" enterkeyhint="search" />
         <div id="busca-global-res" class="busca-res" hidden></div>
       </div>
+
+      <details class="bloco" id="fav-box">
+        <summary>⭐ Meus favoritos (<span id="fav-count">0</span>)</summary>
+        <div class="bloco__conteudo" id="fav-lista"></div>
+      </details>
+
+      <details class="bloco" id="anot-box">
+        <summary>📝 Minhas anotações</summary>
+        <div class="bloco__conteudo">
+          <textarea id="anot-texto" placeholder="Anote o que quiser: reservas, ideias, o que comprar, horários…"></textarea>
+        </div>
+      </details>
 
       <details class="datas" id="datas-box">
         <summary><span class="datas__aviso">⚠️ Presos a data</span> <span class="datas__periodo">19–27 set · toque para ver</span></summary>
@@ -113,6 +125,6 @@
   <div id="carregando" class="carregando">Carregando guia…</div>
 
   <script src="vendor/leaflet/leaflet.js"></script>
-  <script src="js/app.js?v=4"></script>
+  <script src="js/app.js?v=5"></script>
 </body>
 </html>
