@@ -1,0 +1,279 @@
+[
+  {
+    "dia": 1,
+    "data": "2026-09-19",
+    "rotulo": "Sáb 19",
+    "tema": "Chegada e ambientação",
+    "zonas": [
+      "Ebisu (base)"
+    ],
+    "resumo": "Pouso em Narita às 17:35. Somando imigração, bagagem e trem, vocês chegam em Ebisu por volta das 20h30–21h. O objetivo de hoje não é passear: é comer bem pertinho de casa e dormir.",
+    "blocos": [
+      {
+        "quando": "Chegada",
+        "texto": "Narita → Narita Express (N'EX) até Shibuya (~80 min) → 1 parada da Linha Yamanote até Ebisu. O passo a passo completo está na aba Básico."
+      },
+      {
+        "quando": "Noite",
+        "texto": "Jantar no Ebisu Yokocho — viela coberta de barzinhos a 3 min da estação. Sem reserva, sem cerimônia, várias barraquinhas no mesmo corredor."
+      },
+      {
+        "quando": "Antes de dormir",
+        "texto": "Passar num konbini (7-Eleven ou FamilyMart) pra água, café da manhã e sacar dinheiro no caixa eletrônico."
+      }
+    ],
+    "se_chuva": "Não muda nada: o Yokocho é coberto e o Atre fica dentro da própria estação.",
+    "se_cansado": "Comer no Atre Ebisu (dentro da estação) e subir direto pra casa.",
+    "status": null
+  },
+  {
+    "dia": 2,
+    "data": "2026-09-20",
+    "rotulo": "Dom 20",
+    "tema": "Feira de antiguidades, lojas centenárias e comida de rua",
+    "zonas": [
+      "Ginza + Nihonbashi + Tsukiji"
+    ],
+    "resumo": "Domingo raro: a Oedo Antique Market — maior feira de antiguidades a céu aberto do Japão — só acontece no 1º e 3º domingo do mês, e hoje é um deles. Emenda perfeitamente com Ginza e Nihonbashi.",
+    "blocos": [
+      {
+        "quando": "Manhã (cedo)",
+        "texto": "Oedo Antique Market no Tokyo International Forum. Começa ~9h e as melhores peças saem cedo. Leve dinheiro em espécie — quase ninguém aceita cartão."
+      },
+      {
+        "quando": "Meio-dia",
+        "texto": "Ginza a pé: Itoya (papelaria de 12 andares), Uniqlo flagship, Kyukyodo, lojas de departamento. À tarde de domingo a Chuo-dori fecha pra carros e vira calçadão."
+      },
+      {
+        "quando": "Tarde",
+        "texto": "Nihonbashi: cluster de lojas com 300 anos — Haibara (papel), Ninben (dashi), Kiya (facas). Fecham cedo, por volta das 18h."
+      },
+      {
+        "quando": "Fim de tarde",
+        "texto": "Tsukiji Outer Market pra comer andando. Atenção: muitas barracas fecham 14h–15h — se quiser comer lá, inverta a ordem e vá antes de Nihonbashi."
+      }
+    ],
+    "se_chuva": "Ginza é quase toda coberta (lojas de departamento e galerias ligadas por passagens). Só a feira e Tsukiji sofrem.",
+    "se_cansado": "Corte Tsukiji e fique só em Ginza — é um quadrado pequeno e dá pra fazer devagar.",
+    "status": null
+  },
+  {
+    "dia": 3,
+    "data": "2026-09-21",
+    "rotulo": "Seg 21",
+    "tema": "Templo, floresta e o cruzamento mais famoso do mundo",
+    "zonas": [
+      "Harajuku + Omotesando + Aoyama",
+      "Shibuya"
+    ],
+    "resumo": "Feriado (Dia do Respeito aos Idosos) e primeiro dia cheio da Silver Week — espere multidão nos pontos turísticos. A vantagem: o Yoyogi Park costuma ter apresentações de rua em feriado.",
+    "blocos": [
+      {
+        "quando": "Manhã (bem cedo)",
+        "texto": "Meiji Jingu logo na abertura (~6h–7h). É o único jeito de ver a floresta e o santuário com calma num feriado. Depois, Yoyogi Park ao lado."
+      },
+      {
+        "quando": "Meio-dia",
+        "texto": "Takeshita-dori (a rua adolescente, caótica) e depois Omotesando — a avenida arborizada de arquitetura e grifes."
+      },
+      {
+        "quando": "Tarde",
+        "texto": "Aoyama: mais silencioso e sofisticado que Omotesando. Boa hora pra um café."
+      },
+      {
+        "quando": "Fim de tarde / noite",
+        "texto": "Emendar a pé ou 1 parada de trem até Shibuya: o Crossing e o Shibuya Sky (reserve o horário do pôr do sol com antecedência — esgota)."
+      }
+    ],
+    "se_chuva": "Shibuya Scramble Square, Hikarie e as galerias de Omotesando resolvem. O Meiji Jingu sob chuva fica bonito, mas o parque não.",
+    "se_cansado": "Meiji Jingu + Omotesando e volta. Shibuya fica a 1 parada de casa, dá pra fazer em outro dia qualquer.",
+    "status": null
+  },
+  {
+    "dia": 4,
+    "data": "2026-09-22",
+    "rotulo": "Ter 22",
+    "tema": "Dia preguiçoso, 100% a pé",
+    "zonas": [
+      "Daikanyama + Nakameguro",
+      "Meguro / Teien Art Museum",
+      "Hiroo"
+    ],
+    "resumo": "Feriado-ponte no meio da Silver Week: os pontos turísticos estão lotados, então hoje é dia de bairro residencial. Não pega trem nenhum — tudo sai a pé de casa.",
+    "blocos": [
+      {
+        "quando": "Manhã",
+        "texto": "Ebisu → Daikanyama (~10 min a pé): T-Site/Tsutaya, a livraria de arquitetura premiada, e o Log Road."
+      },
+      {
+        "quando": "Meio-dia",
+        "texto": "Descer pro canal do Rio Meguro em Nakameguro: passeio arborizado com boutiques e cafés na margem."
+      },
+      {
+        "quando": "Tarde",
+        "texto": "Meguro: Teien Art Museum (mansão art déco com jardim). Depois Hiroo e o Arisugawa-no-miya Memorial Park."
+      },
+      {
+        "quando": "Noite",
+        "texto": "Volta a pé pra Ebisu por outro caminho."
+      }
+    ],
+    "se_chuva": "É passeio de rua e canal — se cair água, o T-Site/Tsutaya e o Teien cobrem boa parte do dia.",
+    "se_cansado": "Só Daikanyama + Nakameguro já fecha uma tarde inteira, e são os dois mais bonitos.",
+    "status": "⚠️ Terça: Traveler's Factory (Nakameguro) e teamLab Borderless não abrem hoje."
+  },
+  {
+    "dia": 5,
+    "data": "2026-09-23",
+    "rotulo": "Qua 23",
+    "tema": "Sumô, arte e café de especialidade",
+    "zonas": [
+      "Ryogoku (dia do sumô)",
+      "Kiyosumi-Shirakawa"
+    ],
+    "resumo": "Último feriado da Silver Week (Equinócio de Outono). O torneio Aki Basho está rolando no Ryogoku Kokugikan — mas os ingressos oficiais esgotaram em agosto.",
+    "blocos": [
+      {
+        "quando": "Manhã",
+        "texto": "Se conseguiu ingresso: as lutas começam cedo mas os lutadores de elite só entram no ringue a partir das ~15h30. Se não conseguiu: plano B é assistir a um treino matinal (asageiko) numa heya — precisa agendar por agência."
+      },
+      {
+        "quando": "Almoço",
+        "texto": "Chanko nabe, o ensopado dos lutadores de sumô — é a comida típica do bairro, vários restaurantes tocados por ex-lutadores."
+      },
+      {
+        "quando": "Tarde",
+        "texto": "Sumida Hokusai Museum (o da Grande Onda), pequeno e rápido."
+      },
+      {
+        "quando": "Fim de tarde",
+        "texto": "Poucas paradas até Kiyosumi-Shirakawa: Kiyosumi Gardens e a primeira Blue Bottle Coffee do Japão. Também tem o MOT (museu de arte contemporânea)."
+      }
+    ],
+    "se_chuva": "O Kokugikan e os museus são cobertos. Só o Kiyosumi Gardens pede tempo bom.",
+    "se_cansado": "Ryogoku é um dia à parte — se estiver acabado, troque por um dia leve a pé e deixe o sumô pra outro dia do torneio (vai até 27).",
+    "status": "🎫 PENDENTE — resolver ingresso do sumô (revenda/agência) ou confirmar o asageiko."
+  },
+  {
+    "dia": 6,
+    "data": "2026-09-24",
+    "rotulo": "Qui 24",
+    "tema": "teamLab, arte e arquitetura nova",
+    "zonas": [
+      "Roppongi + Azabudai Hills + Toranomon Hills"
+    ],
+    "resumo": "Silver Week acabou — a cidade esvaziou. Dia de quinta é o melhor momento pro teamLab. E dá pra chegar lá a pé de casa, passando por Hiroo.",
+    "blocos": [
+      {
+        "quando": "Manhã",
+        "texto": "teamLab Borderless em Azabudai Hills, no horário reservado. Abre 8:30 — quanto mais cedo, menos gente nas salas. Vá de roupa clara (as projeções aparecem em você) e evite saia: tem piso espelhado."
+      },
+      {
+        "quando": "Meio-dia",
+        "texto": "Arquitetura de Azabudai Hills e Toranomon Hills — os prédios mais novos de Tóquio, com praças e lojas no térreo."
+      },
+      {
+        "quando": "Tarde",
+        "texto": "Mori Art Museum, no 53º andar do Roppongi Hills, com o mirante Tokyo City View no mesmo ingresso."
+      },
+      {
+        "quando": "Fim de tarde",
+        "texto": "Volta a pé por Hiroo (~25–30 min) ou 2 paradas da Linha Hibiya."
+      }
+    ],
+    "se_chuva": "O melhor dia possível pra chuva — é tudo dentro de prédio e ligado por passagens cobertas.",
+    "se_cansado": "teamLab + Mori Art Museum já bastam; os dois ficam a 10 min um do outro.",
+    "status": "🎫 PENDENTE — reservar o teamLab online (não vende na hora; fins de semana esgotam ~72h antes)."
+  },
+  {
+    "dia": 7,
+    "data": "2026-09-25",
+    "rotulo": "Sex 25",
+    "tema": "Eletrônicos, sebos e neon",
+    "zonas": [
+      "Akihabara + Ochanomizu + Jimbocho",
+      "Shinjuku"
+    ],
+    "resumo": "De dia, o lado geek e livreiro da cidade; à noite, muda de planeta em Shinjuku — sem baldeação nenhuma, é tudo Linha Yamanote.",
+    "blocos": [
+      {
+        "quando": "Manhã",
+        "texto": "Akihabara: Yodobashi Akiba (8 andares de eletrônicos) e Mandarake / Super Potato pra games e figuras antigas. Lojas abrem ~10h–11h."
+      },
+      {
+        "quando": "Meio-dia",
+        "texto": "Kanda Myojin, o santuário dos eletrônicos (vende amuleto pra proteger computador). Depois Ochanomizu, a rua das lojas de violão."
+      },
+      {
+        "quando": "Tarde",
+        "texto": "Jimbocho: o bairro dos sebos, mais de 100 livrarias de livro usado num quadrado só."
+      },
+      {
+        "quando": "Noite",
+        "texto": "Yamanote direto pra Shinjuku: Omoide Yokocho (becos de yakitori), Golden Gai (bares minúsculos) e Kabukicho. Se der tempo antes de escurecer, o mirante gratuito do Tokyo Metropolitan Government Building."
+      }
+    ],
+    "se_chuva": "Akihabara é quase todo dentro de prédio, e os becos de Shinjuku são cobertos. Dia à prova d'água.",
+    "se_cansado": "Akihabara de dia + Shinjuku à noite, cortando Ochanomizu e Jimbocho.",
+    "status": null
+  },
+  {
+    "dia": 8,
+    "data": "2026-09-26",
+    "rotulo": "Sáb 26",
+    "tema": "A Tóquio que escapou das bombas",
+    "zonas": [
+      "Ueno + Yanaka/Nezu/Sendagi",
+      "Asakusa + Tokyo Skytree"
+    ],
+    "resumo": "Último dia cheio. Ueno e Yanaka são o lado antigo e baixinho da cidade. Atenção: são dois roteiros alternativos a partir de Ueno — não cabem os dois no mesmo dia com calma.",
+    "blocos": [
+      {
+        "quando": "Manhã",
+        "texto": "Ueno Park e seus museus (o Museu Nacional de Tóquio é o maior do país). Os museus fecham segunda, mas hoje é sábado — só chegue cedo, sábado lota."
+      },
+      {
+        "quando": "Meio-dia",
+        "texto": "Ameyoko: mercado de rua barulhento embaixo da linha do trem, bom pra comer andando."
+      },
+      {
+        "quando": "Tarde — opção A",
+        "texto": "Nezu Shrine (túnel de torii vermelhos, bem menos disputado que o de Kyoto) → Yanaka Ginza, rua comercial de bairro à moda antiga. Fim de tarde na escadaria do pôr do sol."
+      },
+      {
+        "quando": "Tarde — opção B",
+        "texto": "Kappabashi (rua dos utensílios de cozinha e das comidas de plástico) → Asakusa e o Senso-ji, o templo mais antigo de Tóquio, iluminado à noite."
+      }
+    ],
+    "se_chuva": "Fique nos museus de Ueno — dá pra passar o dia inteiro dentro deles.",
+    "se_cansado": "Só Ueno (parque + 1 museu + Ameyoko). Yanaka pede pernas e ladeira.",
+    "status": null
+  },
+  {
+    "dia": 9,
+    "data": "2026-09-27",
+    "rotulo": "Dom 27",
+    "tema": "Check-out e encerramento",
+    "zonas": [
+      "Ebisu (base)"
+    ],
+    "resumo": "Check-out até 10h. Sem passeio grande — só o que couber perto de casa antes de seguir pra próxima etapa da viagem (ryokan).",
+    "blocos": [
+      {
+        "quando": "Antes das 10h",
+        "texto": "Arrumar tudo e fazer o check-out. Se as malas forem seguir por takkyubin pro próximo destino, o envio tem que sair hoje cedo (veja na aba Básico)."
+      },
+      {
+        "quando": "Manhã",
+        "texto": "Se sobrar tempo: Yebisu Garden Place a 5 min a pé — museu da cerveja, praça e um café tranquilo."
+      },
+      {
+        "quando": "Saída",
+        "texto": "De Ebisu, Yamanote até Shinagawa ou Tóquio pega quase qualquer trem-bala."
+      }
+    ],
+    "se_chuva": "Yebisu Garden Place e o Atre são cobertos.",
+    "se_cansado": "Só o café e seguir viagem.",
+    "status": null
+  }
+]

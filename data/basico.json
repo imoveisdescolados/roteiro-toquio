@@ -1,0 +1,165 @@
+[
+  {
+    "id": "chegada",
+    "icone": "✈️",
+    "titulo": "Chegar do aeroporto até Ebisu",
+    "resumo": "Narita Express até Shibuya, depois 1 parada de trem. ~1h40 no total.",
+    "itens": [
+      { "t": "O caminho recomendado", "d": "Narita Express (N'EX) direto até Shibuya (~80 min) e depois 1 parada da Linha Yamanote até Ebisu (3 min). É o trajeto com menos troca e o mais fácil com mala." },
+      { "t": "Onde comprar", "d": "Balcão da JR no próprio aeroporto, depois da alfândega. Custa cerca de ¥3.250 por pessoa. Assento marcado — o bilhete diz vagão e poltrona, e tem espaço pra mala grande no fim do vagão." },
+      { "t": "Alternativas", "d": "Keisei Skyliner é mais rápido, mas chega em Ueno/Nippori — dá mais trabalho pra chegar em Ebisu. O ônibus (Limousine Bus) tem tarifa parecida e pega trânsito." },
+      { "t": "Atenção ao horário", "d": "O último N'EX sai de Narita por volta das 21h45. Pousando 17:35, com imigração e bagagem vocês têm folga — mas se o voo atrasar muito, o plano B é o Keisei até Nippori e Yamanote de lá." },
+      { "t": "Pra economizar esforço", "d": "Se estiverem com muita mala e cansados, um táxi de Shibuya até o Airbnb custa pouco (é 1 parada) e resolve o último trecho." }
+    ]
+  },
+  {
+    "id": "suica",
+    "icone": "💳",
+    "titulo": "Suica — o cartão que paga tudo",
+    "resumo": "É o cartão de transporte, mas também paga konbini e máquina de bebida. Resolva isso no primeiro dia.",
+    "itens": [
+      { "t": "O que é", "d": "Um cartão pré-pago que você encosta na catraca. Serve pra JR, metrô, ônibus, konbini, máquinas de bebida e muita loja. Sem ele, você teria que calcular a tarifa e comprar bilhete a cada viagem." },
+      { "t": "iPhone (o mais fácil)", "d": "Abra a Carteira (Wallet) → + → Cartões de transporte → Suica. Cria na hora, sem cartão físico, e recarrega pelo Apple Pay. Funciona mesmo com o celular descarregado (modo reserva)." },
+      { "t": "Android comprado fora do Japão", "d": "Normalmente NÃO funciona — o Suica digital exige o chip FeliCa, que só vem em aparelhos vendidos no Japão. Nesse caso, compre o cartão físico." },
+      { "t": "Cartão físico", "d": "Welcome Suica (para turista, válido 28 dias, sem depósito) ou Suica comum (¥500 de depósito, devolvido). Compra nas máquinas ou no balcão JR do aeroporto e das estações grandes." },
+      { "t": "Recarga", "d": "Nas máquinas das estações — tem opção em português/inglês. As máquinas de recarga geralmente só aceitam DINHEIRO, então guarde notas." },
+      { "t": "Se der erro na catraca", "d": "Vá ao guichê ao lado da catraca (sempre tem um funcionário) e mostre o cartão. Resolvem em segundos, sem drama." }
+    ]
+  },
+  {
+    "id": "trem",
+    "icone": "🚆",
+    "titulo": "Trem sem medo — o mínimo que você precisa saber",
+    "resumo": "São três linhas que resolvem 90% da viagem de vocês.",
+    "itens": [
+      { "t": "JR Yamanote (verde-clara)", "d": "O anel que dá a volta em Tóquio — e Ebisu está nela. Shibuya fica a 1 parada, Shinjuku a 3, Shinagawa a 2, Tóquio/Ueno mais longe. É a linha que vocês mais vão usar." },
+      { "t": "Metrô Hibiya (cinza)", "d": "Também passa em Ebisu e leva direto pra Roppongi, Ginza, Akihabara e Ueno, sem baldeação." },
+      { "t": "Linhas privadas", "d": "Tokyu Toyoko (sai de Shibuya, vai pra Daikanyama/Nakameguro) e Keio Inokashira (Shibuya → Shimokitazawa/Kichijoji). São empresas diferentes da JR, mas o mesmo Suica funciona." },
+      { "t": "Deixe o Google Maps decidir", "d": "Ele diz a linha, a plataforma, o horário exato, quanto custa e até por qual saída da estação sair. Em Tóquio ele acerta quase sempre — confie mais nele do que no instinto." },
+      { "t": "A saída certa importa", "d": "Estações grandes (Shinjuku, Shibuya) têm dezenas de saídas e sair pela errada custa 10 min de caminhada. Anote o número/letra da saída antes de descer." },
+      { "t": "Horários limite", "d": "O primeiro trem sai por volta das 5h e o último por volta de 0h–0h30. Perdeu o último? Táxi — caro, mas é o que tem." },
+      { "t": "Comportamento", "d": "Fila organizada nas marcas do chão, mochila na frente do corpo quando lotado, sem falar ao telefone. Os vagões cor-de-rosa em horário de pico são só para mulheres." }
+    ]
+  },
+  {
+    "id": "dinheiro",
+    "icone": "💴",
+    "titulo": "Dinheiro, cartão e saque",
+    "resumo": "Cartão funciona em quase tudo, mas ande sempre com dinheiro vivo.",
+    "itens": [
+      { "t": "Onde cartão NÃO passa", "d": "Templos e santuários, barracas de feira e de rua, izakayas pequenos, alguns restaurantes de bairro e as máquinas de recarga do Suica. Leve sempre algum dinheiro." },
+      { "t": "Quanto sacar", "d": "Comece com ¥20.000–30.000 e vá repondo. Não precisa trazer ienes do Brasil — o câmbio no saque local costuma ser melhor." },
+      { "t": "Onde sacar", "d": "Caixa eletrônico do 7-Eleven (7Bank) é o mais confiável com cartão estrangeiro, tem em toda esquina e opera 24h. Correio japonês (Japan Post) também aceita. Caixas de banco comum muitas vezes recusam cartão de fora." },
+      { "t": "Moedas", "d": "Você vai acumular muita moeda, inclusive de ¥100 e ¥500, que valem bastante. Use nas máquinas de bebida e no konbini em vez de deixar juntar." },
+      { "t": "Gorjeta", "d": "Não existe. Deixar dinheiro na mesa é desconfortável pro garçom — em alguns lugares ele corre atrás de você pra devolver." }
+    ]
+  },
+  {
+    "id": "konbini",
+    "icone": "🏪",
+    "titulo": "Konbini — sua base de apoio",
+    "resumo": "7-Eleven, FamilyMart e Lawson. Abertos 24h, em toda esquina, e salvam qualquer situação.",
+    "itens": [
+      { "t": "Comida de verdade", "d": "Onigiri, sanduíche, macarrão, bento quente (eles esquentam pra você), café de máquina que é genuinamente bom. Café da manhã e jantar tarde resolvidos por pouco dinheiro." },
+      { "t": "Serviços", "d": "Caixa eletrônico, wi-fi, banheiro limpo e de graça, impressão de documento, e é onde você despacha e recebe encomendas." },
+      { "t": "Guarda-chuva", "d": "Vendem guarda-chuva transparente por ~¥500. Em setembro, comprar um logo no primeiro dia é quase certo." },
+      { "t": "Lixo", "d": "As lixeiras do konbini são das poucas que existem na rua — é onde você vai descartar o que juntar durante o dia." }
+    ]
+  },
+  {
+    "id": "taxfree",
+    "icone": "🛍️",
+    "titulo": "Tax-free (isenção de imposto)",
+    "resumo": "A partir de ¥5.000 na mesma loja, no mesmo dia, com o passaporte na mão.",
+    "itens": [
+      { "t": "Como funciona", "d": "Lojas com a placa 'Tax-Free' descontam os 10% de imposto de consumo. Precisa de ¥5.000 ou mais na mesma loja e no mesmo dia, e do PASSAPORTE FÍSICO — cópia ou foto não serve." },
+      { "t": "Onde fazer", "d": "Em loja de departamento, o desconto costuma ser num balcão central ('Tax-Free Counter') e não no caixa — guarde os recibos e vá lá antes de sair." },
+      { "t": "Regra em mudança", "d": "O sistema japonês de tax-free está sendo alterado (com reembolso no aeroporto em vez de desconto na hora). Confirme no balcão da loja como está funcionando no momento." },
+      { "t": "Na saída do país", "d": "Guarde os comprovantes junto do passaporte. A alfândega pode pedir pra ver as compras isentas." }
+    ]
+  },
+  {
+    "id": "etiqueta",
+    "icone": "🙇",
+    "titulo": "Etiqueta — o que não fazer",
+    "resumo": "Nada é complicado; é quase tudo silêncio e não incomodar.",
+    "itens": [
+      { "t": "Silêncio", "d": "Trem, ônibus e restaurante são silenciosos. Não atenda telefone no trem. Fale baixo — brasileiro fala alto sem perceber." },
+      { "t": "Não coma andando", "d": "Comer na rua caminhando é malvisto. Coma parado, perto de onde comprou — nas feiras e mercados existem cantos pra isso." },
+      { "t": "Lixo", "d": "Praticamente não existe lixeira na rua. Leve um saquinho na mochila e descarte no konbini ou em casa." },
+      { "t": "Sapatos", "d": "Onde tiver degrau na entrada, tatame ou um armário de sapatos, tire o calçado. Use meia sem furo — sério." },
+      { "t": "Templo e santuário", "d": "Lave as mãos na fonte da entrada. No santuário xintoísta: curva, duas palmas, curva. Não caminhe no meio exato do portal torii — o meio é do deus." },
+      { "t": "Tatuagem", "d": "Pode barrar em onsen e banho público. Em Tóquio quase não afeta o passeio, mas vale saber." },
+      { "t": "Fila", "d": "Tudo tem fila e todo mundo respeita. Fura-fila é a pior coisa que você pode fazer por lá." }
+    ]
+  },
+  {
+    "id": "horarios",
+    "icone": "🕐",
+    "titulo": "Que horas abre o quê",
+    "resumo": "Templo abre cedo e fecha cedo; loja abre tarde. Planeje o dia nessa ordem.",
+    "itens": [
+      { "t": "Templos e santuários", "d": "Geralmente 6h–17h, muitos de graça e sem portão. Vá de manhã cedo: além de vazio, é quando fica bonito. Fechar às 17h pega muita gente de surpresa." },
+      { "t": "Museus", "d": "10h–17h ou 18h, última entrada 30 min antes. A maioria FECHA ÀS SEGUNDAS (se a segunda for feriado, fecham na terça)." },
+      { "t": "Lojas e departamentos", "d": "Abrem tarde — 10h ou 11h — e fecham por volta das 20h. Não adianta madrugar pra fazer compras." },
+      { "t": "Restaurantes", "d": "Almoço 11h30–14h, depois muitos FECHAM e só reabrem às 17h30/18h. Entre 14h e 17h a opção costuma ser café ou konbini." },
+      { "t": "Izakaya e bares", "d": "A partir das 17h/18h até tarde. Golden Gai e os yokocho só ganham vida depois das 20h." },
+      { "t": "Pôr do sol", "d": "Em fim de setembro o sol se põe por volta das 17h30. Escurece cedo — deixe parque e templo pra parte da manhã." }
+    ]
+  },
+  {
+    "id": "clima",
+    "icone": "🌀",
+    "titulo": "Tufão, terremoto e calor",
+    "resumo": "Setembro é pico de tufão. Não é motivo pra medo, é motivo pra ter plano B.",
+    "itens": [
+      { "t": "Tufão", "d": "Quando vem um, é anunciado com dias de antecedência. Os trens param preventivamente e as lojas fecham. Se acontecer, o dia vira dia de museu, shopping ou descanso em casa — não tente sair." },
+      { "t": "Onde acompanhar", "d": "Agência Meteorológica do Japão (jma.go.jp) e NHK World em inglês. O celular também recebe alerta oficial automático." },
+      { "t": "Terremoto", "d": "Tremor leve é rotina e os prédios são preparados. Se acontecer: fique onde está, longe de janela e de coisa que possa cair; não corra pra escada. O celular apita segundos antes." },
+      { "t": "Calor e umidade", "d": "Fim de setembro ainda dá 26–30°, com umidade alta. Roupa leve, garrafa de água (tem máquina de bebida em toda esquina) e uma blusa fina pro ar-condicionado dos trens, que é gelado." },
+      { "t": "Chuva", "d": "Chove rápido e forte. Guarda-chuva transparente de konbini resolve; quase todo estabelecimento tem um suporte ou saquinho pro guarda-chuva molhado na entrada." }
+    ]
+  },
+  {
+    "id": "frases",
+    "icone": "🗣️",
+    "titulo": "Frases que salvam",
+    "resumo": "Poucas palavras, muita diferença no atendimento.",
+    "itens": [
+      { "t": "Sumimassên (すみません)", "d": "A palavra mais útil do japonês. Serve pra 'com licença', 'desculpa' e pra chamar o garçom." },
+      { "t": "Arigatô gozaimás (ありがとうございます)", "d": "Obrigado (formal). O 'u' final quase não se fala." },
+      { "t": "Onegaishimás (お願いします)", "d": "Por favor. Use depois de pedir qualquer coisa." },
+      { "t": "Korê kudassai (これください)", "d": "'Este aqui, por favor.' Apontando pro cardápio ou pra vitrine — resolve qualquer pedido." },
+      { "t": "Êigo no menyû arimás ka? (英語のメニューありますか)", "d": "'Tem cardápio em inglês?'" },
+      { "t": "O-kaikê onegaishimás (お会計お願いします)", "d": "'A conta, por favor.' Em muitos lugares, você leva a conta até o caixa em vez de pagar na mesa." },
+      { "t": "Toirê wa doko deska? (トイレはどこですか)", "d": "'Onde fica o banheiro?'" },
+      { "t": "Dica", "d": "O Google Tradutor com a câmera lê cardápio e placa em tempo real. Baixe o pacote de japonês pra funcionar offline." }
+    ]
+  },
+  {
+    "id": "emergencia",
+    "icone": "🆘",
+    "titulo": "Emergência e documentos",
+    "resumo": "110 polícia · 119 bombeiro e ambulância.",
+    "itens": [
+      { "t": "Telefones", "d": "110 = polícia. 119 = bombeiro e ambulância (o mesmo número para os dois). Ambulância é gratuita." },
+      { "t": "Passaporte", "d": "Por lei, estrangeiro deve andar com o passaporte. Também é exigido pro tax-free. Deixe uma foto dele salva no celular como backup." },
+      { "t": "Kôban", "d": "São os postos policiais de esquina, pequenos e em todo lugar. Servem pra pedir informação e pra perder/achar objeto — no Japão, coisa perdida costuma mesmo voltar." },
+      { "t": "Consulado do Brasil em Tóquio", "d": "Guarde o telefone e o endereço no celular antes de viajar, junto com o número do seguro-viagem." },
+      { "t": "Internet", "d": "Deixe um eSIM contratado antes de embarcar — é o jeito mais simples. Wi-fi público existe, mas é irregular." }
+    ]
+  },
+  {
+    "id": "takkyubin",
+    "icone": "📦",
+    "titulo": "Mandar a mala pro próximo destino (takkyubin)",
+    "resumo": "Serviço de entrega de bagagem barato e confiável — evita carregar mala em trem lotado.",
+    "itens": [
+      { "t": "Como funciona", "d": "Você despacha a mala hoje e ela chega no próximo hotel/ryokan em 1 a 2 dias. Custa cerca de ¥2.000–3.000 por mala. É extremamente confiável." },
+      { "t": "Onde despachar", "d": "Na recepção do hotel, em qualquer konbini ou nos balcões da Yamato (a do gato preto) e da Sagawa." },
+      { "t": "O que preparar", "d": "O endereço completo do destino em japonês e o telefone do lugar. Peça ao hotel/ryokan por e-mail antes de viajar e deixe salvo no celular." },
+      { "t": "Prazo", "d": "Despache com pelo menos 2 dias de antecedência. Para o dia 27 (check-out), isso significa resolver antes." },
+      { "t": "O truque", "d": "Mande a mala grande e viaje só com uma mochila de 1–2 dias. Trem-bala e trem urbano ficam muito mais fáceis assim." }
+    ]
+  }
+]

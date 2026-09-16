@@ -1,10 +1,11 @@
 /* Service worker — deixa o guia funcionar offline e instalável.
    Estratégia:
    - app shell + dados (mesma origem): cache-first
-   - tiles do OpenStreetMap: cache-first num cache separado (o que você viu fica salvo)
+   - tiles do mapa (Esri e OpenStreetMap): cache-first num cache separado
+     (o que você já viu continua disponível offline, no Japão inteiro sem sinal)
    - previsão do tempo (open-meteo): rede primeiro (sempre fresca), sem cache
 */
-const VERSAO = "guia-toquio-v5";
+const VERSAO = "guia-toquio-v6";
 const CACHE_APP = VERSAO + "-app";
 const CACHE_TILES = VERSAO + "-tiles";
 
@@ -21,6 +22,8 @@ const CORE = [
   "./data/bairros_guia.json",
   "./data/combos.json",
   "./data/datas.json",
+  "./data/dias.json",
+  "./data/basico.json",
   "./data/data_pontos_interesse_geo.json",
 ];
 
@@ -48,7 +51,7 @@ self.addEventListener("fetch", (e) => {
   const url = new URL(req.url);
 
   // Tiles do mapa: cache-first, guarda o que foi visto.
-  if (/tile\.openstreetmap\.org$/.test(url.hostname)) {
+  if (/tile\.openstreetmap\.org$/.test(url.hostname) || url.hostname === "server.arcgisonline.com") {
     e.respondWith(
       caches.open(CACHE_TILES).then((c) =>
         c.match(req).then((hit) =>

@@ -3,6 +3,14 @@
 //
 // Uso:  node scripts/geocode.mjs
 //
+// ⚠️  SÓ FAZ SENTIDO RODAR ANTES DO ENRIQUECIMENTO PELO GOOGLE PLACES.
+// Este script parte do arquivo ORIGINAL (data_pontos_interesse.json), que não
+// tem nada do que veio depois: horários, nome em japonês, notas, as lojas
+// adicionadas à mão nem os pontos removidos. Rodar hoje jogaria tudo fora.
+// Por isso ele se recusa a sobrescrever um arquivo já enriquecido — veja a
+// trava logo abaixo. Para corrigir coordenadas hoje, use:
+//     node scripts/enriquecer-places.mjs --corrigir
+//
 // Regras respeitadas: 1 requisição por segundo, User-Agent identificável,
 // resultados fora da área de Tóquio são descartados. O script é retomável:
 // se rodar de novo, reaproveita o que já foi resolvido no arquivo _geo.
@@ -17,6 +25,28 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, "..", "data");
 const SRC = join(DATA_DIR, "data_pontos_interesse.json");
 const OUT = join(DATA_DIR, "data_pontos_interesse_geo.json");
+
+// Trava: não deixa apagar o enriquecimento do Google por engano.
+if (existsSync(OUT) && !process.argv.includes("--forcar")) {
+  const atual = JSON.parse(readFileSync(OUT, "utf8"));
+  const enriquecidos = atual.filter((p) => p.place_id).length;
+  if (enriquecidos) {
+    console.error(`
+⛔ Parado pra não destruir dados.
+
+   ${OUT}
+   já tem ${enriquecidos} de ${atual.length} pontos enriquecidos pelo Google Places
+   (horários, nome em japonês, notas, coordenada exata).
+
+   Este script recomeça do zero a partir do arquivo original e apagaria tudo
+   isso — além das lojas adicionadas à mão e dos pontos removidos.
+
+   Para ajustar coordenadas hoje:  node scripts/enriquecer-places.mjs --corrigir
+   Se você REALMENTE quer recomeçar:  node scripts/geocode.mjs --forcar
+`);
+    process.exit(1);
+  }
+}
 
 // Caixa delimitadora aproximada da Grande Tóquio (23 distritos + oeste).
 const TOKYO = { minLat: 35.45, maxLat: 35.9, minLng: 139.4, maxLng: 139.95 };

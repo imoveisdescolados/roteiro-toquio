@@ -1,6 +1,6 @@
 /* ==========================================================================
    Guia Tóquio — lógica (vanilla JS)
-   "Montar o dia" (energia + clima + vibe + interesse) · Bairros · Combos · Mapa
+   Hoje (dia a dia) · Explorar (bairros + lugares + combos) · Mapa · Básico
    ========================================================================== */
 "use strict";
 
@@ -19,13 +19,21 @@ const CORES_CATEGORIA = {
 };
 const COR_PADRAO = "#6b7280";
 
-const ENERGIAS = { leve: "🟢 Leve", media: "🟡 Média", puxada: "🔴 Puxada" };
-const ENERGIA_DESC = { leve: "a pé de Ebisu", media: "1 trem direto", puxada: "baldeação / dia à parte" };
-const ENERGIA_COR = { leve: "#16a34a", media: "#d97706", puxada: "#dc2626" };
-const ORDEM_ENERGIA = ["leve", "media", "puxada"];
+// Como se chega ao bairro a partir de Ebisu — o fato, não uma nota abstrata.
+const MODOS = {
+  casa:      { rotulo: "🏠 É aqui que vocês ficam", curto: "🏠 Casa",       cor: "#7c3aed" },
+  pe:        { rotulo: "🚶 Dá pra ir a pé",         curto: "🚶 A pé",        cor: "#16a34a" },
+  trem:      { rotulo: "🚆 Um trem, sem trocar",    curto: "🚆 Trem direto", cor: "#2563eb" },
+  baldeacao: { rotulo: "🚆 Precisa baldear",        curto: "🚆 Baldeação",   cor: "#d97706" },
+};
+const ORDEM_MODO = ["casa", "pe", "trem", "baldeacao"];
+const MODOS_CHIP = ["pe", "trem", "baldeacao"];
+// Combos guardam energia (leve/media/puxada); traduzimos para o mesmo eixo.
+const ENERGIA_PARA_MODO = { leve: "pe", media: "trem", puxada: "baldeacao" };
 
 const CLIMAS = { sol: "☀️ Sol", nublado: "⛅ Nublado", chuva: "🌧️ Chuva" };
 const CLIMA_EMOJI = { sol: "☀️", nublado: "⛅", chuva: "🌧️" };
+const CLIMA_LABEL = { sol: "sol", nublado: "nublado", chuva: "chuva" };
 const ORDEM_CLIMA = ["sol", "nublado", "chuva"];
 
 const VIBES = {
@@ -44,91 +52,34 @@ const INTERESSES = {
 };
 const ORDEM_INTERESSE = ["compras", "comida", "templo", "museu", "parque", "papelaria", "artesanato", "eletronicos", "vida_noturna", "arquitetura", "vintage"];
 
-function energiaDe(tipoAcesso) {
-  if (tipoAcesso === "transfer") return "puxada";
-  if (tipoAcesso === "direct_train") return "media";
-  return "leve"; // base, walkable
-}
+const DATA_BADGE = {
+  feira: "Feira", feriado: "Feriado", evento: "Evento", reserva: "Reserva", fechamento: "Atenção",
+};
 
 /* -------------------------------- estado -------------------------------- */
 const estado = {
-  zonas: [],   // bairros + guia mesclados
+  zonas: [],
   pontos: [],
+  pontoByKey: new Map(),
+  pontosPorZona: new Map(),
   combos: [],
   datas: [],
-  sel: { energia: new Set(), clima: new Set(), vibe: new Set(), interesse: new Set() },
+  dias: [],
+  basico: [],
+  diaSel: null,             // índice do dia selecionado na aba Hoje
+  climaPorDia: new Map(),   // iso -> { cat, max, min }
+  climaAgora: null,
+  sel: { acesso: new Set(), clima: new Set(), vibe: new Set(), interesse: new Set() },
   mapaFiltros: { bairro: "", categoria: "", busca: "", soFav: false },
   map: null,
   camada: null,
+  tileLayer: null,
+  tileAtual: "latim",
   marcadores: [],
   fav: new Set(),
   notas: {},
   meuMarcador: null,
 };
-
-/* ------------------------------ favoritos ------------------------------- */
-const FAV_KEY = "guia_toquio_fav";
-const favKey = (p) => `${p.nome}|${p.bairro}`;
-function carregarFav() {
-  try { JSON.parse(localStorage.getItem(FAV_KEY) || "[]").forEach((k) => estado.fav.add(k)); } catch (e) {}
-}
-function salvarFav() {
-  try { localStorage.setItem(FAV_KEY, JSON.stringify([...estado.fav])); } catch (e) {}
-}
-function ehFav(p) { return estado.fav.has(favKey(p)); }
-
-/* ---------------------------- notas pessoais ---------------------------- */
-const NOTAS_KEY = "guia_toquio_notas";
-function carregarNotas() {
-  try { estado.notas = JSON.parse(localStorage.getItem(NOTAS_KEY) || "{}"); } catch (e) { estado.notas = {}; }
-}
-function salvarNotas() {
-  try { localStorage.setItem(NOTAS_KEY, JSON.stringify(estado.notas)); } catch (e) {}
-}
-function getNota(p) { return estado.notas[favKey(p)] || ""; }
-function getNotaPorChave(key) { return estado.notas[key] || ""; }
-function setNota(key, texto) {
-  const t = (texto || "").trim();
-  if (t) estado.notas[key] = t; else delete estado.notas[key];
-  salvarNotas();
-}
-
-/* --------------------- bloco de anotações livres ------------------------ */
-const BLOCO_KEY = "guia_toquio_bloco";
-function carregarBloco() {
-  try { const el = $("#anot-texto"); if (el) el.value = localStorage.getItem(BLOCO_KEY) || ""; } catch (e) {}
-}
-
-/* --------------------- lista "Meus favoritos" --------------------------- */
-function renderFavoritos() {
-  const cont = $("#fav-lista");
-  const cnt = $("#fav-count");
-  const keys = [...estado.fav];
-  if (cnt) cnt.textContent = keys.length;
-  if (!cont) return;
-  if (!keys.length) {
-    cont.innerHTML = `<p class="bloco__vazio">Nenhum favorito ainda. Toque na ⭐ de um lugar — no mapa ou na busca — pra ele aparecer aqui em destaque.</p>`;
-    return;
-  }
-  cont.innerHTML = keys.map((k) => {
-    const p = estado.pontoByKey.get(k);
-    if (!p) return "";
-    const zona = zonaDoBairro(p.bairro);
-    const nota = getNotaPorChave(k);
-    const maps = p.google_maps ? `<a class="pop__link pop__link--maps" href="${esc(p.google_maps)}" target="_blank" rel="noopener">Mapa</a>` : "";
-    const zonaLink = zona ? `<button type="button" class="link-zona" data-zona="${esc(zona)}">${esc(zona)}</button>` : esc(p.bairro);
-    return `
-      <div class="fav-item">
-        <button type="button" class="fav-mini is-on" data-favkey="${esc(k)}" title="Remover dos favoritos">★</button>
-        <div class="fav-item__corpo">
-          <div class="fav-item__nome">${esc(p.nome)} <span class="tag">${esc(p.categoria)}</span></div>
-          <div class="busca-item__linha">📍 ${zonaLink}</div>
-          ${nota ? `<div class="busca-item__nota">📝 ${esc(nota)}</div>` : ""}
-          ${maps ? `<div class="busca-item__acoes">${maps}</div>` : ""}
-        </div>
-      </div>`;
-  }).join("");
-}
 
 /* ------------------------------ utilidades ------------------------------ */
 const $ = (s, c = document) => c.querySelector(s);
@@ -138,10 +89,12 @@ function esc(t) {
   return String(t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 const corCategoria = (c) => CORES_CATEGORIA[c] || COR_PADRAO;
-const slug = (s) => (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const norm = (s) => (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+const semAcento = (s) => (s || "").normalize("NFD").replace(/[̀-ͯ]/g, "");
+const slug = (s) => semAcento(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const norm = (s) => semAcento(s || "").toLowerCase();
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const interseca = (arr, set) => (arr || []).some((x) => set.has(x));
+const debounce = (fn, ms) => { let id; return (...a) => { clearTimeout(id); id = setTimeout(() => fn(...a), ms); }; };
 
 // Mapeia o bairro (fino) de um ponto para a zona (do guia). Usa fronteira de
 // palavra pra não confundir "Meguro" com "Nakameguro".
@@ -155,26 +108,390 @@ function zonaDoBairro(bairro) {
   _cacheZona.set(bairro, nome);
   return nome;
 }
+const zonaPorNome = (nome) => estado.zonas.find((z) => z.zona === nome);
 const combosPorZona = (zona) => estado.combos.filter((c) => c.zonas.includes(zona));
+
+// Estação principal de uma zona, pra montar rota: "Ginza + Nihonbashi" → "Ginza".
+function estacaoDaZona(nome) {
+  const principal = (nome || "").split(/[+/(]/)[0].trim();
+  return `${principal} Station, Tokyo, Japan`;
+}
+
+/* --------------------------- Google Maps links -------------------------- */
+// Ordem de precisão: place_id do Google (exato, vem do enriquecimento) →
+// coordenada confiável → busca por texto (para os pontos ainda aproximados,
+// onde o nome acerta mais que o pin).
+function destinoDe(p) {
+  if (p.place_id) return p.nome;
+  if (p.lat != null && p.lng != null && !p.geo_jitter) return `${p.lat},${p.lng}`;
+  return [p.nome, p.endereco, "Tokyo, Japan"].filter(Boolean).join(", ");
+}
+const urlVer = (destino, placeId) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destino)}` +
+  (placeId ? `&query_place_id=${encodeURIComponent(placeId)}` : "");
+const urlRota = (destino, placeId) =>
+  `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destino)}` +
+  (placeId ? `&destination_place_id=${encodeURIComponent(placeId)}` : "") + "&travelmode=transit";
+
+/* ------------------------------ persistência ---------------------------- */
+const FAV_KEY = "guia_toquio_fav";
+const NOTAS_KEY = "guia_toquio_notas";
+const BLOCO_KEY = "guia_toquio_bloco";
+const CASA_KEY = "guia_toquio_casa";
+const TILE_KEY = "guia_toquio_tile";
+const CASA_PADRAO = "Ebisu Station, Shibuya City, Tokyo, Japan";
+
+const ls = {
+  get(k, def = null) { try { return localStorage.getItem(k) ?? def; } catch (e) { return def; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+};
+
+const favKey = (p) => `${p.nome}|${p.bairro}`;
+function carregarFav() {
+  try { JSON.parse(ls.get(FAV_KEY, "[]")).forEach((k) => estado.fav.add(k)); } catch (e) {}
+}
+const salvarFav = () => ls.set(FAV_KEY, JSON.stringify([...estado.fav]));
+const ehFav = (p) => estado.fav.has(favKey(p));
+
+function carregarNotas() {
+  try { estado.notas = JSON.parse(ls.get(NOTAS_KEY, "{}")); } catch (e) { estado.notas = {}; }
+}
+const salvarNotas = () => ls.set(NOTAS_KEY, JSON.stringify(estado.notas));
+const getNota = (p) => estado.notas[favKey(p)] || "";
+const getNotaPorChave = (k) => estado.notas[k] || "";
+function setNota(key, texto) {
+  const t = (texto || "").trim();
+  if (t) estado.notas[key] = t; else delete estado.notas[key];
+  salvarNotas();
+}
+
+const getCasa = () => (ls.get(CASA_KEY, "") || "").trim() || CASA_PADRAO;
+function atualizarBotaoCasa() {
+  const b = $("#btn-casa");
+  if (b) b.href = urlRota(getCasa());
+}
 
 /* -------------------------------- carga --------------------------------- */
 async function carregarDados() {
   const pega = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(`Falha ao carregar ${u} (${r.status})`); return r.json(); });
-  const [bairros, guia, pontos, combos, datas] = await Promise.all([
+  const [bairros, guia, pontos, combos, datas, dias, basico] = await Promise.all([
     pega("data/data_bairros.json"),
     pega("data/bairros_guia.json"),
     pega("data/data_pontos_interesse_geo.json"),
     pega("data/combos.json"),
     pega("data/datas.json"),
+    pega("data/dias.json"),
+    pega("data/basico.json"),
   ]);
-  estado.zonas = bairros.map((b) => ({ ...b, ...(guia[b.zona] || {}), energia: energiaDe(b.tipo_acesso) }));
+  estado.zonas = bairros.map((b) => ({ ...b, ...(guia[b.zona] || {}) }));
   estado.pontos = pontos;
   estado.pontoByKey = new Map(pontos.map((p) => [favKey(p), p]));
-  estado.combos = combos;
+  estado.combos = combos.map((c) => ({ ...c, modo: modoDoCombo(c) }));
   estado.datas = datas;
+  estado.dias = dias;
+  estado.basico = basico;
+
+  // Índice bairro → lugares, pra mostrar os pontos dentro da ficha do bairro.
+  const porZona = new Map();
+  for (const p of pontos) {
+    const z = zonaDoBairro(p.bairro);
+    if (!z) continue;
+    if (!porZona.has(z)) porZona.set(z, []);
+    porZona.get(z).push(p);
+  }
+  estado.pontosPorZona = porZona;
 }
 
-/* ------------------------------ chips (montar) -------------------------- */
+// O combo é tão difícil quanto o bairro mais difícil que ele inclui.
+function modoDoCombo(c) {
+  let pior = 0;
+  for (const nome of c.zonas) {
+    const z = zonaPorNome(nome);
+    const i = ORDEM_MODO.indexOf(z?.modo || ENERGIA_PARA_MODO[c.energia] || "trem");
+    if (i > pior) pior = i;
+  }
+  return ORDEM_MODO[pior];
+}
+
+/* ---------------------------- sol (nascer/pôr) --------------------------- */
+// Algoritmo clássico do almanaque. Roda offline — nenhuma API envolvida.
+function horaSolar(ano, mes, dia, lat, lng, tz, nascendo) {
+  const rad = Math.PI / 180, deg = 180 / Math.PI;
+  const N = Math.floor(275 * mes / 9) - Math.floor((mes + 9) / 12) *
+    (1 + Math.floor((ano - 4 * Math.floor(ano / 4) + 2) / 3)) + dia - 30;
+  const lngHora = lng / 15;
+  const t = N + ((nascendo ? 6 : 18) - lngHora) / 24;
+  const M = 0.9856 * t - 3.289;
+  let L = M + 1.916 * Math.sin(M * rad) + 0.020 * Math.sin(2 * M * rad) + 282.634;
+  L = (L % 360 + 360) % 360;
+  let RA = deg * Math.atan(0.91764 * Math.tan(L * rad));
+  RA = (RA % 360 + 360) % 360;
+  RA = (RA + (Math.floor(L / 90) * 90 - Math.floor(RA / 90) * 90)) / 15;
+  const sinDec = 0.39782 * Math.sin(L * rad);
+  const cosDec = Math.cos(Math.asin(sinDec));
+  const cosH = (Math.cos(90.833 * rad) - sinDec * Math.sin(lat * rad)) / (cosDec * Math.cos(lat * rad));
+  if (cosH > 1 || cosH < -1) return null;
+  const H = (nascendo ? 360 - deg * Math.acos(cosH) : deg * Math.acos(cosH)) / 15;
+  let local = (H + RA - 0.06571 * t - 6.622 - lngHora + tz) % 24;
+  if (local < 0) local += 24;
+  return local;
+}
+function hhmm(h) {
+  if (h == null) return "";
+  let m = Math.round(h * 60);
+  m = ((m % 1440) + 1440) % 1440;
+  return `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
+}
+function solDoDia(iso) {
+  const [a, m, d] = iso.split("-").map(Number);
+  return {
+    nascer: hhmm(horaSolar(a, m, d, 35.6762, 139.6503, 9, true)),
+    por: hhmm(horaSolar(a, m, d, 35.6762, 139.6503, 9, false)),
+  };
+}
+
+/* ------------------------------- horários -------------------------------- */
+// O dia de referência é o que estiver escolhido na aba Hoje: olhando o plano de
+// terça, cada lugar mostra o horário de terça — e avisa se fecha nesse dia.
+const diaReferencia = () => estado.dias[estado.diaSel]?.data || hojeEmTokyo();
+
+// O Google devolve `weekdayDescriptions` começando na segunda; JS conta a
+// semana começando no domingo.
+function horarioDoDia(p, iso) {
+  const linhas = p.horarios?.descricao;
+  if (!linhas || !linhas.length) return null;
+  const [a, m, d] = iso.split("-").map(Number);
+  const dow = new Date(Date.UTC(a, m - 1, d)).getUTCDay();
+  const linha = linhas[(dow + 6) % 7];
+  if (!linha) return null;
+  const texto = linha.includes(":") ? linha.slice(linha.indexOf(":") + 1).trim() : linha.trim();
+  return { texto, dia: DIAS_SEMANA[dow], fechado: /fechad|closed/i.test(texto) };
+}
+
+function horariosHTML(p) {
+  const h = horarioDoDia(p, diaReferencia());
+  if (!h) return "";
+  const semana = (p.horarios.descricao || []).map((l) => `<li>${esc(l)}</li>`).join("");
+  return `
+    <p class="lugar__horario${h.fechado ? " lugar__horario--fechado" : ""}">
+      ${h.fechado ? `⚠️ Fechado ${esc(h.dia)}` : `🕐 ${esc(h.dia)}: ${esc(h.texto)}`}
+    </p>
+    ${semana ? `<details class="horario-semana"><summary>ver a semana</summary><ul>${semana}</ul></details>` : ""}`;
+}
+
+function metaHTML(p) {
+  const bits = [];
+  if (p.google_nota != null) bits.push(`⭐ ${esc(p.google_nota)}${p.google_avaliacoes ? ` <small>(${esc(p.google_avaliacoes)})</small>` : ""}`);
+  if (p.faixa_preco) bits.push(esc(p.faixa_preco));
+  if (p.telefone) bits.push(`📞 ${esc(p.telefone)}`);
+  if (p.situacao === "CLOSED_PERMANENTLY") bits.push(`<strong style="color:#dc2626">fechou em definitivo</strong>`);
+  return bits.length ? `<p class="lugar__meta">${bits.join(" · ")}</p>` : "";
+}
+
+// Nome e endereço em japonês, pra mostrar ao taxista ou colar numa máquina.
+function japonesHTML(p) {
+  if (!p.nome_ja) return "";
+  const copiar = [p.nome_ja, p.endereco_ja].filter(Boolean).join("\n");
+  return `<div class="lugar__ja">
+      <span class="lugar__ja-txt">${esc(p.nome_ja)}${p.endereco_ja ? `<br><small>${esc(p.endereco_ja)}</small>` : ""}</span>
+      <button type="button" class="btn-copiar" data-copiar="${esc(copiar)}" title="Copiar em japonês">📋</button>
+    </div>`;
+}
+
+/* --------------------------------- datas -------------------------------- */
+const DIAS_SEMANA = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
+const MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+
+function hojeEmTokyo() {
+  try {
+    return new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+  } catch (e) {
+    return new Date().toISOString().slice(0, 10);
+  }
+}
+function porExtenso(iso) {
+  const [a, m, d] = iso.split("-").map(Number);
+  const dow = new Date(Date.UTC(a, m - 1, d)).getUTCDay();
+  return `${DIAS_SEMANA[dow]}, ${d} de ${MESES[m - 1]}`;
+}
+const diffDias = (isoA, isoB) => Math.round((Date.parse(isoB + "T00:00:00Z") - Date.parse(isoA + "T00:00:00Z")) / 86400000);
+
+/* =========================== ABA HOJE ==================================== */
+function indiceDoDiaAtual() {
+  const hoje = hojeEmTokyo();
+  const i = estado.dias.findIndex((d) => d.data === hoje);
+  if (i >= 0) return i;
+  return diffDias(hoje, estado.dias[0].data) > 0 ? 0 : estado.dias.length - 1;
+}
+
+function renderStripDias() {
+  const hoje = hojeEmTokyo();
+  $("#hoje-dias").innerHTML = estado.dias.map((d, i) => {
+    const c = estado.climaPorDia.get(d.data);
+    const ehHoje = d.data === hoje;
+    return `<button type="button" class="dia-chip${i === estado.diaSel ? " is-on" : ""}${ehHoje ? " is-hoje" : ""}"
+              data-dia="${i}" role="tab" aria-selected="${i === estado.diaSel}">
+        <span class="dia-chip__rot">${esc(d.rotulo)}</span>
+        <span class="dia-chip__meta">${ehHoje ? "hoje" : c ? `${CLIMA_EMOJI[c.cat]} ${c.max}°` : `dia ${d.dia}`}</span>
+      </button>`;
+  }).join("");
+}
+
+function avisoDaViagem() {
+  const box = $("#hoje-aviso-viagem");
+  const hoje = hojeEmTokyo();
+  const faltam = diffDias(hoje, estado.dias[0].data);
+  const passou = diffDias(estado.dias[estado.dias.length - 1].data, hoje);
+  if (faltam > 0) {
+    box.hidden = false;
+    box.innerHTML = `✈️ <strong>Faltam ${faltam} dia${faltam > 1 ? "s" : ""}</strong> pra viagem começar.
+      Enquanto isso, vale ler a aba <strong>Básico</strong> e resolver as pendências marcadas nos dias.`;
+  } else if (passou > 0) {
+    box.hidden = false;
+    box.innerHTML = `🎌 A etapa Tóquio terminou. O guia continua aqui pra consulta.`;
+  } else {
+    box.hidden = true;
+  }
+}
+
+// Um aviso só entra no dia se for acionável nele: ou é geral (feriado, museu
+// fechado), ou é de um bairro que está no plano de hoje. Sem isso, "Ginza vira
+// calçadão" apareceria num dia em Ueno, virando ruído.
+// Como o campo `fecha_em` nomeia os dias (ver scripts/enriquecer-places.mjs).
+const DIA_CURTO = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
+
+// Lugares dos bairros de hoje que fecham justamente hoje. É a armadilha clássica:
+// ir a Nihonbashi num domingo e achar as lojas centenárias de portas fechadas.
+function fechadosNoDia(dia) {
+  const [a, m, d] = dia.data.split("-").map(Number);
+  const nomeDia = DIA_CURTO[new Date(Date.UTC(a, m - 1, d)).getUTCDay()];
+  const out = [];
+  for (const zona of dia.zonas) {
+    for (const p of estado.pontosPorZona.get(zona) || []) {
+      if (p.horarios?.fecha_em?.includes(nomeDia)) out.push(p);
+    }
+  }
+  return { nomeDia, lista: out };
+}
+
+function alertasDoDia(dia) {
+  return estado.datas.filter((d) => {
+    if (!(d.dias || []).includes(dia.data)) return false;
+    return !d.zona || dia.zonas.includes(d.zona);
+  });
+}
+
+function renderHoje() {
+  avisoDaViagem();
+  renderStripDias();
+
+  const d = estado.dias[estado.diaSel];
+  const sol = solDoDia(d.data);
+  const clima = estado.climaPorDia.get(d.data);
+  const alertas = alertasDoDia(d);
+  const ehHoje = d.data === hojeEmTokyo();
+
+  const climaHTML = clima
+    ? `<span class="hoje-faixa__item">${CLIMA_EMOJI[clima.cat]} ${clima.max}°/${clima.min}° · ${esc(CLIMA_LABEL[clima.cat])}</span>`
+    : `<span class="hoje-faixa__item hoje-faixa__item--fraco">🌡️ previsão só a partir de ~7 dias antes</span>`;
+
+  const zonasHTML = d.zonas.map((nome) => {
+    const z = zonaPorNome(nome);
+    if (!z) return "";
+    const m = MODOS[z.modo] || MODOS.trem;
+    const destino = estacaoDaZona(nome);
+    return `
+      <div class="hoje-zona" style="border-left-color:${m.cor}">
+        <div class="hoje-zona__nome">${esc(nome)}</div>
+        <div class="hoje-zona__como" style="color:${m.cor}">${esc(z.tempo_ate || m.rotulo)}</div>
+        ${z.vibe ? `<p class="hoje-zona__vibe">${esc(z.vibe)}</p>` : ""}
+        <div class="acoes">
+          ${z.modo !== "casa" ? `<a class="btn-acao btn-acao--rota" href="${esc(urlRota(destino))}" target="_blank" rel="noopener">🧭 Como chegar</a>` : ""}
+          <button type="button" class="btn-acao link-zona" data-zona="${esc(nome)}">📖 Ver o bairro</button>
+          <button type="button" class="btn-acao btn-mapa-zona" data-zona="${esc(nome)}">🗺️ No mapa</button>
+        </div>
+      </div>`;
+  }).join("");
+
+  const blocosHTML = (d.blocos || []).map((b) => `
+      <div class="bloco-hora">
+        <div class="bloco-hora__quando">${esc(b.quando)}</div>
+        <p class="bloco-hora__texto">${esc(b.texto)}</p>
+      </div>`).join("");
+
+  const alertasHTML = alertas.map(dataItemHTML).join("");
+
+  $("#hoje-conteudo").innerHTML = `
+    <div class="hoje-cab">
+      <div class="hoje-cab__dia">${ehHoje ? "HOJE · " : ""}Dia ${d.dia} de ${estado.dias.length}</div>
+      <h2 class="hoje-cab__data">${esc(porExtenso(d.data))}</h2>
+      <p class="hoje-cab__tema">${esc(d.tema)}</p>
+    </div>
+
+    <div class="hoje-faixa">
+      ${climaHTML}
+      <span class="hoje-faixa__item">🌇 sol se põe ${esc(sol.por)}</span>
+    </div>
+
+    ${d.status ? `<div class="pendencia">${esc(d.status)}</div>` : ""}
+    ${fechadosHTML(d)}
+    ${alertasHTML ? `<div class="hoje-alertas">${alertasHTML}</div>` : ""}
+
+    <p class="hoje-resumo">${esc(d.resumo)}</p>
+
+    ${zonasHTML ? `<h3 class="secao">Onde é o dia</h3>${zonasHTML}` : ""}
+    ${blocosHTML ? `<h3 class="secao">Como distribuir</h3><div class="blocos-hora">${blocosHTML}</div>` : ""}
+
+    <h3 class="secao">Planos B</h3>
+    <div class="planoB">
+      ${d.se_chuva ? `<div class="planoB__item"><span class="planoB__rot">🌧️ Se chover</span>${esc(d.se_chuva)}</div>` : ""}
+      ${d.se_cansado ? `<div class="planoB__item"><span class="planoB__rot">😮‍💨 Se cansar</span>${esc(d.se_cansado)}</div>` : ""}
+    </div>
+
+    <a class="btn-casa-grande" href="${esc(urlRota(getCasa()))}" target="_blank" rel="noopener">
+      🏠 Rota de volta pra casa
+    </a>
+
+    <details class="bloco" id="todas-datas">
+      <summary>📅 Todas as datas presas da viagem <span class="bloco__dica">${estado.datas.length} avisos</span></summary>
+      <div class="bloco__conteudo">
+        <div class="hoje-alertas">${estado.datas.map(dataItemHTML).join("")}</div>
+      </div>
+    </details>`;
+}
+
+function fechadosHTML(dia) {
+  const { nomeDia, lista } = fechadosNoDia(dia);
+  if (!lista.length) return "";
+  return `
+    <details class="fechados">
+      <summary>
+        🚪 <strong>${lista.length} lugar${lista.length > 1 ? "es" : ""} do roteiro de hoje fecha${lista.length > 1 ? "m" : ""} ${esc(nomeDia)}</strong>
+        <span class="bloco__dica">toque para ver</span>
+      </summary>
+      <div class="fechados__lista">
+        ${lista.map((p) => `<div class="fechados__item">
+            <strong>${esc(p.nome)}</strong>${p.nome_ja ? ` <span class="fechados__ja">${esc(p.nome_ja)}</span>` : ""}
+            <br><span class="fechados__sub">${esc(p.bairro)} · ${esc(p.categoria)}</span>
+          </div>`).join("")}
+      </div>
+    </details>`;
+}
+
+function dataItemHTML(a) {
+  return `
+    <div class="data-item data-item--${esc(a.tipo)}">
+      <div class="data-item__topo">
+        <span class="data-item__badge">${esc(DATA_BADGE[a.tipo] || a.tipo)}</span>
+        <span class="data-item__quando">${esc(a.quando)}</span>
+      </div>
+      <p class="data-item__titulo">${esc(a.titulo)}</p>
+      <p class="data-item__desc">${esc(a.desc)}</p>
+      ${a.zona ? `<button type="button" class="link-zona" data-zona="${esc(a.zona)}">${esc(a.zona)}</button>` : ""}
+    </div>`;
+}
+
+/* ========================== ABA EXPLORAR ================================= */
 function montarChips(containerId, grupo, ordem, rotulos, usados) {
   const cont = $("#" + containerId);
   const lista = ordem.filter((v) => !usados || usados.has(v));
@@ -186,7 +503,8 @@ function montarChips(containerId, grupo, ordem, rotulos, usados) {
 function initChips() {
   const usadosVibe = new Set(estado.zonas.flatMap((z) => z.tags_vibe || []));
   const usadosInt = new Set(estado.zonas.flatMap((z) => z.tags_interesse || []));
-  montarChips("chips-energia", "energia", ORDEM_ENERGIA, ENERGIAS);
+  const rotulosModo = Object.fromEntries(MODOS_CHIP.map((m) => [m, MODOS[m].curto]));
+  montarChips("chips-energia", "acesso", MODOS_CHIP, rotulosModo);
   montarChips("chips-clima", "clima", ORDEM_CLIMA, CLIMAS);
   montarChips("chips-vibe", "vibe", ORDEM_VIBE, VIBES, usadosVibe);
   montarChips("chips-interesse", "interesse", ORDEM_INTERESSE, INTERESSES, usadosInt);
@@ -197,15 +515,15 @@ function initChips() {
       const set = estado.sel[g];
       if (set.has(v)) { set.delete(v); chip.classList.remove("is-on"); }
       else { set.add(v); chip.classList.add("is-on"); }
-      montarFiltrar();
+      explorarFiltrar();
     });
   });
 }
 
-/* --------------------------- filtro "montar" ---------------------------- */
 function zonaPassa(z) {
   const s = estado.sel;
-  if (s.energia.size && !s.energia.has(z.energia)) return false;
+  // Ebisu é onde eles moram: nunca some por causa do filtro de deslocamento.
+  if (s.acesso.size && z.modo !== "casa" && !s.acesso.has(z.modo)) return false;
   if (s.clima.size && !interseca(z.clima, s.clima)) return false;
   if (s.vibe.size && !interseca(z.tags_vibe, s.vibe)) return false;
   if (s.interesse.size && !interseca(z.tags_interesse, s.interesse)) return false;
@@ -213,44 +531,58 @@ function zonaPassa(z) {
 }
 function comboInteresses(c) {
   const set = new Set();
-  c.zonas.forEach((nome) => {
-    const z = estado.zonas.find((x) => x.zona === nome);
-    (z?.tags_interesse || []).forEach((t) => set.add(t));
-  });
+  c.zonas.forEach((nome) => (zonaPorNome(nome)?.tags_interesse || []).forEach((t) => set.add(t)));
   return [...set];
 }
 function comboPassa(c) {
   const s = estado.sel;
-  if (s.energia.size && !s.energia.has(c.energia)) return false;
+  if (s.acesso.size && !s.acesso.has(c.modo)) return false;
   if (s.clima.size && !interseca(c.clima, s.clima)) return false;
   if (s.vibe.size && !interseca(c.tags_vibe, s.vibe)) return false;
   if (s.interesse.size && !interseca(comboInteresses(c), s.interesse)) return false;
   return true;
 }
 
-function montarFiltrar() {
-  const zonas = estado.zonas.filter(zonaPassa).sort((a, b) =>
-    ORDEM_ENERGIA.indexOf(a.energia) - ORDEM_ENERGIA.indexOf(b.energia) || a.zona.localeCompare(b.zona, "pt"));
+function explorarFiltrar() {
+  const zonas = estado.zonas.filter(zonaPassa).sort(ordenarZonas);
   const combos = estado.combos.filter(comboPassa);
-
   const totalSel = Object.values(estado.sel).reduce((n, s) => n + s.size, 0);
-  $("#montar-contador").textContent = totalSel === 0
-    ? `${zonas.length} bairros · ${combos.length} combos`
-    : `${zonas.length} bairro(s) · ${combos.length} combo(s) no seu filtro`;
 
-  const res = $("#montar-resultado");
+  $("#montar-contador").textContent = `${zonas.length} bairro(s) · ${combos.length} roteiro(s)`;
+  $("#filtros-resumo").textContent = totalSel === 0
+    ? "tudo aparecendo"
+    : `${totalSel} filtro(s) · ${zonas.length} bairro(s)`;
+  $("#filtros-box").classList.toggle("tem-filtro", totalSel > 0);
+
+  const res = $("#explorar-resultado");
   if (!zonas.length && !combos.length) {
-    res.innerHTML = `<p class="vazio">Nada bate com essa combinação. Tente afrouxar um filtro (ex.: menos vibes).</p>`;
+    res.innerHTML = `<p class="vazio">Nada bate com essa combinação. Tente tirar um filtro.</p>`;
     return;
   }
+
+  const grupos = ORDEM_MODO.map((modo) => {
+    const doGrupo = zonas.filter((z) => z.modo === modo);
+    if (!doGrupo.length) return "";
+    const m = MODOS[modo];
+    return `
+      <div class="grupo-modo">
+        <h3 class="grupo-modo__cab" style="color:${m.cor}">${esc(m.rotulo)}</h3>
+        ${doGrupo.map(fichaHTML).join("")}
+      </div>`;
+  }).join("");
+
   res.innerHTML =
-    (combos.length ? `<h3 class="resultado__cab">Combos que encaixam</h3><div class="combos-lista">${combos.map(comboHTML).join("")}</div>` : "") +
-    (zonas.length ? `<h3 class="resultado__cab">Bairros que encaixam</h3><div class="bairros-lista">${zonas.map(fichaHTML).join("")}</div>` : "");
+    (combos.length ? `<h3 class="secao">Roteiros prontos de um dia</h3><div class="combos-lista">${combos.map(comboHTML).join("")}</div>` : "") +
+    (zonas.length ? `<h3 class="secao">Bairros</h3>${grupos}` : "");
 }
 
+const ordenarZonas = (a, b) =>
+  ORDEM_MODO.indexOf(a.modo) - ORDEM_MODO.indexOf(b.modo) || a.zona.localeCompare(b.zona, "pt");
+
 /* ------------------------------- fichas --------------------------------- */
-function pilulaEnergia(en) {
-  return `<span class="pilula" style="background:${ENERGIA_COR[en]}1a;color:${ENERGIA_COR[en]}">${esc(ENERGIAS[en])}</span>`;
+function pilulaModo(z) {
+  const m = MODOS[z.modo] || MODOS.trem;
+  return `<span class="pilula" style="background:${m.cor}1a;color:${m.cor}">${esc(z.tempo_ate || m.curto)}</span>`;
 }
 function iconesClima(clima) {
   return `<span class="clima-icones" title="Bom para: ${(clima || []).join(", ")}">${(clima || []).map((c) => CLIMA_EMOJI[c]).join(" ")}</span>`;
@@ -262,132 +594,147 @@ function campo(rotulo, valor) {
   if (!valor || valor === "-") return "";
   return `<div class="ficha__campo"><span class="rotulo">${rotulo}</span>${esc(valor)}</div>`;
 }
+
+function lugarHTML(p) {
+  const fav = ehFav(p);
+  const nota = getNota(p);
+  const destino = destinoDe(p);
+  const site = p.site_oficial
+    ? `<a class="btn-acao" href="${esc(p.site_oficial)}" target="_blank" rel="noopener">🔗 Site</a>` : "";
+  const endExtra = p.endereco && p.endereco.trim().toLowerCase() !== (p.bairro || "").trim().toLowerCase()
+    ? `<p class="lugar__end">📍 ${esc(p.endereco)}</p>` : "";
+  return `
+    <div class="lugar">
+      <button type="button" class="fav-mini${fav ? " is-on" : ""}" data-favkey="${esc(favKey(p))}" title="Favoritar">${fav ? "★" : "☆"}</button>
+      <div class="lugar__corpo">
+        <div class="lugar__nome">${esc(p.nome)} <span class="tag" style="background:${corCategoria(p.categoria)}1a;color:${corCategoria(p.categoria)}">${esc(p.categoria)}</span></div>
+        ${japonesHTML(p)}
+        ${p.descricao ? `<p class="lugar__desc">${esc(p.descricao)}</p>` : ""}
+        ${horariosHTML(p)}
+        ${metaHTML(p)}
+        ${endExtra}
+        ${p.notas ? `<p class="lugar__notas">💡 ${esc(p.notas)}</p>` : ""}
+        ${nota ? `<p class="busca-item__nota">📝 ${esc(nota)}</p>` : ""}
+        <div class="acoes">
+          <a class="btn-acao btn-acao--rota" href="${esc(urlRota(destino, p.place_id))}" target="_blank" rel="noopener">🧭 Como chegar</a>
+          <a class="btn-acao" href="${esc(urlVer(destino, p.place_id))}" target="_blank" rel="noopener">📍 No Maps</a>
+          ${site}
+        </div>
+      </div>
+    </div>`;
+}
+
 function fichaHTML(z) {
+  const m = MODOS[z.modo] || MODOS.trem;
   const combina = (z.combina_com || [])
     .map((n) => `<button type="button" class="link-zona" data-zona="${esc(n)}">${esc(n)}</button>`).join(" · ");
   const imperdiveis = (z.imperdiveis || [])
     .map((d) => `<li><strong>${esc(d.nome)}</strong> — ${esc(d.nota)}</li>`).join("");
+  const lugares = estado.pontosPorZona.get(z.zona) || [];
+  const combos = combosPorZona(z.zona);
+  const destino = estacaoDaZona(z.zona);
+
   return `
-  <details class="ficha" id="ficha-${slug(z.zona)}" style="border-left-color:${ENERGIA_COR[z.energia]}">
+  <details class="ficha" id="ficha-${slug(z.zona)}" style="border-left-color:${m.cor}">
     <summary>
       <div class="ficha__topo">
         <span class="ficha__nome">${esc(z.zona)}</span>
-        <span class="ficha__meta">${pilulaEnergia(z.energia)} ${iconesClima(z.clima)}</span>
+        <span class="ficha__meta">${iconesClima(z.clima)}</span>
       </div>
+      <div class="ficha__acesso">${pilulaModo(z)}</div>
       ${z.vibe ? `<p class="ficha__vibe">${esc(z.vibe)}</p>` : ""}
       <div class="ficha__tags">${chipsTags(z.tags_interesse, INTERESSES)}</div>
     </summary>
     <div class="ficha__corpo">
       ${z.resumo ? `<p class="ficha__resumo">${esc(z.resumo)}</p>` : ""}
+
+      <div class="acoes acoes--ficha">
+        ${z.modo !== "casa" ? `<a class="btn-acao btn-acao--rota" href="${esc(urlRota(destino))}" target="_blank" rel="noopener">🧭 Como chegar</a>` : ""}
+        <button type="button" class="btn-acao btn-mapa-zona" data-zona="${esc(z.zona)}">🗺️ Ver no mapa</button>
+      </div>
+
       ${imperdiveis ? `<div class="ficha__campo"><span class="rotulo">✨ Não perca</span><ul class="ficha__imperdiveis">${imperdiveis}</ul></div>` : ""}
+
       <div class="ficha__linha">
         ${z.tempo_ideal ? `<span>⏱ ${esc(z.tempo_ideal)}</span>` : ""}
         ${z.movimento ? `<span>📊 ${esc(z.movimento)}</span>` : ""}
         ${z.melhor_momento ? `<span>🕑 ${esc(z.melhor_momento)}</span>` : ""}
       </div>
+
       ${campo("Como chegar", z.como_chegar)}
       ${z.clima_nota ? `<p class="ficha__clima">${(z.clima || []).map((c) => CLIMA_EMOJI[c]).join(" ")} ${esc(z.clima_nota)}</p>` : ""}
-      ${campo("Atrações", z.atracoes)}
-      ${campo("Compras", z.compras)}
       ${campo("Comida / vida noturna", z.comida_vida_noturna)}
       ${campo("Notas", z.notas)}
+
+      ${lugares.length ? `
+        <details class="sub-bloco">
+          <summary>📍 ${lugares.length} lugar(es) mapeado(s) neste bairro</summary>
+          <div class="lugares-lista">${lugares.map(lugarHTML).join("")}</div>
+        </details>` : ""}
+
+      ${combos.length ? `<div class="ficha__campo"><span class="rotulo">Roteiros que passam aqui</span><span class="combina">${
+        combos.map((c) => `<button type="button" class="link-combo" data-comboid="${esc(c.id)}">${esc(c.nome)}</button>`).join(" · ")
+      }</span></div>` : ""}
+
       ${combina ? `<div class="ficha__campo"><span class="rotulo">Combina com</span><span class="combina">${combina}</span></div>` : ""}
     </div>
   </details>`;
 }
 
-/* ------------------------------- combos --------------------------------- */
 function comboHTML(c) {
+  const m = MODOS[c.modo] || MODOS.trem;
   const zonas = c.zonas
     .map((n) => `<button type="button" class="link-zona" data-zona="${esc(n)}">${esc(n)}</button>`).join(" → ");
   return `
-  <details class="combo" data-comboid="${esc(c.id)}" style="border-left-color:${ENERGIA_COR[c.energia]}">
+  <details class="combo" data-comboid="${esc(c.id)}" style="border-left-color:${m.cor}">
     <summary>
       <div class="ficha__topo">
         <span class="ficha__nome">${esc(c.nome)}</span>
-        <span class="ficha__meta">${pilulaEnergia(c.energia)} ${iconesClima(c.clima)}</span>
+        <span class="ficha__meta">${iconesClima(c.clima)}</span>
       </div>
-      <div class="ficha__linha"><span>⏱ ${esc(c.tempo)}</span></div>
+      <div class="ficha__linha"><span>⏱ ${esc(c.tempo)}</span><span style="color:${m.cor}">${esc(m.curto)}</span></div>
       <div class="ficha__tags">${chipsTags(c.tags_vibe, VIBES)}</div>
     </summary>
     <div class="ficha__corpo">
-      <div class="ficha__campo"><span class="rotulo">Bairros</span><span class="combina">${zonas}</span></div>
+      <div class="ficha__campo"><span class="rotulo">Bairros, nesta ordem</span><span class="combina">${zonas}</span></div>
       <div class="ficha__campo"><span class="rotulo">Roteiro</span>${esc(c.roteiro)}</div>
       <p class="combo__porque">${esc(c.porque)}</p>
     </div>
   </details>`;
 }
 
-/* -------------------------------- datas --------------------------------- */
-const DATA_BADGE = {
-  feira: "Feira", feriado: "Feriado", evento: "Evento", reserva: "Reserva", fechamento: "Atenção",
-};
-function renderDatas() {
-  $("#datas-lista").innerHTML = estado.datas
-    .map((d) => `
-      <div class="data-item data-item--${esc(d.tipo)}">
-        <div class="data-item__topo">
-          <span class="data-item__badge">${esc(DATA_BADGE[d.tipo] || d.tipo)}</span>
-          <span class="data-item__quando">${esc(d.quando)}</span>
-        </div>
-        <p class="data-item__titulo">${esc(d.titulo)}</p>
-        <p class="data-item__desc">${esc(d.desc)}</p>
-      </div>`)
-    .join("");
-}
-
-/* ------------------------------ Bairros tab ----------------------------- */
-function renderBairros() {
-  const zonas = [...estado.zonas].sort((a, b) =>
-    ORDEM_ENERGIA.indexOf(a.energia) - ORDEM_ENERGIA.indexOf(b.energia) || a.zona.localeCompare(b.zona, "pt"));
-  const grupos = ORDEM_ENERGIA.map((en) => {
-    const doGrupo = zonas.filter((z) => z.energia === en);
-    if (!doGrupo.length) return "";
-    return `
-      <div class="grupo-energia">
-        <h2 class="grupo-energia__cab" style="color:${ENERGIA_COR[en]}">
-          ${esc(ENERGIAS[en])} <span class="grupo-energia__dica">${esc(ENERGIA_DESC[en])}</span>
-        </h2>
-        ${doGrupo.map(fichaHTML).join("")}
-      </div>`;
-  });
-  $("#bairros-lista").innerHTML = grupos.join("");
-}
-
-function renderCombos() {
-  $("#combos-lista").innerHTML = estado.combos.map(comboHTML).join("");
-}
-
-/* --------------------- abrir ficha a partir de um link ------------------ */
-function abrirFicha(zonaNome) {
-  trocarView("bairros");
-  const alvo = $("#ficha-" + slug(zonaNome), $("#view-bairros"));
-  if (alvo) {
-    alvo.open = true;
-    setTimeout(() => alvo.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+/* --------------------- lista "Meus favoritos" --------------------------- */
+function renderFavoritos() {
+  const cont = $("#fav-lista");
+  const cnt = $("#fav-count");
+  const keys = [...estado.fav];
+  if (cnt) cnt.textContent = keys.length;
+  if (!cont) return;
+  if (!keys.length) {
+    cont.innerHTML = `<p class="bloco__vazio">Nenhum favorito ainda. Toque na ⭐ de um lugar — no mapa, na busca ou dentro do bairro — pra ele aparecer aqui.</p>`;
+    return;
   }
+  cont.innerHTML = keys.map((k) => {
+    const p = estado.pontoByKey.get(k);
+    if (!p) return "";
+    const zona = zonaDoBairro(p.bairro);
+    const nota = getNotaPorChave(k);
+    const destino = destinoDe(p);
+    const zonaLink = zona ? `<button type="button" class="link-zona" data-zona="${esc(zona)}">${esc(zona)}</button>` : esc(p.bairro);
+    return `
+      <div class="fav-item">
+        <button type="button" class="fav-mini is-on" data-favkey="${esc(k)}" title="Remover dos favoritos">★</button>
+        <div class="fav-item__corpo">
+          <div class="fav-item__nome">${esc(p.nome)} <span class="tag">${esc(p.categoria)}</span></div>
+          <div class="busca-item__linha">📍 ${zonaLink}</div>
+          ${nota ? `<div class="busca-item__nota">📝 ${esc(nota)}</div>` : ""}
+          <div class="acoes">
+            <a class="btn-acao btn-acao--rota" href="${esc(urlRota(destino, p.place_id))}" target="_blank" rel="noopener">🧭 Como chegar</a>
+          </div>
+        </div>
+      </div>`;
+  }).join("");
 }
-function abrirCombo(id) {
-  trocarView("combos");
-  const alvo = document.querySelector(`#view-combos [data-comboid="${CSS.escape(id)}"]`);
-  if (alvo) { alvo.open = true; setTimeout(() => alvo.scrollIntoView({ behavior: "smooth", block: "start" }), 80); }
-}
-document.addEventListener("click", (e) => {
-  const lz = e.target.closest(".link-zona");
-  if (lz) { e.preventDefault(); abrirFicha(lz.dataset.zona); return; }
-  const lc = e.target.closest(".link-combo");
-  if (lc) { e.preventDefault(); abrirCombo(lc.dataset.comboid); return; }
-  const fb = e.target.closest("[data-favkey]");
-  if (fb) { e.preventDefault(); toggleFav(fb.dataset.favkey); return; }
-  const cb = e.target.closest(".clima-dia, .clima-agora__btn");
-  if (cb) { e.preventDefault(); aplicarClimaChip(cb.dataset.clima); }
-});
-
-// Salva a nota pessoal enquanto digita (no popup do mapa).
-document.addEventListener("input", (e) => {
-  const ta = e.target.closest(".pop__nota");
-  if (ta) setNota(ta.dataset.notakey, ta.value);
-});
 
 function toggleFav(key) {
   if (estado.fav.has(key)) estado.fav.delete(key); else estado.fav.add(key);
@@ -399,11 +746,16 @@ function toggleFav(key) {
     const pop = item.marker.getPopup();
     if (pop && pop.isOpen()) pop.setContent(popupHTML(item.ponto));
   }
+  // Atualiza a estrela onde ela estiver visível, sem redesenhar o mundo.
+  $$(`[data-favkey="${CSS.escape(key)}"]`).forEach((b) => {
+    const on = estado.fav.has(key);
+    b.classList.toggle("is-on", on);
+    if (b.classList.contains("fav-mini")) b.textContent = on ? "★" : "☆";
+    if (b.classList.contains("pop__fav")) b.textContent = on ? "★ Nos favoritos" : "☆ Salvar nos favoritos";
+  });
   atualizarBotaoFav();
   renderFavoritos();
   if (estado.mapaFiltros.soFav) aplicarFiltrosMapa();
-  const bg = $("#busca-global");
-  if (bg && bg.value.trim().length >= 2) buscaGlobal(bg.value); // atualiza estrelas na busca
 }
 function atualizarBotaoFav() {
   const b = $("#fav-toggle");
@@ -411,93 +763,110 @@ function atualizarBotaoFav() {
 }
 
 /* --------------------------- busca global ------------------------------- */
-function comboLinks(zona) {
-  const combos = zona ? combosPorZona(zona) : [];
-  return combos.length
-    ? combos.map((c) => `<button type="button" class="link-combo" data-comboid="${esc(c.id)}">${esc(c.nome)}</button>`).join(", ")
-    : `<span class="busca-item__sub">nenhum combo</span>`;
-}
-
 function buscaGlobal(q) {
   const box = $("#busca-global-res");
   const nq = norm(q).trim();
   if (nq.length < 2) { box.hidden = true; box.innerHTML = ""; return; }
 
-  // Bairros que casam (nome da zona, vibe ou destaques)
   const zonas = estado.zonas.filter((z) =>
     norm(z.zona).includes(nq) || norm(z.vibe).includes(nq) ||
     (z.tags_vibe || []).some((t) => norm(VIBES[t] || t).includes(nq)) ||
     (z.destaques || []).some((d) => norm(d).includes(nq))
-  ).sort((a, b) => ORDEM_ENERGIA.indexOf(a.energia) - ORDEM_ENERGIA.indexOf(b.energia) || a.zona.localeCompare(b.zona, "pt"));
+  ).sort(ordenarZonas);
 
   const bairrosHTML = zonas.map((z) => `
       <div class="busca-item">
         <div class="busca-item__nome">
           <button type="button" class="link-zona busca-item__link" data-zona="${esc(z.zona)}">${esc(z.zona)}</button>
-          ${pilulaEnergia(z.energia)}
         </div>
+        <div class="busca-item__linha">${pilulaModo(z)}</div>
         ${z.vibe ? `<div class="busca-item__linha">${esc(z.vibe)}</div>` : ""}
-        <div class="busca-item__linha">🧩 ${comboLinks(z.zona)}</div>
       </div>`).join("");
 
-  // Lugares (pontos) que casam
   const pontos = estado.pontos.filter((p) =>
     norm(p.nome).includes(nq) || norm(p.categoria).includes(nq) ||
     norm(p.bairro).includes(nq) || norm(p.descricao).includes(nq));
-
-  const totalPontos = pontos.length;
-  const mostra = pontos.slice(0, 40);
+  const mostra = pontos.slice(0, 30);
 
   const linhas = mostra.map((p) => {
     const zona = zonaDoBairro(p.bairro);
-    const combos = zona ? combosPorZona(zona) : [];
     const zonaLink = zona
       ? `<button type="button" class="link-zona" data-zona="${esc(zona)}">${esc(zona)}</button>`
       : esc(p.bairro);
     const sub = zona && norm(zona).indexOf(norm(p.bairro)) === -1 ? ` <span class="busca-item__sub">(${esc(p.bairro)})</span>` : "";
-    const maps = p.google_maps ? `<a class="pop__link pop__link--maps" href="${esc(p.google_maps)}" target="_blank" rel="noopener">Google Maps</a>` : "";
+    const destino = destinoDe(p);
     const nota = getNota(p);
     return `
       <div class="busca-item">
         <div class="busca-item__nome"><button type="button" class="fav-mini${ehFav(p) ? " is-on" : ""}" data-favkey="${esc(favKey(p))}" title="Favoritar">${ehFav(p) ? "★" : "☆"}</button> ${esc(p.nome)} <span class="tag">${esc(p.categoria)}</span></div>
+        ${japonesHTML(p)}
+        ${p.descricao ? `<div class="busca-item__linha">${esc(p.descricao)}</div>` : ""}
+        ${horariosHTML(p)}
+        ${metaHTML(p)}
         <div class="busca-item__linha">📍 ${zonaLink}${sub}</div>
-        <div class="busca-item__linha">🧩 ${comboLinks(zona)}</div>
         ${nota ? `<div class="busca-item__nota">📝 ${esc(nota)}</div>` : ""}
-        ${maps ? `<div class="busca-item__acoes">${maps}</div>` : ""}
+        <div class="acoes">
+          <a class="btn-acao btn-acao--rota" href="${esc(urlRota(destino, p.place_id))}" target="_blank" rel="noopener">🧭 Como chegar</a>
+          <a class="btn-acao" href="${esc(urlVer(destino, p.place_id))}" target="_blank" rel="noopener">📍 No Maps</a>
+        </div>
       </div>`;
   }).join("");
 
   box.hidden = false;
-  if (!zonas.length && !totalPontos) {
+  if (!zonas.length && !pontos.length) {
     box.innerHTML = `<p class="vazio">Nada encontrado para “${esc(q)}”.</p>`;
     return;
   }
   box.innerHTML =
     (zonas.length ? `<p class="busca-res__cab">Bairros (${zonas.length})</p>${bairrosHTML}` : "") +
-    (totalPontos ? `<p class="busca-res__cab">Lugares (${totalPontos}${totalPontos > 40 ? " · mostrando 40" : ""})</p>${linhas}` : "");
+    (pontos.length ? `<p class="busca-res__cab">Lugares (${pontos.length}${pontos.length > 30 ? " · mostrando 30" : ""})</p>${linhas}` : "");
 }
 
 /* --------------------------------- mapa --------------------------------- */
+// O mapa padrão do OSM rotula o Japão só em kanji (渋谷区), o que deixa o mapa
+// mudo pra quem não lê japonês. O World Street Map da Esri escreve o romaji
+// junto do japonês ("Tomigaya" sob 冨ヶ谷) — dá pra ler E pra mostrar ao local.
+// (A CARTO deixou de servir sem API key: as tiles vêm marcadas.)
+const TILES = {
+  latim: {
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+    opts: { maxZoom: 19, attribution: 'Tiles &copy; <a href="https://www.esri.com">Esri</a>' },
+    rotulo: "🔤 Nomes em latim (romaji)",
+  },
+  japones: {
+    url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    opts: { maxZoom: 19, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' },
+    rotulo: "🇯🇵 Nomes em japonês (OpenStreetMap)",
+  },
+};
+
 function popupHTML(p) {
   const cor = corCategoria(p.categoria);
-  const links = [];
-  if (p.site_oficial) links.push(`<a class="pop__link pop__link--site" href="${esc(p.site_oficial)}" target="_blank" rel="noopener">Site oficial</a>`);
-  if (p.google_maps) links.push(`<a class="pop__link pop__link--maps" href="${esc(p.google_maps)}" target="_blank" rel="noopener">Ver no Google Maps</a>`);
+  const destino = destinoDe(p);
+  const links = [
+    `<a class="pop__link pop__link--rota" href="${esc(urlRota(destino, p.place_id))}" target="_blank" rel="noopener">🧭 Como chegar</a>`,
+    `<a class="pop__link pop__link--maps" href="${esc(urlVer(destino, p.place_id))}" target="_blank" rel="noopener">📍 No Maps</a>`,
+  ];
+  if (p.site_oficial) links.push(`<a class="pop__link pop__link--site" href="${esc(p.site_oficial)}" target="_blank" rel="noopener">🔗 Site</a>`);
   const endExtra = p.endereco && p.endereco.trim().toLowerCase() !== (p.bairro || "").trim().toLowerCase() ? " · " + esc(p.endereco) : "";
   const fav = ehFav(p);
   return `
     <h3>${esc(p.nome)}</h3>
     <span class="pop__cat" style="background:${cor}">${esc(p.categoria)}</span>
+    ${japonesHTML(p)}
     <p class="pop__desc">${esc(p.descricao)}</p>
+    ${horariosHTML(p)}
+    ${metaHTML(p)}
     <p class="pop__desc" style="font-size:13px"><strong>${esc(p.bairro)}</strong>${endExtra}</p>
-    ${p.notas ? `<p class="pop__notas">${esc(p.notas)}</p>` : ""}
+    ${p.notas ? `<p class="pop__notas">💡 ${esc(p.notas)}</p>` : ""}
+    <div class="pop__links">${links.join("")}</div>
     <button type="button" class="pop__fav${fav ? " is-on" : ""}" data-favkey="${esc(favKey(p))}">${fav ? "★ Nos favoritos" : "☆ Salvar nos favoritos"}</button>
     <label class="pop__nota-wrap">
       <span class="pop__nota-rot">📝 Sua nota</span>
       <textarea class="pop__nota" data-notakey="${esc(favKey(p))}" rows="2" placeholder="Ex.: pedir o tamago; fecha 17h; comprar aqui…">${esc(getNota(p))}</textarea>
-    </label>
-    <div class="pop__links">${links.join("")}</div>`;
+    </label>`;
 }
+
 function iconeCategoria(cat, fav) {
   return L.divIcon({
     className: "",
@@ -505,22 +874,34 @@ function iconeCategoria(cat, fav) {
     iconSize: [22, 22], iconAnchor: [11, 22], popupAnchor: [0, -20],
   });
 }
+
+function aplicarTile(nome) {
+  estado.tileAtual = nome;
+  ls.set(TILE_KEY, nome);
+  if (estado.tileLayer) estado.map.removeLayer(estado.tileLayer);
+  const t = TILES[nome];
+  estado.tileLayer = L.tileLayer(t.url, t.opts).addTo(estado.map);
+  const b = $("#troca-mapa");
+  if (b) b.title = t.rotulo;
+}
+
 function initMapa() {
   estado.map = L.map("map", { zoomControl: true }).setView([35.6465, 139.7101], 12);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(estado.map);
+  aplicarTile(ls.get(TILE_KEY, "latim") === "japones" ? "japones" : "latim");
   estado.camada = L.layerGroup().addTo(estado.map);
 
   const comGeo = estado.pontos.filter((p) => p.lat != null && p.lng != null);
   estado.marcadores = comGeo.map((ponto) => {
     const marker = L.marker([ponto.lat, ponto.lng], { icon: iconeCategoria(ponto.categoria, ehFav(ponto)) });
-    marker.bindPopup(() => popupHTML(ponto), { maxWidth: 280 });
+    marker.bindPopup(() => popupHTML(ponto), { maxWidth: 290 });
     return { ponto, marker };
   });
   const semGeo = estado.pontos.length - comGeo.length;
   if (semGeo > 0) { const a = $("#aviso-geo"); a.hidden = false; a.textContent = `${semGeo} ponto(s) sem coordenada não aparecem no mapa.`; }
   aplicarFiltrosMapa();
 }
-function aplicarFiltrosMapa() {
+
+function aplicarFiltrosMapa(ajustarZoom = true) {
   const { bairro, categoria, busca } = estado.mapaFiltros;
   const q = busca.trim().toLowerCase();
   estado.camada.clearLayers();
@@ -537,8 +918,9 @@ function aplicarFiltrosMapa() {
   const total = estado.marcadores.length;
   const rotulo = estado.mapaFiltros.soFav ? "favorito(s)" : "pontos";
   $("#contador").textContent = visiveis === total ? `${total} pontos` : `${visiveis} de ${total} ${rotulo}`;
-  if (bounds.length && bounds.length < total) estado.map.fitBounds(bounds, { padding: [40, 40], maxZoom: 16 });
+  if (ajustarZoom && bounds.length && bounds.length < total) estado.map.fitBounds(bounds, { padding: [40, 40], maxZoom: 16 });
 }
+
 function preencherSelectsMapa() {
   const fB = $("#f-bairro"), fC = $("#f-categoria");
   const bairros = [...new Set(estado.pontos.map((p) => p.bairro))].sort((a, b) => a.localeCompare(b, "pt"));
@@ -546,70 +928,35 @@ function preencherSelectsMapa() {
   const cats = [...new Set(estado.pontos.map((p) => p.categoria))].sort((a, b) => a.localeCompare(b, "pt"));
   fC.innerHTML = `<option value="">Todas as categorias</option>` + cats.map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join("");
 }
+
 function renderLegenda() {
   const usados = [...new Set(estado.pontos.map((p) => p.categoria))];
   $("#legenda").innerHTML = Object.keys(CORES_CATEGORIA).filter((c) => usados.includes(c))
     .map((c) => `<div class="legenda__item"><span class="legenda__cor" style="background:${corCategoria(c)}"></span>${esc(c)}</div>`).join("");
 }
 
-/* ---------------------------- clima ao vivo ----------------------------- */
-const CLIMA_LABEL = { sol: "dia de sol", nublado: "nublado", chuva: "dia de chuva" };
-const wmoParaClima = (code) => (code <= 2 ? "sol" : code <= 48 ? "nublado" : "chuva");
+// Abre o mapa já filtrado nos bairros finos que compõem aquela zona.
+function mapaDaZona(zonaNome) {
+  const lugares = estado.pontosPorZona.get(zonaNome) || [];
+  trocarView("mapa");
+  estado.mapaFiltros = { bairro: "", categoria: "", busca: "", soFav: false };
+  $("#busca").value = ""; $("#f-bairro").value = ""; $("#f-categoria").value = "";
+  const ft = $("#fav-toggle"); ft.classList.remove("is-on"); ft.setAttribute("aria-pressed", "false");
 
-async function carregarClima() {
-  const box = $("#clima-agora");
-  try {
-    const url = "https://api.open-meteo.com/v1/forecast?latitude=35.6465&longitude=139.7101" +
-      "&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min" +
-      "&timezone=Asia%2FTokyo&forecast_days=7";
-    const r = await fetch(url);
-    if (!r.ok) throw new Error("clima");
-    const d = await r.json();
-    if (!d.current || !d.daily) throw new Error("clima");
-
-    const catNow = wmoParaClima(d.current.weather_code);
-    const tNow = Math.round(d.current.temperature_2m);
-
-    const dias = d.daily.time.map((iso, i) => ({
-      iso,
-      cat: wmoParaClima(d.daily.weather_code[i]),
-      max: Math.round(d.daily.temperature_2m_max[i]),
-      min: Math.round(d.daily.temperature_2m_min[i]),
-    }));
-    const diasHTML = dias.map((x, i) => {
-      const dow = i === 0 ? "Hoje"
-        : new Date(x.iso + "T12:00:00+09:00").toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "");
-      return `<button type="button" class="clima-dia" data-clima="${x.cat}" title="${CLIMA_LABEL[x.cat]}">
-          <span class="clima-dia__dow">${dow}</span>
-          <span class="clima-dia__emoji">${CLIMA_EMOJI[x.cat]}</span>
-          <span class="clima-dia__t">${x.max}°<small>${x.min}°</small></span>
-        </button>`;
-    }).join("");
-
-    box.hidden = false;
-    box.innerHTML = `
-      <div class="clima-agora__topo">
-        <div class="clima-agora__info">
-          <span class="clima-agora__emoji">${CLIMA_EMOJI[catNow]}</span>
-          <div><strong>Agora em Tóquio</strong> · ${tNow}° · ${CLIMA_LABEL[catNow]}</div>
-        </div>
-        <span class="clima-agora__dica">toque num dia →</span>
-      </div>
-      <div class="clima-dias">${diasHTML}</div>`;
-  } catch (e) {
-    box.hidden = true; // offline ou API fora do ar: simplesmente não mostra
-  }
+  setTimeout(() => {
+    estado.map.invalidateSize();
+    const coords = lugares.filter((p) => p.lat != null && p.lng != null).map((p) => [p.lat, p.lng]);
+    estado.camada.clearLayers();
+    const doZoom = new Set(lugares.map(favKey));
+    let visiveis = 0;
+    for (const { ponto, marker } of estado.marcadores) {
+      if (doZoom.has(favKey(ponto))) { estado.camada.addLayer(marker); visiveis++; }
+    }
+    $("#contador").textContent = `${visiveis} ponto(s) em ${zonaNome}`;
+    if (coords.length) estado.map.fitBounds(coords, { padding: [40, 40], maxZoom: 16 });
+  }, 80);
 }
 
-function aplicarClimaChip(cat) {
-  estado.sel.clima = new Set([cat]);
-  $$("#chips-clima .chip").forEach((c) => c.classList.toggle("is-on", c.dataset.val === cat));
-  trocarView("montar");
-  montarFiltrar();
-  setTimeout(() => $("#montar-resultado").scrollIntoView({ behavior: "smooth", block: "start" }), 80);
-}
-
-/* --------------------------- perto de mim ------------------------------- */
 function pertoDeMim() {
   const btn = $("#perto");
   if (!navigator.geolocation) { alert("Seu navegador não suporta geolocalização."); return; }
@@ -631,37 +978,146 @@ function pertoDeMim() {
   );
 }
 
-/* ------------------------------ navegação ------------------------------- */
+/* ------------------------------- básico --------------------------------- */
+function renderBasico() {
+  $("#basico-lista").innerHTML = estado.basico.map((s) => `
+    <details class="ficha ficha--basico" id="basico-${esc(s.id)}">
+      <summary>
+        <div class="ficha__topo">
+          <span class="ficha__nome">${esc(s.icone)} ${esc(s.titulo)}</span>
+        </div>
+        <p class="ficha__vibe">${esc(s.resumo)}</p>
+      </summary>
+      <div class="ficha__corpo">
+        ${(s.itens || []).map((i) => `
+          <div class="ficha__campo">
+            <span class="rotulo">${esc(i.t)}</span>
+            ${esc(i.d)}
+          </div>`).join("")}
+      </div>
+    </details>`).join("");
+
+  const inp = $("#casa-endereco");
+  if (inp) inp.value = ls.get(CASA_KEY, "") || "";
+}
+
+/* ---------------------------- clima ao vivo ----------------------------- */
+const wmoParaClima = (code) => (code <= 2 ? "sol" : code <= 48 ? "nublado" : "chuva");
+
+async function carregarClima() {
+  try {
+    const url = "https://api.open-meteo.com/v1/forecast?latitude=35.6465&longitude=139.7101" +
+      "&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min" +
+      "&timezone=Asia%2FTokyo&forecast_days=16";
+    const r = await fetch(url);
+    if (!r.ok) throw new Error("clima");
+    const d = await r.json();
+    if (!d.current || !d.daily) throw new Error("clima");
+
+    estado.climaAgora = { cat: wmoParaClima(d.current.weather_code), temp: Math.round(d.current.temperature_2m) };
+    d.daily.time.forEach((iso, i) => {
+      estado.climaPorDia.set(iso, {
+        cat: wmoParaClima(d.daily.weather_code[i]),
+        max: Math.round(d.daily.temperature_2m_max[i]),
+        min: Math.round(d.daily.temperature_2m_min[i]),
+      });
+    });
+    renderHoje(); // redesenha com a previsão já disponível
+  } catch (e) {
+    /* offline ou API fora do ar: o guia segue funcionando sem previsão */
+  }
+}
+
+/* --------------------- navegação entre as abas -------------------------- */
 function trocarView(nome) {
   $$(".tab").forEach((t) => { const on = t.dataset.view === nome; t.classList.toggle("is-active", on); t.setAttribute("aria-selected", on ? "true" : "false"); });
   $$(".view").forEach((v) => { const on = v.id === "view-" + nome; v.classList.toggle("is-active", on); v.hidden = !on; });
   if (nome === "mapa" && estado.map) setTimeout(() => estado.map.invalidateSize(), 60);
+  window.scrollTo({ top: 0 });
+}
+
+function abrirFicha(zonaNome) {
+  trocarView("explorar");
+  const alvo = $("#ficha-" + slug(zonaNome), $("#view-explorar"));
+  if (alvo) {
+    alvo.open = true;
+    setTimeout(() => alvo.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+  }
+}
+function abrirCombo(id) {
+  trocarView("explorar");
+  const alvo = document.querySelector(`#view-explorar [data-comboid="${CSS.escape(id)}"]`);
+  if (alvo) { alvo.open = true; setTimeout(() => alvo.scrollIntoView({ behavior: "smooth", block: "start" }), 80); }
 }
 
 /* -------------------------------- eventos ------------------------------- */
+document.addEventListener("click", (e) => {
+  const dia = e.target.closest(".dia-chip");
+  if (dia) {
+    estado.diaSel = Number(dia.dataset.dia);
+    renderHoje();
+    explorarFiltrar(); // os horários dos lugares seguem o dia escolhido
+    return;
+  }
+
+  const cp = e.target.closest(".btn-copiar");
+  if (cp) {
+    e.preventDefault();
+    navigator.clipboard?.writeText(cp.dataset.copiar).then(() => {
+      cp.textContent = "✓";
+      setTimeout(() => { cp.textContent = "📋"; }, 1200);
+    }).catch(() => {});
+    return;
+  }
+
+  const mz = e.target.closest(".btn-mapa-zona");
+  if (mz) { e.preventDefault(); mapaDaZona(mz.dataset.zona); return; }
+
+  const lz = e.target.closest(".link-zona");
+  if (lz) { e.preventDefault(); abrirFicha(lz.dataset.zona); return; }
+
+  const lc = e.target.closest(".link-combo");
+  if (lc) { e.preventDefault(); abrirCombo(lc.dataset.comboid); return; }
+
+  const fb = e.target.closest("[data-favkey]");
+  if (fb) { e.preventDefault(); toggleFav(fb.dataset.favkey); return; }
+});
+
+document.addEventListener("input", (e) => {
+  const ta = e.target.closest(".pop__nota");
+  if (ta) setNota(ta.dataset.notakey, ta.value);
+});
+
 function ligarEventos() {
   $$(".tab").forEach((t) => t.addEventListener("click", () => trocarView(t.dataset.view)));
 
   $("#montar-limpar").addEventListener("click", () => {
     Object.values(estado.sel).forEach((s) => s.clear());
     $$(".chip").forEach((c) => c.classList.remove("is-on"));
-    montarFiltrar();
+    explorarFiltrar();
   });
 
-  const debounce = (fn, ms) => { let id; return (...a) => { clearTimeout(id); id = setTimeout(() => fn(...a), ms); }; };
   $("#busca-global").addEventListener("input", debounce((e) => buscaGlobal(e.target.value), 180));
   $("#busca").addEventListener("input", debounce((e) => { estado.mapaFiltros.busca = e.target.value; aplicarFiltrosMapa(); }, 200));
   $("#f-bairro").addEventListener("change", (e) => { estado.mapaFiltros.bairro = e.target.value; aplicarFiltrosMapa(); });
   $("#f-categoria").addEventListener("change", (e) => { estado.mapaFiltros.categoria = e.target.value; aplicarFiltrosMapa(); });
+
   $("#limpar").addEventListener("click", () => {
     estado.mapaFiltros = { bairro: "", categoria: "", busca: "", soFav: false };
     $("#busca").value = ""; $("#f-bairro").value = ""; $("#f-categoria").value = "";
     const ft = $("#fav-toggle"); ft.classList.remove("is-on"); ft.setAttribute("aria-pressed", "false");
-    aplicarFiltrosMapa(); estado.map.setView([35.6465, 139.7101], 12);
+    aplicarFiltrosMapa(false); estado.map.setView([35.6465, 139.7101], 12);
+  });
+
+  $("#troca-mapa").addEventListener("click", () => {
+    aplicarTile(estado.tileAtual === "latim" ? "japones" : "latim");
   });
 
   const toggle = $("#toggle-legenda");
-  toggle.addEventListener("click", () => { const leg = $("#legenda"); leg.hidden = !leg.hidden; toggle.setAttribute("aria-expanded", leg.hidden ? "false" : "true"); });
+  toggle.addEventListener("click", () => {
+    const leg = $("#legenda"); leg.hidden = !leg.hidden;
+    toggle.setAttribute("aria-expanded", leg.hidden ? "false" : "true");
+  });
 
   $("#fav-toggle").addEventListener("click", (e) => {
     estado.mapaFiltros.soFav = !estado.mapaFiltros.soFav;
@@ -672,9 +1128,14 @@ function ligarEventos() {
   $("#perto").addEventListener("click", pertoDeMim);
 
   const anot = $("#anot-texto");
-  if (anot) anot.addEventListener("input", debounce((e) => {
-    try { localStorage.setItem(BLOCO_KEY, e.target.value); } catch (err) {}
-  }, 300));
+  if (anot) anot.addEventListener("input", debounce((e) => ls.set(BLOCO_KEY, e.target.value), 300));
+
+  const casa = $("#casa-endereco");
+  if (casa) casa.addEventListener("input", debounce((e) => {
+    ls.set(CASA_KEY, e.target.value);
+    atualizarBotaoCasa();
+    renderHoje();
+  }, 400));
 }
 
 /* --------------------------------- init --------------------------------- */
@@ -689,21 +1150,26 @@ async function init() {
   }
   carregarFav();
   carregarNotas();
-  renderDatas();
+
+  estado.diaSel = indiceDoDiaAtual();
+  renderHoje();
+
   initChips();
-  montarFiltrar();
-  renderBairros();
-  renderCombos();
+  explorarFiltrar();
+  renderBasico();
   preencherSelectsMapa();
   renderLegenda();
   initMapa();
   ligarEventos();
   atualizarBotaoFav();
+  atualizarBotaoCasa();
   renderFavoritos();
-  carregarBloco();
-  $("#carregando").classList.add("is-hidden");
 
-  carregarClima(); // não bloqueia o carregamento; some sozinho se falhar
+  const bloco = $("#anot-texto");
+  if (bloco) bloco.value = ls.get(BLOCO_KEY, "") || "";
+
+  $("#carregando").classList.add("is-hidden");
+  carregarClima(); // não bloqueia; se falhar, o guia segue sem previsão
 }
 document.addEventListener("DOMContentLoaded", init);
 

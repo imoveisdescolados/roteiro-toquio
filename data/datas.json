@@ -1,41 +1,55 @@
 [
   {
     "quando": "Dom 20/09",
+    "dias": ["2026-09-20"],
     "tipo": "feira",
     "titulo": "Oedo Antique Market",
-    "desc": "Maior feira de antiguidades a céu aberto do Japão, no Tokyo International Forum — só no 1º e 3º domingo do mês, e o dia 20 cai num deles. Emenda com um dia em Ginza/Nihonbashi.",
+    "desc": "Maior feira de antiguidades a céu aberto do Japão, no Tokyo International Forum — só no 1º e 3º domingo do mês, e o dia 20 cai num deles. Comece cedo e leve dinheiro em espécie.",
     "zona": "Ginza + Nihonbashi + Tsukiji"
   },
   {
     "quando": "21–23/09",
+    "dias": ["2026-09-21", "2026-09-22", "2026-09-23"],
     "tipo": "feriado",
-    "titulo": "Silver Week — 3 feriados",
-    "desc": "Seg 21 (Respeito aos Idosos) e Qua 23 (Equinócio de Outono), com a terça de ponte no meio. Pontos turísticos e templos lotam — bom momento pra puxar um bairro calmo (o circuito a pé). No feriado, o Yoyogi Park costuma ter apresentações de rua.",
+    "titulo": "Silver Week — 3 feriados seguidos",
+    "desc": "Seg 21 (Respeito aos Idosos) e Qua 23 (Equinócio de Outono), com a terça de ponte no meio. Pontos turísticos e templos lotam — bom momento pra puxar um bairro calmo. No feriado, o Yoyogi Park costuma ter apresentações de rua.",
     "zona": null
   },
   {
     "quando": "13–27/09",
+    "dias": ["2026-09-19", "2026-09-20", "2026-09-21", "2026-09-22", "2026-09-23", "2026-09-24", "2026-09-25", "2026-09-26", "2026-09-27"],
     "tipo": "evento",
     "titulo": "Grand Sumo — Aki Basho",
-    "desc": "Torneio de outono no Ryogoku Kokugikan. Ingressos oficiais esgotados desde 24/ago — resolver via revenda/agência, ou plano B: assistir a um treino matinal (asageiko) numa heya.",
+    "desc": "Torneio de outono no Ryogoku Kokugikan, todos os dias da viagem. Ingressos oficiais esgotados desde 24/ago — resolver via revenda/agência, ou plano B: assistir a um treino matinal (asageiko) numa heya.",
     "zona": "Ryogoku (dia do sumô)"
   },
   {
     "quando": "Reserva antecipada",
+    "dias": ["2026-09-24"],
     "tipo": "reserva",
-    "titulo": "teamLab Borderless",
+    "titulo": "teamLab Borderless — precisa reservar",
     "desc": "Só entra com reserva online (não vende na hora); horários de fim de semana esgotam ~72h antes. Reserve com 2–3 semanas e prefira um dia de semana, cedo. Aberto 8:30–21:00.",
     "zona": "Roppongi + Azabudai Hills + Toranomon Hills"
   },
   {
     "quando": "Toda terça",
+    "dias": ["2026-09-22"],
     "tipo": "fechamento",
     "titulo": "Fechados às terças",
     "desc": "teamLab Borderless e a Traveler's Factory (Nakameguro) não abrem às terças. Atenção: 22/09 é uma terça.",
     "zona": null
   },
   {
+    "quando": "Toda segunda",
+    "dias": ["2026-09-21"],
+    "tipo": "fechamento",
+    "titulo": "Museus fecham às segundas",
+    "desc": "A maioria dos museus de Tóquio (incluindo os de Ueno e o Teien) fecha na segunda. Quando a segunda é feriado — como hoje —, muitos fecham na terça seguinte no lugar. Confirme antes de ir.",
+    "zona": null
+  },
+  {
     "quando": "Sáb e dom (tarde)",
+    "dias": ["2026-09-20", "2026-09-26", "2026-09-27"],
     "tipo": "evento",
     "titulo": "Ginza vira calçadão",
     "desc": "A Chuo-dori, avenida principal de Ginza, fecha para carros nas tardes de fim de semana e vira um grande calçadão de pedestres.",

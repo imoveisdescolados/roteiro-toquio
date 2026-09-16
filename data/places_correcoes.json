@@ -1,0 +1,83 @@
+{
+  "_leia_me": "Correções manuais do enriquecimento. A chave é 'nome|bairro' do ponto. Com 'place_id', o script usa ELE em vez do que a busca automática escolheu; com 'sem_correspondencia', apaga o que foi gravado e deixa o ponto como estava. As correções sobrevivem a um --refazer. Para investigar um ponto: node scripts/revisar-ponto.mjs \"<nome>\"",
+
+  "Meiji Jingu|Harajuku": {
+    "place_id": "ChIJ5SZMmreMGGARcz8QSTiJyo8",
+    "motivo": "A busca casou com o PONTO DE ÔNIBUS 'Meiji jingu/Harajuku Eki' (4 avaliações). O santuário de verdade fica 2,3 km ao norte e tem 52.940 avaliações. Sinal do erro: contagem de avaliações absurdamente baixa pra um lugar famoso."
+  },
+  "Flamingo|Shimokitazawa": {
+    "place_id": "ChIJJfSKMzPzGGAR8SkxrJD5qoc",
+    "motivo": "Casou com a 'meadow by FLAMINGO' (outra loja da mesma família). A Flamingo de Shimokitazawa fica 65m dali."
+  },
+  "Issey Miyake boutiques|Aoyama": {
+    "place_id": "ChIJAQCcdGGLGGARtlNiQISePig",
+    "motivo": "Casou com a BAO BAO (sub-marca, 11 avaliações). Como nossa entrada é genérica ('boutiques'), a loja principal ISSEY MIYAKE Aoyama representa melhor."
+  },
+  "Haight & Ashbury|Shimokitazawa": {
+    "sem_correspondencia": true,
+    "motivo": "Casou com a 'MONK', que é outra loja — nada a ver com o nome. O Google não tem a Haight & Ashbury em Shimokitazawa (pode ter fechado). Melhor ficar sem dado do que com dado de outra loja."
+  },
+
+  "Senso-ji|Asakusa": {
+    "place_id": "ChIJ8T1GpMGOGGARDYGSgpooDWw",
+    "motivo": "Correto desde o início (浅草寺, a 6m, com 98.904 avaliações). Ficou em confiança média só porque o Google devolveu o nome traduzido, 'Templo Sensoji'."
+  },
+  "Kaminarimon e Nakamise-dori|Asakusa": {
+    "place_id": "ChIJ0YwG28aOGGARvRKAXIBWqNk",
+    "motivo": "雷門, o portão do Senso-ji, a 21m. Média só por diferença de nome."
+  },
+  "Palácio Imperial (Jardins do Leste)|Nihonbashi": {
+    "place_id": "ChIJPfFaQhOMGGAR-QPbNQoAG6M",
+    "motivo": "皇居東御苑 — os Jardins do Leste do Palácio Imperial. Nosso nome em português não tem palavra em comum com o japonês, daí a confiança média."
+  },
+  "Nezu Museum|Aoyama": {
+    "place_id": "ChIJxU48-2OLGGARHMtB5RAhytA",
+    "motivo": "根津美術館. Mesmo caso: o Google devolveu 'Museu Nezu' traduzido."
+  },
+  "Gotokuji|Sangenjaya": {
+    "place_id": "ChIJVVUBmZ_zGGARrEy-Ua3psAY",
+    "motivo": "豪徳寺, o templo dos maneki-neko (⭐4,6 com 10.957 avaliações). Caiu pra confiança baixa porque o Google escreve 'Gōtoku-ji', com macron e hífen, e a comparação de nomes não casou."
+  },
+  "Rikugien Garden|Ueno": {
+    "place_id": "ChIJYUQ-972NGGAR5W_2E0N3SHY",
+    "motivo": "六義園. O Google devolveu 'Jardim Rikugien' traduzido."
+  },
+  "Tomioka Hachimangu|Kiyosumi-Shirakawa": {
+    "place_id": "ChIJK11I4BGJGGAR5mZswigcu58",
+    "motivo": "富岡八幡宮, o santuário ligado às origens do sumô."
+  },
+
+  "Kinto|Nakameguro": {
+    "place_id": "ChIJnw90RimLGGARHh968e2Q1k8",
+    "motivo": "Casou com a KINTO REC STORE (linha outdoor, 24 avaliações). A loja principal, KINTO STORE Tokyo, fica 42m dali e tem 160."
+  },
+  "Sacai|Aoyama": {
+    "place_id": "ChIJsa9LHWGLGGAROZdID89U1jo",
+    "motivo": "Casou com um registro 'sacai' sem avaliação nenhuma. A loja é a sacai Aoyama, 292m dali, com 146 avaliações."
+  },
+  "Shu Uemura Global Flagship|Omotesando": {
+    "place_id": "ChIJEcfUPIaNGGAR6RLEw4yayKU",
+    "motivo": "A busca tinha ACERTADO ('Shu Tokyo Makeup Box'), mas caiu pra confiança baixa porque o nome oficial da flagship não repete 'Shu Uemura'. Fica em Omotesando, não Harajuku."
+  },
+  "Porter (Yoshida & Co.)|Nihonbashi": {
+    "place_id": "ChIJDTol_DSLGGARrnOtHrkt85Q",
+    "motivo": "Casou com um registro 'ポーター' de 1 avaliação. A flagship é a PORTER TOKYO, no Tokyo Midtown Yaesu (⭐4,6 com 164) — e não a concessão dentro da Dover Street Market Ginza."
+  },
+
+  "Inokashira Park|Kichijoji": {
+    "place_id": "ChIJLWaVdDXuGGART_Pg1R3CZ4A",
+    "motivo": "A busca casou com o Inokashira Park Zoo (atração paga à parte, 555m adiante). O destino é o parque e o lago — que tem quase o dobro de avaliações."
+  },
+  "Miraikan|Odaiba": {
+    "place_id": "ChIJz_149P6JGGARoImMn3NlsfY",
+    "motivo": "Ficou como confiança baixa só porque o Google devolveu o nome traduzido ('Museu Nacional de Ciência e Inovação'). É o Miraikan mesmo."
+  },
+  "Teien Art Museum|Meguro": {
+    "place_id": "ChIJQS7vBxuLGGAR-Grk6oJ8etw",
+    "motivo": "Mesmo caso do Miraikan (nome traduzido). Fica em Shirokanedai, Minato — por isso os 1883m em relação ao centroide de Meguro."
+  },
+  "Sofmap|Akihabara": {
+    "place_id": "ChIJZYsluR2MGGAR1djuzJefoZ8",
+    "motivo": "A Sofmap tem várias lojas em Akihabara. A busca pegou a U-SHOP (usados, 158 avaliações); a principal é a PC and Digital Store, com 1.396."
+  }
+}

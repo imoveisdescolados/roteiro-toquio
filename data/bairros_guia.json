@@ -3,326 +3,898 @@
     "vibe": "Casa. Bairro elegante e tranquilo, ótimo pra começar e encerrar o dia sem esforço nenhum.",
     "resumo": "Seu ponto de partida: um bairro elegante e sem estardalhaço, que nasceu em torno da cervejaria Yebisu e herdou o nome dela. De dia é residencial e calmo; ao anoitecer ganha vida nos becos de izakaya. Perfeito pra começar devagar e voltar sem esforço no fim do dia.",
     "imperdiveis": [
-      { "nome": "Yebisu Garden Place", "nota": "Complexo com o museu da cerveja, mirante e um château iluminado — lindo ao entardecer." },
-      { "nome": "Ebisu Yokocho", "nota": "Viela coberta de barzinhos e comida; o melhor programa de noite pertinho de casa." },
-      { "nome": "Tokyo Photographic Art Museum", "nota": "O principal museu de fotografia do Japão, dentro do Garden Place." }
+      {
+        "nome": "Yebisu Garden Place",
+        "nota": "Complexo com o museu da cerveja, mirante e um château iluminado — lindo ao entardecer."
+      },
+      {
+        "nome": "Ebisu Yokocho",
+        "nota": "Viela coberta de barzinhos e comida; o melhor programa de noite pertinho de casa."
+      },
+      {
+        "nome": "Tokyo Photographic Art Museum",
+        "nota": "O principal museu de fotografia do Japão, dentro do Garden Place."
+      }
     ],
-    "tags_vibe": ["calmo", "gastronomico"],
-    "tags_interesse": ["comida", "vida_noturna", "compras", "museu", "parque"],
+    "tags_vibe": [
+      "calmo",
+      "gastronomico"
+    ],
+    "tags_interesse": [
+      "comida",
+      "vida_noturna",
+      "compras",
+      "museu",
+      "parque"
+    ],
     "tempo_ideal": "encaixe / fim de tarde",
     "movimento": "tranquilo o tempo todo",
     "melhor_momento": "noite (Ebisu Yokocho)",
-    "clima": ["sol", "nublado", "chuva"],
+    "clima": [
+      "sol",
+      "nublado",
+      "chuva"
+    ],
     "clima_nota": "Yebisu Garden Place, o museu da cerveja e o Yokocho são cobertos — salvam um dia de chuva pertinho de casa.",
-    "combina_com": ["Daikanyama + Nakameguro", "Meguro / Teien Art Museum"],
-    "destaques": ["Yebisu Garden Place", "Ebisu Yokocho", "Tokyo Photographic Art Museum"]
+    "combina_com": [
+      "Daikanyama + Nakameguro",
+      "Meguro / Teien Art Museum"
+    ],
+    "destaques": [
+      "Yebisu Garden Place",
+      "Ebisu Yokocho",
+      "Tokyo Photographic Art Museum"
+    ],
+    "modo": "casa",
+    "tempo_ate": "é aqui que vocês ficam"
   },
   "Daikanyama + Nakameguro": {
     "vibe": "O lado chique, arborizado e cool de Tóquio — design, cafés e o canal do Rio Meguro.",
     "resumo": "A dupla mais 'cool' de Tóquio: Daikanyama é chique e arborizado, cheio de lojas de design e cafés escondidos; Nakameguro se estende ao longo do canal do Rio Meguro, com boutiques independentes na margem. Dá pra fazer os dois a pé, sem pressa, num circuito preguiçoso.",
     "imperdiveis": [
-      { "nome": "Daikanyama T-Site (Tsutaya)", "nota": "Livraria de arquitetura premiada, um dos lugares mais fotografados do bairro." },
-      { "nome": "Margem do Rio Meguro", "nota": "Passeio arborizado à beira do canal, com cafés e lojinhas — bonito o ano todo." },
-      { "nome": "Traveler's Factory", "nota": "Loja-conceito dos cadernos Traveler's Notebook (fecha às terças)." }
+      {
+        "nome": "Daikanyama T-Site (Tsutaya)",
+        "nota": "Livraria de arquitetura premiada, um dos lugares mais fotografados do bairro."
+      },
+      {
+        "nome": "Margem do Rio Meguro",
+        "nota": "Passeio arborizado à beira do canal, com cafés e lojinhas — bonito o ano todo."
+      },
+      {
+        "nome": "Traveler's Factory",
+        "nota": "Loja-conceito dos cadernos Traveler's Notebook (fecha às terças)."
+      }
     ],
-    "tags_vibe": ["calmo", "design", "gastronomico"],
-    "tags_interesse": ["compras", "papelaria", "comida", "artesanato"],
+    "tags_vibe": [
+      "calmo",
+      "design",
+      "gastronomico"
+    ],
+    "tags_interesse": [
+      "compras",
+      "papelaria",
+      "comida",
+      "artesanato"
+    ],
     "tempo_ideal": "meio dia (3–4h)",
     "movimento": "baixo; enche um pouco no fim de semana",
     "melhor_momento": "tarde",
-    "clima": ["sol", "nublado"],
+    "clima": [
+      "sol",
+      "nublado"
+    ],
     "clima_nota": "É passeio de rua e canal — melhor sem chuva. Se cair água, o T-Site/Tsutaya cobre boa parte.",
-    "combina_com": ["Meguro / Teien Art Museum", "Hiroo", "Ebisu (base)"],
-    "destaques": ["Daikanyama T-Site", "Traveler's Factory", "Margem do Rio Meguro"]
+    "combina_com": [
+      "Meguro / Teien Art Museum",
+      "Hiroo",
+      "Ebisu (base)"
+    ],
+    "destaques": [
+      "Daikanyama T-Site",
+      "Traveler's Factory",
+      "Margem do Rio Meguro"
+    ],
+    "modo": "pe",
+    "tempo_ate": "10–20 min a pé"
   },
   "Hiroo": {
     "vibe": "Residencial e sossegado, com um belo parque de vale — um respiro sem turista.",
     "resumo": "Bairro residencial e internacional, o mais sossegado da vizinhança. Tem pouco comércio e quase nenhum turista — o programa aqui é o parque e o clima de bairro de verdade. Bom pra emendar num passeio a pé sem pressa.",
     "imperdiveis": [
-      { "nome": "Arisugawa-no-miya Memorial Park", "nota": "Parque com vale, lago e trilhas; um respiro verde bem menos concorrido que os grandes." },
-      { "nome": "National Azabu", "nota": "Supermercado internacional histórico, curioso de garimpar mesmo sem comprar." }
+      {
+        "nome": "Arisugawa-no-miya Memorial Park",
+        "nota": "Parque com vale, lago e trilhas; um respiro verde bem menos concorrido que os grandes."
+      },
+      {
+        "nome": "National Azabu",
+        "nota": "Supermercado internacional histórico, curioso de garimpar mesmo sem comprar."
+      }
     ],
-    "tags_vibe": ["calmo", "natureza"],
-    "tags_interesse": ["parque", "comida"],
+    "tags_vibe": [
+      "calmo",
+      "natureza"
+    ],
+    "tags_interesse": [
+      "parque",
+      "comida"
+    ],
     "tempo_ideal": "encaixe (1–2h)",
     "movimento": "muito baixo",
     "melhor_momento": "manhã ou tarde",
-    "clima": ["sol", "nublado"],
+    "clima": [
+      "sol",
+      "nublado"
+    ],
     "clima_nota": "O foco é o parque ao ar livre; quase sem abrigo se chover.",
-    "combina_com": ["Daikanyama + Nakameguro", "Roppongi + Azabudai Hills + Toranomon Hills", "Ebisu (base)"],
-    "destaques": ["Arisugawa-no-miya Memorial Park", "National Azabu"]
+    "combina_com": [
+      "Daikanyama + Nakameguro",
+      "Roppongi + Azabudai Hills + Toranomon Hills",
+      "Ebisu (base)"
+    ],
+    "destaques": [
+      "Arisugawa-no-miya Memorial Park",
+      "National Azabu"
+    ],
+    "modo": "pe",
+    "tempo_ate": "15 min a pé"
   },
   "Meguro / Teien Art Museum": {
     "vibe": "Museu art déco com jardim e um templo histórico — cultura calma, longe da multidão.",
     "resumo": "A pegada aqui é cultura calma. O destaque é o Teien, um museu instalado num palácio art déco de 1933 com jardim — bem menos concorrido que os grandes de Ueno. Some a isso um templo do período Edo e você tem uma manhã tranquila e cheia de charme.",
     "imperdiveis": [
-      { "nome": "Teien Art Museum", "nota": "Prédio art déco de 1933 com jardim; a própria arquitetura já vale a visita." },
-      { "nome": "Meguro Fudoson (Ryusen-ji)", "nota": "Templo do período Edo, um dos cinco 'Fudo' que protegiam a antiga cidade." },
-      { "nome": "Meguro Museum of Art", "nota": "Museu municipal com boas exposições temporárias." }
+      {
+        "nome": "Teien Art Museum",
+        "nota": "Prédio art déco de 1933 com jardim; a própria arquitetura já vale a visita."
+      },
+      {
+        "nome": "Meguro Fudoson (Ryusen-ji)",
+        "nota": "Templo do período Edo, um dos cinco 'Fudo' que protegiam a antiga cidade."
+      },
+      {
+        "nome": "Meguro Museum of Art",
+        "nota": "Museu municipal com boas exposições temporárias."
+      }
     ],
-    "tags_vibe": ["calmo", "cultural"],
-    "tags_interesse": ["museu", "templo", "parque"],
+    "tags_vibe": [
+      "calmo",
+      "cultural"
+    ],
+    "tags_interesse": [
+      "museu",
+      "templo",
+      "parque"
+    ],
     "tempo_ideal": "meio período (2–3h)",
     "movimento": "baixo",
     "melhor_momento": "manhã",
-    "clima": ["nublado", "chuva", "sol"],
+    "clima": [
+      "nublado",
+      "chuva",
+      "sol"
+    ],
     "clima_nota": "O museu é coberto e o jardim é bônus — funciona até com chuva.",
-    "combina_com": ["Daikanyama + Nakameguro", "Ebisu (base)"],
-    "destaques": ["Teien Art Museum", "Meguro Museum of Art", "Meguro Fudoson"]
+    "combina_com": [
+      "Daikanyama + Nakameguro",
+      "Ebisu (base)"
+    ],
+    "destaques": [
+      "Teien Art Museum",
+      "Meguro Museum of Art",
+      "Meguro Fudoson"
+    ],
+    "modo": "pe",
+    "tempo_ate": "20 min a pé (ou 3 min de trem)"
   },
   "Shibuya": {
     "vibe": "O coração pulsante e caótico de Tóquio — o cruzamento, torres, compras e noite.",
     "resumo": "O ícone caótico de Tóquio: o cruzamento mais famoso do mundo, torres de compras, mirantes e uma vida noturna intensa. É onde a cidade parece estar sempre no volume máximo — fica ainda melhor ao anoitecer, quando os letreiros acendem. No meio do caos ainda cabem lojas tradicionais e um parque suspenso.",
     "imperdiveis": [
-      { "nome": "Shibuya Crossing", "nota": "O cruzamento icônico; veja de cima do Starbucks ou do Shibuya Sky." },
-      { "nome": "Shibuya Sky", "nota": "Mirante a céu aberto no topo do Scramble Square — o melhor pôr do sol da cidade." },
-      { "nome": "Lojas no Scramble Square", "nota": "Nakagawa Masashichi (têxtil de 300 anos) e Hyozaemon (hashi de laca)." },
-      { "nome": "Miyashita Park", "nota": "Parque suspenso sobre lojas, com pista de skate e bares." }
+      {
+        "nome": "Shibuya Crossing",
+        "nota": "O cruzamento icônico; veja de cima do Starbucks ou do Shibuya Sky."
+      },
+      {
+        "nome": "Shibuya Sky",
+        "nota": "Mirante a céu aberto no topo do Scramble Square — o melhor pôr do sol da cidade."
+      },
+      {
+        "nome": "Lojas no Scramble Square",
+        "nota": "Nakagawa Masashichi (têxtil de 300 anos) e Hyozaemon (hashi de laca)."
+      },
+      {
+        "nome": "Miyashita Park",
+        "nota": "Parque suspenso sobre lojas, com pista de skate e bares."
+      }
     ],
-    "tags_vibe": ["badalado", "arquitetura"],
-    "tags_interesse": ["compras", "eletronicos", "papelaria", "vida_noturna", "parque", "museu"],
+    "tags_vibe": [
+      "badalado",
+      "arquitetura"
+    ],
+    "tags_interesse": [
+      "compras",
+      "eletronicos",
+      "papelaria",
+      "vida_noturna",
+      "parque",
+      "museu"
+    ],
     "tempo_ideal": "meio dia a dia inteiro",
     "movimento": "alto sempre; pico à noite e no fim de semana",
     "melhor_momento": "fim de tarde/noite (luzes)",
-    "clima": ["nublado", "chuva", "sol"],
+    "clima": [
+      "nublado",
+      "chuva",
+      "sol"
+    ],
     "clima_nota": "Cheio de shopping coberto (Scramble Square, Hikarie, PARCO) — ótimo pra chuva; só o mirante Shibuya Sky pede tempo bom.",
-    "combina_com": ["Harajuku + Omotesando + Aoyama", "Daikanyama + Nakameguro"],
-    "destaques": ["Shibuya Crossing", "Shibuya Sky", "Miyashita Park"]
+    "combina_com": [
+      "Harajuku + Omotesando + Aoyama",
+      "Daikanyama + Nakameguro"
+    ],
+    "destaques": [
+      "Shibuya Crossing",
+      "Shibuya Sky",
+      "Miyashita Park"
+    ],
+    "modo": "trem",
+    "tempo_ate": "2 min de trem (ou 25 min a pé)"
   },
   "Harajuku + Omotesando + Aoyama": {
     "vibe": "Do kawaii da Takeshita à avenida arborizada de grifes e arquitetura — mais o santuário e a floresta do Meiji.",
     "resumo": "Do exagero kawaii da Takeshita-dori à elegância arborizada da Omotesando, com fachadas de grife assinadas por arquitetos famosos e o silêncio da floresta do Meiji Jingu logo ao lado. É um dos melhores dias pra 'se perder' andando, saindo do pop mais colorido pro sofisticado em poucos quarteirões.",
     "imperdiveis": [
-      { "nome": "Meiji Jingu", "nota": "O principal santuário de Tóquio, numa floresta de mais de 100 mil árvores plantadas à mão." },
-      { "nome": "Omotesando-dori", "nota": "Avenida de zelkovas centenárias com arquitetura de grife impressionante." },
-      { "nome": "Takeshita-dori", "nota": "A rua da moda jovem, crepes e lojinhas — caótica e divertida." },
-      { "nome": "Oriental Bazaar", "nota": "Artesanato e antiguidades japonesas de verdade, desde 1916." }
+      {
+        "nome": "Meiji Jingu",
+        "nota": "O principal santuário de Tóquio, numa floresta de mais de 100 mil árvores plantadas à mão."
+      },
+      {
+        "nome": "Omotesando-dori",
+        "nota": "Avenida de zelkovas centenárias com arquitetura de grife impressionante."
+      },
+      {
+        "nome": "Takeshita-dori",
+        "nota": "A rua da moda jovem, crepes e lojinhas — caótica e divertida."
+      },
+      {
+        "nome": "Oriental Bazaar",
+        "nota": "Artesanato e antiguidades japonesas de verdade, desde 1916."
+      }
     ],
-    "tags_vibe": ["badalado", "arquitetura", "design", "natureza"],
-    "tags_interesse": ["compras", "templo", "parque", "arquitetura", "papelaria"],
+    "tags_vibe": [
+      "badalado",
+      "arquitetura",
+      "design",
+      "natureza"
+    ],
+    "tags_interesse": [
+      "compras",
+      "templo",
+      "parque",
+      "arquitetura",
+      "papelaria"
+    ],
     "tempo_ideal": "dia inteiro",
     "movimento": "alto; a Takeshita lota no fim de semana",
     "melhor_momento": "manhã no Meiji, tarde nas ruas",
-    "clima": ["sol", "nublado"],
+    "clima": [
+      "sol",
+      "nublado"
+    ],
     "clima_nota": "Meiji Jingu e Yoyogi pedem tempo bom; se chover, Omotesando Hills e as lojas cobrem.",
-    "combina_com": ["Shibuya"],
-    "destaques": ["Meiji Jingu", "Yoyogi Park", "Omotesando-dori"]
+    "combina_com": [
+      "Shibuya"
+    ],
+    "destaques": [
+      "Meiji Jingu",
+      "Yoyogi Park",
+      "Omotesando-dori"
+    ],
+    "modo": "trem",
+    "tempo_ate": "8 min de trem, direto"
   },
   "Roppongi + Azabudai Hills + Toranomon Hills": {
     "vibe": "Colinas modernas: arte no alto das torres, arquitetura nova e um jardim japonês escondido.",
     "resumo": "O trio das 'colinas' modernas: arte no alto das torres, arquitetura novíssima e um jardim japonês escondido. Concentra alguns dos melhores museus da cidade e o teamLab — quase tudo coberto, o que faz dele o plano ideal de dia de chuva. E dá pra chegar a pé de Ebisu.",
     "imperdiveis": [
-      { "nome": "teamLab Borderless", "nota": "Museu de arte digital imersivo em Azabudai Hills; precisa reserva e fecha às terças." },
-      { "nome": "Mori Art Museum", "nota": "Arte contemporânea no topo do Mori Tower, com mirante junto." },
-      { "nome": "Azabudai Hills", "nota": "O complexo mais novo de Tóquio (2023), pura arquitetura e gastronomia." }
+      {
+        "nome": "teamLab Borderless",
+        "nota": "Museu de arte digital imersivo em Azabudai Hills; precisa reserva e fecha às terças."
+      },
+      {
+        "nome": "Mori Art Museum",
+        "nota": "Arte contemporânea no topo do Mori Tower, com mirante junto."
+      },
+      {
+        "nome": "Azabudai Hills",
+        "nota": "O complexo mais novo de Tóquio (2023), pura arquitetura e gastronomia."
+      }
     ],
-    "tags_vibe": ["arquitetura", "cultural", "luxo"],
-    "tags_interesse": ["museu", "compras", "arquitetura", "parque"],
+    "tags_vibe": [
+      "arquitetura",
+      "cultural",
+      "luxo"
+    ],
+    "tags_interesse": [
+      "museu",
+      "compras",
+      "arquitetura",
+      "parque"
+    ],
     "tempo_ideal": "dia inteiro",
     "movimento": "médio",
     "melhor_momento": "tarde/noite (Mori Art + luzes de Keyakizaka)",
-    "clima": ["chuva", "nublado", "sol"],
+    "clima": [
+      "chuva",
+      "nublado",
+      "sol"
+    ],
     "clima_nota": "Mori Art Museum, teamLab e os malls são todos cobertos — o plano perfeito de dia de chuva.",
-    "combina_com": ["Hiroo", "Ebisu (base)"],
-    "destaques": ["Mori Art Museum", "teamLab Borderless", "Azabudai Hills"]
+    "combina_com": [
+      "Hiroo",
+      "Ebisu (base)"
+    ],
+    "destaques": [
+      "Mori Art Museum",
+      "teamLab Borderless",
+      "Azabudai Hills"
+    ],
+    "modo": "pe",
+    "tempo_ate": "30 min a pé (ou 5 min de metrô)"
   },
   "Ginza + Nihonbashi + Tsukiji": {
     "vibe": "Luxo e tradição: flagships, lojas centenárias e o mercado de Tsukiji pra comer andando.",
     "resumo": "O endereço do luxo e da tradição: flagships e grandes lojas de departamento em Ginza, um raro cluster de lojas centenárias em Nihonbashi, e o mercado de Tsukiji pra comer de barraca em barraca. Nas tardes de fim de semana a avenida principal fecha pra carros e vira calçadão.",
     "imperdiveis": [
-      { "nome": "Tsukiji Outer Market", "nota": "Comida de rua e frutos do mar; vá de manhã e coma andando." },
-      { "nome": "Lojas centenárias de Nihonbashi", "nota": "Haibara (papel washi, 1806), Ninben (katsuobushi, 1699), Kiya (facas, 1792)." },
-      { "nome": "Ginza Itoya", "nota": "Papelaria icônica de 12 andares, cada um com um tema, desde 1904." },
-      { "nome": "Uniqlo Ginza", "nota": "Flagship de 12 andares, uma das maiores lojas da marca no mundo." }
+      {
+        "nome": "Tsukiji Outer Market",
+        "nota": "Comida de rua e frutos do mar; vá de manhã e coma andando."
+      },
+      {
+        "nome": "Lojas centenárias de Nihonbashi",
+        "nota": "Haibara (papel washi, 1806), Ninben (katsuobushi, 1699), Kiya (facas, 1792)."
+      },
+      {
+        "nome": "Ginza Itoya",
+        "nota": "Papelaria icônica de 12 andares, cada um com um tema, desde 1904."
+      },
+      {
+        "nome": "Uniqlo Ginza",
+        "nota": "Flagship de 12 andares, uma das maiores lojas da marca no mundo."
+      }
     ],
-    "tags_vibe": ["luxo", "tradicional", "gastronomico"],
-    "tags_interesse": ["compras", "artesanato", "papelaria", "comida", "templo"],
+    "tags_vibe": [
+      "luxo",
+      "tradicional",
+      "gastronomico"
+    ],
+    "tags_interesse": [
+      "compras",
+      "artesanato",
+      "papelaria",
+      "comida",
+      "templo"
+    ],
     "tempo_ideal": "dia inteiro",
     "movimento": "alto; o Tsukiji lota de manhã",
     "melhor_momento": "manhã no Tsukiji, tarde em Ginza",
-    "clima": ["chuva", "nublado", "sol"],
+    "clima": [
+      "chuva",
+      "nublado",
+      "sol"
+    ],
     "clima_nota": "Lojas de departamento e o COREDO cobrem tudo; só o Tsukiji e o calçadão pedem tempo ok.",
     "combina_com": [],
-    "destaques": ["Uniqlo Ginza (12 andares)", "Ginza Itoya", "Tsukiji Outer Market"]
+    "destaques": [
+      "Uniqlo Ginza (12 andares)",
+      "Ginza Itoya",
+      "Tsukiji Outer Market"
+    ],
+    "modo": "trem",
+    "tempo_ate": "15 min de trem, direto"
   },
   "Akihabara + Ochanomizu + Jimbocho": {
     "vibe": "Contraste otaku: eletrônicos e games de um lado, sebos históricos e lojas de violão do outro.",
     "resumo": "Um contraste enorme em poucos quarteirões: Akihabara é o templo dos eletrônicos, games e cultura otaku; Ochanomizu é a rua das lojas de instrumentos musicais; e Jimbocho é o maior distrito de sebos do mundo, com centenas de livrarias de usados. É programa de dia — à noite esvazia.",
     "imperdiveis": [
-      { "nome": "Yodobashi Akiba", "nota": "9 andares de eletrônicos, câmeras e brinquedos — a maior loja do bairro." },
-      { "nome": "Sebos de Jimbocho", "nota": "Centenas de livrarias de usados; o maior aglomerado do gênero no mundo." },
-      { "nome": "Super Potato / Mandarake", "nota": "Games retrô e colecionáveis de anime e mangá." },
-      { "nome": "Kanda Myojin", "nota": "Santuário histórico que virou padroeiro da cultura otaku." }
+      {
+        "nome": "Yodobashi Akiba",
+        "nota": "9 andares de eletrônicos, câmeras e brinquedos — a maior loja do bairro."
+      },
+      {
+        "nome": "Sebos de Jimbocho",
+        "nota": "Centenas de livrarias de usados; o maior aglomerado do gênero no mundo."
+      },
+      {
+        "nome": "Super Potato / Mandarake",
+        "nota": "Games retrô e colecionáveis de anime e mangá."
+      },
+      {
+        "nome": "Kanda Myojin",
+        "nota": "Santuário histórico que virou padroeiro da cultura otaku."
+      }
     ],
-    "tags_vibe": ["otaku", "cultural"],
-    "tags_interesse": ["eletronicos", "templo", "compras", "comida"],
+    "tags_vibe": [
+      "otaku",
+      "cultural"
+    ],
+    "tags_interesse": [
+      "eletronicos",
+      "templo",
+      "compras",
+      "comida"
+    ],
     "tempo_ideal": "dia (diurno)",
     "movimento": "alto em Akihabara",
     "melhor_momento": "dia (poucas opções à noite)",
-    "clima": ["chuva", "nublado", "sol"],
+    "clima": [
+      "chuva",
+      "nublado",
+      "sol"
+    ],
     "clima_nota": "Quase tudo é dentro de prédio (Yodobashi, lojas, sebos) — ótimo pra chuva.",
-    "combina_com": ["Shinjuku"],
-    "destaques": ["Yodobashi Akiba", "Kanda Myojin", "Sebos de Jimbocho"]
+    "combina_com": [
+      "Shinjuku"
+    ],
+    "destaques": [
+      "Yodobashi Akiba",
+      "Kanda Myojin",
+      "Sebos de Jimbocho"
+    ],
+    "modo": "trem",
+    "tempo_ate": "20 min de trem, direto"
   },
   "Ueno + Yanaka/Nezu/Sendagi": {
     "vibe": "Tóquio antiga: um grande parque de museus, santuário de torii e ruas de bairro que escaparam do tempo.",
     "resumo": "O lado histórico e cultural da cidade: um grande parque que concentra os principais museus de Tóquio, o santuário de Nezu com seu túnel de torii, e as ruas de Yanaka — uma das poucas partes que escaparam dos bombardeios e mantêm a 'Tóquio antiga'. Bom pra um dia inteiro de museu de manhã e bairro à tarde.",
     "imperdiveis": [
-      { "nome": "Ueno Park e museus", "nota": "O Museu Nacional de Tóquio e vários outros reunidos num só parque." },
-      { "nome": "Nezu Shrine", "nota": "Santuário com um túnel de torii vermelhos, bem menos concorrido que o de Kyoto." },
-      { "nome": "Yanaka Ginza", "nota": "Rua comercial à moda antiga, deliciosa de percorrer ao entardecer." },
-      { "nome": "Ameyoko", "nota": "Mercado de rua animado sob os trilhos do trem." }
+      {
+        "nome": "Ueno Park e museus",
+        "nota": "O Museu Nacional de Tóquio e vários outros reunidos num só parque."
+      },
+      {
+        "nome": "Nezu Shrine",
+        "nota": "Santuário com um túnel de torii vermelhos, bem menos concorrido que o de Kyoto."
+      },
+      {
+        "nome": "Yanaka Ginza",
+        "nota": "Rua comercial à moda antiga, deliciosa de percorrer ao entardecer."
+      },
+      {
+        "nome": "Ameyoko",
+        "nota": "Mercado de rua animado sob os trilhos do trem."
+      }
     ],
-    "tags_vibe": ["tradicional", "cultural", "natureza"],
-    "tags_interesse": ["museu", "templo", "parque", "comida"],
+    "tags_vibe": [
+      "tradicional",
+      "cultural",
+      "natureza"
+    ],
+    "tags_interesse": [
+      "museu",
+      "templo",
+      "parque",
+      "comida"
+    ],
     "tempo_ideal": "dia inteiro",
     "movimento": "alto no parque no fim de semana",
     "melhor_momento": "manhã",
-    "clima": ["sol", "nublado"],
+    "clima": [
+      "sol",
+      "nublado"
+    ],
     "clima_nota": "Passeio de parque e ruas — melhor com tempo bom; se chover, os museus de Ueno cobrem.",
-    "combina_com": [],
-    "destaques": ["Ueno Park e museus", "Nezu Shrine", "Yanaka Ginza"]
+    "combina_com": [
+      "Asakusa + Tokyo Skytree"
+    ],
+    "destaques": [
+      "Ueno Park e museus",
+      "Nezu Shrine",
+      "Yanaka Ginza"
+    ],
+    "modo": "trem",
+    "tempo_ate": "20 min de trem, direto"
   },
   "Ryogoku (dia do sumô)": {
     "vibe": "Terra do sumô: a arena, o museu do Hokusai e o chanko nabe dos lutadores.",
     "resumo": "O bairro do sumô: aqui ficam a arena nacional (Kokugikan) e os estábulos dos lutadores, com restaurantes de chanko nabe — o caldo que engorda os atletas. Mesmo fora dos torneios, o excelente museu dedicado ao Hokusai já justifica a visita.",
     "imperdiveis": [
-      { "nome": "Ryogoku Kokugikan", "nota": "A arena nacional do sumô; no torneio (13–27/set) é o grande evento da viagem." },
-      { "nome": "Sumida Hokusai Museum", "nota": "Dedicado ao mestre da 'Grande Onda', em prédio de arquitetura marcante." },
-      { "nome": "Chanko nabe", "nota": "O ensopado dos lutadores, servido em casas tradicionais do bairro." }
+      {
+        "nome": "Ryogoku Kokugikan",
+        "nota": "A arena nacional do sumô; no torneio (13–27/set) é o grande evento da viagem."
+      },
+      {
+        "nome": "Sumida Hokusai Museum",
+        "nota": "Dedicado ao mestre da 'Grande Onda', em prédio de arquitetura marcante."
+      },
+      {
+        "nome": "Chanko nabe",
+        "nota": "O ensopado dos lutadores, servido em casas tradicionais do bairro."
+      }
     ],
-    "tags_vibe": ["tradicional", "cultural"],
-    "tags_interesse": ["museu", "comida", "templo"],
+    "tags_vibe": [
+      "tradicional",
+      "cultural"
+    ],
+    "tags_interesse": [
+      "museu",
+      "comida",
+      "templo"
+    ],
     "tempo_ideal": "meio dia (+ combo café)",
     "movimento": "picos em dia de torneio",
     "melhor_momento": "conforme o ingresso do sumô",
-    "clima": ["chuva", "nublado", "sol"],
+    "clima": [
+      "chuva",
+      "nublado",
+      "sol"
+    ],
     "clima_nota": "Arena e museu cobertos — indiferente à chuva.",
-    "combina_com": ["Kiyosumi-Shirakawa"],
-    "destaques": ["Ryogoku Kokugikan (Aki Basho)", "Sumida Hokusai Museum"]
+    "combina_com": [
+      "Kiyosumi-Shirakawa"
+    ],
+    "destaques": [
+      "Ryogoku Kokugikan (Aki Basho)",
+      "Sumida Hokusai Museum"
+    ],
+    "modo": "baldeacao",
+    "tempo_ate": "30 min · 1 baldeação em Akihabara"
   },
   "Shinjuku": {
     "vibe": "Excesso em neon: mega-lojas, mirante grátis, parque enorme e a noite mais elétrica da cidade.",
     "resumo": "Excesso em estado puro: mega-lojas, o maior nó ferroviário do mundo, um mirante gratuito, um parque enorme e a vida noturna mais elétrica de Tóquio nos becos de Kabukicho, Golden Gai e Omoide Yokocho. Brilha à noite, mas de dia ainda cabe um parque e uma vista de graça.",
     "imperdiveis": [
-      { "nome": "Omoide Yokocho / Golden Gai", "nota": "Becos de bares minúsculos — o retrato da noite antiga de Tóquio." },
-      { "nome": "Mirante do Tokyo Metropolitan Gov.", "nota": "Vista de 202 m de graça; em dia claro, dá pra ver o Fuji." },
-      { "nome": "Shinjuku Gyoen", "nota": "Um dos parques mais bonitos da cidade, ótimo de dia." }
+      {
+        "nome": "Omoide Yokocho / Golden Gai",
+        "nota": "Becos de bares minúsculos — o retrato da noite antiga de Tóquio."
+      },
+      {
+        "nome": "Mirante do Tokyo Metropolitan Gov.",
+        "nota": "Vista de 202 m de graça; em dia claro, dá pra ver o Fuji."
+      },
+      {
+        "nome": "Shinjuku Gyoen",
+        "nota": "Um dos parques mais bonitos da cidade, ótimo de dia."
+      }
     ],
-    "tags_vibe": ["badalado", "gastronomico"],
-    "tags_interesse": ["compras", "eletronicos", "papelaria", "parque", "vida_noturna"],
+    "tags_vibe": [
+      "badalado",
+      "gastronomico"
+    ],
+    "tags_interesse": [
+      "compras",
+      "eletronicos",
+      "papelaria",
+      "parque",
+      "vida_noturna"
+    ],
     "tempo_ideal": "tarde + noite",
     "movimento": "altíssimo",
     "melhor_momento": "noite (Omoide Yokocho, Golden Gai)",
-    "clima": ["chuva", "nublado", "sol"],
+    "clima": [
+      "chuva",
+      "nublado",
+      "sol"
+    ],
     "clima_nota": "Compras e becos cobertos pra chuva; o Gyoen (parque) fica pra um dia de sol.",
-    "combina_com": ["Akihabara + Ochanomizu + Jimbocho"],
-    "destaques": ["Shinjuku Gyoen", "Mirante do Tokyo Metropolitan Gov.", "Omoide Yokocho / Golden Gai"]
+    "combina_com": [
+      "Akihabara + Ochanomizu + Jimbocho"
+    ],
+    "destaques": [
+      "Shinjuku Gyoen",
+      "Mirante do Tokyo Metropolitan Gov.",
+      "Omoide Yokocho / Golden Gai"
+    ],
+    "modo": "trem",
+    "tempo_ate": "15 min de trem, direto"
   },
   "Shimokitazawa": {
     "vibe": "Boêmio e alternativo: brechós, discos, bares minúsculos e clima jovem.",
     "resumo": "O bairro boêmio e jovem de Tóquio: um labirinto de ruas sem carro cheias de brechós, lojas de disco, cafés e teatrinhos independentes. Não tem grandes 'atrações' — o programa é garimpar e vaguear de dia, e curtir os barzinhos à noite.",
     "imperdiveis": [
-      { "nome": "Brechós (Chicago, Flamingo, Haight & Ashbury)", "nota": "Vintage e roupa de segunda mão — a alma do bairro." },
-      { "nome": "Reload / Mikan", "nota": "Complexos novos que renovaram Shimokita sem tirar o clima alternativo." },
-      { "nome": "Village Vanguard", "nota": "Livraria-bagunça cult, com de tudo um pouco." }
+      {
+        "nome": "Brechós (Chicago, Flamingo)",
+        "nota": "Vintage e roupa de segunda mão — a alma do bairro."
+      },
+      {
+        "nome": "Reload / Mikan",
+        "nota": "Complexos novos que renovaram Shimokita sem tirar o clima alternativo."
+      },
+      {
+        "nome": "Village Vanguard",
+        "nota": "Livraria-bagunça cult, com de tudo um pouco."
+      }
     ],
-    "tags_vibe": ["vintage", "badalado"],
-    "tags_interesse": ["vintage", "compras", "vida_noturna", "comida"],
+    "tags_vibe": [
+      "vintage",
+      "badalado"
+    ],
+    "tags_interesse": [
+      "vintage",
+      "compras",
+      "vida_noturna",
+      "comida"
+    ],
     "tempo_ideal": "meio dia / tarde",
     "movimento": "médio; anima à noite",
     "melhor_momento": "tarde e noite",
-    "clima": ["sol", "nublado"],
+    "clima": [
+      "sol",
+      "nublado"
+    ],
     "clima_nota": "É de vaguear entre lojinhas — chuva atrapalha, mas dá pra pular de loja em loja.",
-    "combina_com": ["Sangenjaya"],
-    "destaques": ["Brechós (Chicago, Flamingo)", "Reload / Mikan", "Village Vanguard"]
+    "combina_com": [
+      "Sangenjaya"
+    ],
+    "destaques": [
+      "Brechós (Chicago, Flamingo)",
+      "Reload / Mikan",
+      "Village Vanguard"
+    ],
+    "modo": "baldeacao",
+    "tempo_ate": "20 min · 1 baldeação em Shibuya"
   },
   "Kagurazaka": {
     "vibe": "Vielas de pedra da era das gueixas, templos escondidos e um ar afrancesado.",
     "resumo": "Um pedaço inesperado de Tóquio: ladeiras de pedra da era das gueixas, templos escondidos nas vielas e um ar afrancesado de bistrôs e patisseries (herança da comunidade francesa por perto). Charmoso e pouco turístico, é ideal pra um fim de tarde vagando sem rumo.",
     "imperdiveis": [
-      { "nome": "Hyogo / Kakurenbo Yokocho", "nota": "Vielas de pedra com restaurantes escondidos — cenário de época." },
-      { "nome": "Bishamonten Zenkokuji", "nota": "Templo de 1595, coração do bairro." },
-      { "nome": "AKOMEYA TOKYO in la kagu", "nota": "Loja linda de arroz, comida e utensílios japoneses." }
+      {
+        "nome": "Hyogo / Kakurenbo Yokocho",
+        "nota": "Vielas de pedra com restaurantes escondidos — cenário de época."
+      },
+      {
+        "nome": "Bishamonten Zenkokuji",
+        "nota": "Templo de 1595, coração do bairro."
+      },
+      {
+        "nome": "AKOMEYA TOKYO in la kagu",
+        "nota": "Loja linda de arroz, comida e utensílios japoneses."
+      }
     ],
-    "tags_vibe": ["tradicional", "calmo", "gastronomico"],
-    "tags_interesse": ["templo", "comida", "artesanato"],
+    "tags_vibe": [
+      "tradicional",
+      "calmo",
+      "gastronomico"
+    ],
+    "tags_interesse": [
+      "templo",
+      "comida",
+      "artesanato"
+    ],
     "tempo_ideal": "meio período",
     "movimento": "baixo",
     "melhor_momento": "fim de tarde",
-    "clima": ["sol", "nublado"],
+    "clima": [
+      "sol",
+      "nublado"
+    ],
     "clima_nota": "O charme são as vielas ao ar livre — pede tempo bom.",
     "combina_com": [],
-    "destaques": ["Bishamonten Zenkokuji", "Tokyo Daijingu", "Hyogo / Kakurenbo Yokocho", "AKOMEYA"]
+    "destaques": [
+      "Bishamonten Zenkokuji",
+      "Tokyo Daijingu",
+      "Hyogo / Kakurenbo Yokocho",
+      "AKOMEYA"
+    ],
+    "modo": "baldeacao",
+    "tempo_ate": "25 min · 1 troca em Meguro"
   },
   "Odaiba": {
     "vibe": "Ilha artificial na baía: vista da Rainbow Bridge, Gundam gigante e museu de ciência.",
     "resumo": "Uma ilha artificial na Baía de Tóquio, diferente de tudo no roteiro: atrações grandes e espaçadas, ligadas por um monotrilho automatizado com vista. Tem a Rainbow Bridge, um Gundam gigante em tamanho real e o museu de ciência Miraikan. Funciona como um passeio à parte, ótimo com criança.",
     "imperdiveis": [
-      { "nome": "Gundam gigante (DiverCity)", "nota": "Estátua de ~20 m que se move e acende à noite." },
-      { "nome": "Rainbow Bridge", "nota": "A ponte da baía, linda ao pôr do sol e iluminada à noite." },
-      { "nome": "Miraikan", "nota": "Museu de ciência e inovação, interativo e ótimo com crianças." }
+      {
+        "nome": "Gundam gigante (DiverCity)",
+        "nota": "Estátua de ~20 m que se move e acende à noite."
+      },
+      {
+        "nome": "Rainbow Bridge",
+        "nota": "A ponte da baía, linda ao pôr do sol e iluminada à noite."
+      },
+      {
+        "nome": "Miraikan",
+        "nota": "Museu de ciência e inovação, interativo e ótimo com crianças."
+      }
     ],
-    "tags_vibe": ["natureza", "arquitetura"],
-    "tags_interesse": ["museu", "compras", "parque", "comida"],
+    "tags_vibe": [
+      "natureza",
+      "arquitetura"
+    ],
+    "tags_interesse": [
+      "museu",
+      "compras",
+      "parque",
+      "comida"
+    ],
     "tempo_ideal": "dia à parte",
     "movimento": "médio; família no fim de semana",
     "melhor_momento": "tarde → pôr do sol na baía",
-    "clima": ["sol", "chuva", "nublado"],
+    "clima": [
+      "sol",
+      "chuva",
+      "nublado"
+    ],
     "clima_nota": "Miraikan e os shoppings gigantes cobrem a chuva; a orla e a ponte brilham no sol.",
     "combina_com": [],
-    "destaques": ["Rainbow Bridge", "Gundam (DiverCity)", "Miraikan"]
+    "destaques": [
+      "Rainbow Bridge",
+      "Gundam (DiverCity)",
+      "Miraikan"
+    ],
+    "modo": "baldeacao",
+    "tempo_ate": "35 min · 1 baldeação em Shimbashi"
   },
   "Kichijoji": {
     "vibe": "Bairro constantemente eleito o 'mais desejado pra morar': clima de vizinhança real e o beco Harmonica.",
     "resumo": "Eleito repetidas vezes o bairro onde os tóquiotas mais gostariam de morar: clima de vizinhança de verdade, ruas comerciais animadas e o parque Inokashira logo ao lado. Não tem 'ponto turístico' óbvio — o encanto é justamente o dia a dia local e o fim de tarde nos becos.",
     "imperdiveis": [
-      { "nome": "Harmonica Yokocho", "nota": "Labirinto de barzinhos minúsculos do pós-guerra, anima ao anoitecer." },
-      { "nome": "Parque Inokashira", "nota": "Lago com pedalinhos; o Museu Ghibli fica nas redondezas." }
+      {
+        "nome": "Harmonica Yokocho",
+        "nota": "Labirinto de barzinhos minúsculos do pós-guerra, anima ao anoitecer."
+      },
+      {
+        "nome": "Parque Inokashira",
+        "nota": "Lago com pedalinhos; o Museu Ghibli fica nas redondezas."
+      }
     ],
-    "tags_vibe": ["calmo", "gastronomico"],
-    "tags_interesse": ["comida", "parque", "compras", "vida_noturna"],
+    "tags_vibe": [
+      "calmo",
+      "gastronomico"
+    ],
+    "tags_interesse": [
+      "comida",
+      "parque",
+      "compras",
+      "vida_noturna"
+    ],
     "tempo_ideal": "tarde / noite",
     "movimento": "médio",
     "melhor_momento": "anoitecer (Harmonica Yokocho)",
-    "clima": ["sol", "nublado"],
+    "clima": [
+      "sol",
+      "nublado"
+    ],
     "clima_nota": "Combina com o parque Inokashira ao lado — melhor com tempo bom.",
     "combina_com": [],
-    "destaques": ["Harmonica Yokocho", "Parque Inokashira (ao lado)"]
+    "destaques": [
+      "Harmonica Yokocho",
+      "Parque Inokashira (ao lado)"
+    ],
+    "modo": "baldeacao",
+    "tempo_ate": "30 min · 1 baldeação em Shibuya"
   },
   "Sangenjaya": {
     "vibe": "Um Shimokita mais underground e residencial — labirinto de becos e barzinhos.",
     "resumo": "Um 'Shimokita' mais underground e residencial, quase sem turistas. O grande programa é o Sankaku Chitai, um triângulo de vielas apertadas cheias de botecos — melhor à noite. Bônus: um mirante gratuito no alto da Carrot Tower.",
     "imperdiveis": [
-      { "nome": "Sankaku Chitai", "nota": "Labirinto de becos com bares minúsculos — a essência do bairro, à noite." },
-      { "nome": "Carrot Tower", "nota": "Mirante gratuito no alto, com vista até o Fuji em dias claros." }
+      {
+        "nome": "Sankaku Chitai",
+        "nota": "Labirinto de becos com bares minúsculos — a essência do bairro, à noite."
+      },
+      {
+        "nome": "Carrot Tower",
+        "nota": "Mirante gratuito no alto, com vista até o Fuji em dias claros."
+      }
     ],
-    "tags_vibe": ["calmo", "badalado"],
-    "tags_interesse": ["vida_noturna", "comida"],
+    "tags_vibe": [
+      "calmo",
+      "badalado"
+    ],
+    "tags_interesse": [
+      "vida_noturna",
+      "comida"
+    ],
     "tempo_ideal": "noite",
     "movimento": "baixo/médio",
     "melhor_momento": "noite",
-    "clima": ["nublado", "chuva"],
+    "clima": [
+      "nublado",
+      "chuva"
+    ],
     "clima_nota": "Programa de becos e bares à noite — a chuva pouco atrapalha.",
-    "combina_com": ["Shimokitazawa"],
-    "destaques": ["Sankaku Chitai (becos de bares)"]
+    "combina_com": [
+      "Shimokitazawa"
+    ],
+    "destaques": [
+      "Sankaku Chitai (becos de bares)"
+    ],
+    "modo": "baldeacao",
+    "tempo_ate": "20 min · 1 baldeação em Shibuya"
   },
   "Kiyosumi-Shirakawa": {
     "vibe": "Café de especialidade, arte contemporânea e um jardim clássico — combinação rara de achar junta.",
     "resumo": "O ponto do café de especialidade em Tóquio, com torrefações independentes e a primeira Blue Bottle do Japão instalada num antigo armazém. Some a isso um jardim clássico e o museu de arte contemporânea (MOT) — uma combinação rara de encontrar num bairro só, e ainda por cima calmo.",
     "imperdiveis": [
-      { "nome": "Blue Bottle Coffee", "nota": "A primeira loja da marca no Japão, num galpão reformado." },
-      { "nome": "Kiyosumi Gardens", "nota": "Jardim tradicional com pedras trazidas de todo o Japão." },
-      { "nome": "Arise Coffee Roasters", "nota": "Torrefação independente querida do bairro." }
+      {
+        "nome": "Blue Bottle Coffee",
+        "nota": "A primeira loja da marca no Japão, num galpão reformado."
+      },
+      {
+        "nome": "Kiyosumi Gardens",
+        "nota": "Jardim tradicional com pedras trazidas de todo o Japão."
+      },
+      {
+        "nome": "Arise Coffee Roasters",
+        "nota": "Torrefação independente querida do bairro."
+      }
     ],
-    "tags_vibe": ["calmo", "gastronomico", "cultural"],
-    "tags_interesse": ["comida", "museu", "parque"],
+    "tags_vibe": [
+      "calmo",
+      "gastronomico",
+      "cultural"
+    ],
+    "tags_interesse": [
+      "comida",
+      "museu",
+      "parque"
+    ],
     "tempo_ideal": "meio período",
     "movimento": "baixo",
     "melhor_momento": "manhã/tarde (cafés)",
-    "clima": ["sol", "nublado", "chuva"],
+    "clima": [
+      "sol",
+      "nublado",
+      "chuva"
+    ],
     "clima_nota": "Cafés e o MOT (museu) cobrem a chuva; o jardim Kiyosumi fica pro sol.",
-    "combina_com": ["Ryogoku (dia do sumô)"],
-    "destaques": ["Blue Bottle (1ª do Japão)", "Kiyosumi Gardens", "Arise Coffee Roasters"]
+    "combina_com": [
+      "Ryogoku (dia do sumô)"
+    ],
+    "destaques": [
+      "Blue Bottle (1ª do Japão)",
+      "Kiyosumi Gardens",
+      "Arise Coffee Roasters"
+    ],
+    "modo": "baldeacao",
+    "tempo_ate": "35 min · 1 baldeação"
+  },
+  "Asakusa + Tokyo Skytree": {
+    "vibe": "A Tóquio de cartão-postal: templo gigante, rua de lembrancinhas e a torre mais alta do Japão do outro lado do rio.",
+    "resumo": "O bairro do Senso-ji, templo mais antigo da cidade, que sobreviveu a terremoto e bombardeio e virou o ponto mais visitado de Tóquio. De dia é uma multidão na Nakamise-dori; ao amanhecer e depois que escurece, com o templo iluminado e vazio, é outro lugar. Do outro lado do rio Sumida fica a Skytree.",
+    "imperdiveis": [
+      {
+        "nome": "Senso-ji",
+        "nota": "Templo de 645 d.C. Vá antes das 8h ou depois das 20h: o terreno é aberto 24h e fica iluminado e vazio."
+      },
+      {
+        "nome": "Kaminarimon e Nakamise-dori",
+        "nota": "O portão da lanterna gigante e os 250m de barraquinhas que levam até o templo."
+      },
+      {
+        "nome": "Tokyo Skytree",
+        "nota": "634m, a torre mais alta do Japão. Reserve o horário — a fila na hora é longa."
+      }
+    ],
+    "tags_vibe": [
+      "tradicional",
+      "badalado",
+      "cultural"
+    ],
+    "tags_interesse": [
+      "templo",
+      "compras",
+      "comida",
+      "parque",
+      "arquitetura"
+    ],
+    "tempo_ideal": "meio dia (mais se subir a Skytree)",
+    "movimento": "muito cheio das 10h às 17h; vazio cedo e à noite",
+    "melhor_momento": "amanhecer ou depois do pôr do sol",
+    "clima": [
+      "sol",
+      "nublado"
+    ],
+    "clima_nota": "O terreno do templo e a Nakamise são abertos — sob chuva perde muito. A Skytree e o shopping da base salvam o dia.",
+    "combina_com": [
+      "Ueno + Yanaka/Nezu/Sendagi",
+      "Ryogoku (dia do sumô)"
+    ],
+    "destaques": [
+      "Senso-ji",
+      "Nakamise-dori",
+      "Tokyo Skytree",
+      "Sumida Park"
+    ],
+    "modo": "baldeacao",
+    "tempo_ate": "35 min · 1 baldeação em Ueno"
   }
 }

@@ -124,7 +124,7 @@
     "como_chegar": "Trem: Linha Yamanote até Shibuya + baldeação para Keio Inokashira Line",
     "tempo": "~20 min, 1 baldeação",
     "atracoes": "-",
-    "compras": "Brechós e vintage (Chicago, Flamingo, Haight & Ashbury), Village Vanguard, Reload/Mikan",
+    "compras": "Brechós e vintage (Chicago, Flamingo), Village Vanguard, Reload/Mikan",
     "comida_vida_noturna": "Bares pequenos, clima alternativo",
     "notas": "Único bairro da lista que não dá pra emendar a pé — é só trem mesmo",
     "tipo_acesso": "transfer"
@@ -177,6 +177,16 @@
     "compras": null,
     "comida_vida_noturna": "Blue Bottle Coffee (primeira loja do Japão, numa antiga casa de armazém), torrefações independentes (Arise Coffee Roasters)",
     "notas": "Point de café de especialidade + arte contemporânea + jardim — combinação rara de encontrar junto",
+    "tipo_acesso": "transfer"
+  },
+  {
+    "zona": "Asakusa + Tokyo Skytree",
+    "como_chegar": "Trem: Linha Hibiya até Ueno + baldeação para a Linha Ginza até Asakusa (~35 min). A Skytree fica do outro lado do rio: 20 min a pé pela ponte, ou 1 parada de metrô",
+    "tempo": "~35 min, 1 baldeação em Ueno",
+    "atracoes": "Senso-ji, Kaminarimon e Nakamise-dori, Sumida Park, Tokyo Skytree",
+    "compras": "Nakamise-dori (lembranças tradicionais); Kappabashi fica a 10 min a pé",
+    "comida_vida_noturna": "Comida de rua na Nakamise, izakayas da Hoppy-dori, tempurá e sukiyaki de casas antigas",
+    "notas": "É o bairro mais turístico de Tóquio — vá cedo ou à noite. Emenda naturalmente com Ueno e Kappabashi",
     "tipo_acesso": "transfer"
   }
 ]

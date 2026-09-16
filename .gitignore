@@ -2,3 +2,10 @@ node_modules/
 scripts/geocode.log
 .DS_Store
 Thumbs.db
+
+# Chave da API do Google — NUNCA versionar.
+# A chave só é usada pelo script de enriquecimento, que roda na sua máquina.
+# O site publicado não contém chave nenhuma: os dados já vão prontos nos JSON.
+.env.local
+.env
+scripts/places.log

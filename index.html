@@ -14,32 +14,41 @@
   <meta name="apple-mobile-web-app-title" content="Guia Tóquio" />
 
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
-  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/style.css?v=6" />
 </head>
 <body>
   <header class="app-header">
     <div class="app-header__title">
       <span class="app-header__kanji" aria-hidden="true">東京</span>
-      <div>
+      <div class="app-header__txt">
         <h1>Guia Tóquio</h1>
         <p>Base em Ebisu · 19–27 set 2026</p>
       </div>
+      <a id="btn-casa" class="btn-casa" href="#" target="_blank" rel="noopener" title="Rota de volta pra casa">
+        <span aria-hidden="true">🏠</span> Casa
+      </a>
     </div>
     <nav class="tabs" role="tablist" aria-label="Seções">
-      <button class="tab is-active" data-view="montar" role="tab" aria-selected="true">Montar o dia</button>
-      <button class="tab" data-view="bairros" role="tab" aria-selected="false">Bairros</button>
-      <button class="tab" data-view="combos" role="tab" aria-selected="false">Combos</button>
+      <button class="tab is-active" data-view="hoje" role="tab" aria-selected="true">Hoje</button>
+      <button class="tab" data-view="explorar" role="tab" aria-selected="false">Explorar</button>
       <button class="tab" data-view="mapa" role="tab" aria-selected="false">Mapa</button>
+      <button class="tab" data-view="basico" role="tab" aria-selected="false">Básico</button>
     </nav>
   </header>
 
   <main id="main">
-    <!-- ============ MONTAR O DIA (decisor "lego") ============ -->
-    <section id="view-montar" class="view is-active" role="tabpanel" aria-label="Montar o dia">
-      <div id="clima-agora" class="clima-agora" hidden></div>
+    <!-- ================================ HOJE ================================ -->
+    <section id="view-hoje" class="view is-active" role="tabpanel" aria-label="Hoje">
+      <div id="hoje-aviso-viagem" class="aviso-viagem" hidden></div>
+      <div id="hoje-dias" class="dias-strip" role="tablist" aria-label="Dias da viagem"></div>
+      <div id="hoje-conteudo" class="hoje"></div>
+    </section>
 
+    <!-- ============================== EXPLORAR ============================== -->
+    <section id="view-explorar" class="view" role="tabpanel" aria-label="Explorar" hidden>
       <div class="busca-global">
-        <input type="search" id="busca-global" class="busca-global__input" placeholder="🔎 Pesquisar lugar, loja, templo…" autocomplete="off" enterkeyhint="search" />
+        <input type="search" id="busca-global" class="busca-global__input"
+               placeholder="🔎 Buscar lugar, bairro, loja, templo…" autocomplete="off" enterkeyhint="search" />
         <div id="busca-global-res" class="busca-res" hidden></div>
       </div>
 
@@ -55,50 +64,39 @@
         </div>
       </details>
 
-      <details class="datas" id="datas-box">
-        <summary><span class="datas__aviso">⚠️ Presos a data</span> <span class="datas__periodo">19–27 set · toque para ver</span></summary>
-        <div id="datas-lista" class="datas__lista"></div>
+      <details class="bloco bloco--filtros" id="filtros-box">
+        <summary>
+          🎛️ Filtrar
+          <span class="bloco__dica" id="filtros-resumo">tudo aparecendo</span>
+        </summary>
+        <div class="bloco__conteudo">
+          <div class="grupo">
+            <h2 class="grupo__titulo">Como chegar <span class="grupo__dica">a partir de Ebisu</span></h2>
+            <div class="chips" id="chips-energia"></div>
+          </div>
+          <div class="grupo">
+            <h2 class="grupo__titulo">Clima do dia</h2>
+            <div class="chips" id="chips-clima"></div>
+          </div>
+          <div class="grupo">
+            <h2 class="grupo__titulo">Vibe</h2>
+            <div class="chips" id="chips-vibe"></div>
+          </div>
+          <div class="grupo">
+            <h2 class="grupo__titulo">O que fazer</h2>
+            <div class="chips" id="chips-interesse"></div>
+          </div>
+          <div class="montar__barra">
+            <span id="montar-contador" class="montar__contador"></span>
+            <button id="montar-limpar" class="btn-limpar" type="button">Limpar filtros</button>
+          </div>
+        </div>
       </details>
 
-      <p class="montar__intro">Escolha como você está e o que quer — o guia monta as opções.</p>
-
-      <div class="grupo">
-        <h2 class="grupo__titulo">Energia <span class="grupo__dica">quanto pique você tem</span></h2>
-        <div class="chips" id="chips-energia"></div>
-      </div>
-      <div class="grupo">
-        <h2 class="grupo__titulo">Clima do dia</h2>
-        <div class="chips" id="chips-clima"></div>
-      </div>
-      <div class="grupo">
-        <h2 class="grupo__titulo">Vibe</h2>
-        <div class="chips" id="chips-vibe"></div>
-      </div>
-      <div class="grupo">
-        <h2 class="grupo__titulo">O que fazer</h2>
-        <div class="chips" id="chips-interesse"></div>
-      </div>
-
-      <div class="montar__barra">
-        <span id="montar-contador" class="montar__contador"></span>
-        <button id="montar-limpar" class="btn-limpar" type="button">Limpar</button>
-      </div>
-
-      <div id="montar-resultado" class="resultado"></div>
+      <div id="explorar-resultado" class="resultado"></div>
     </section>
 
-    <!-- ============ BAIRROS ============ -->
-    <section id="view-bairros" class="view" role="tabpanel" aria-label="Bairros" hidden>
-      <div id="bairros-lista" class="bairros-lista"></div>
-    </section>
-
-    <!-- ============ COMBOS ============ -->
-    <section id="view-combos" class="view" role="tabpanel" aria-label="Combos" hidden>
-      <p class="montar__intro">Roteiros prontos que juntam bairros que funcionam bem no mesmo dia.</p>
-      <div id="combos-lista" class="combos-lista"></div>
-    </section>
-
-    <!-- ============ MAPA ============ -->
+    <!-- ================================ MAPA ================================ -->
     <section id="view-mapa" class="view" role="tabpanel" aria-label="Mapa de pontos" hidden>
       <div class="filtros">
         <input type="search" id="busca" class="filtros__busca" placeholder="Buscar por nome ou bairro…" autocomplete="off" enterkeyhint="search" />
@@ -111,6 +109,7 @@
           <div class="filtros__acoes">
             <button id="fav-toggle" class="btn-chip" type="button" aria-pressed="false">★ Favoritos</button>
             <button id="perto" class="btn-chip" type="button">📍 Perto de mim</button>
+            <button id="troca-mapa" class="btn-chip" type="button" title="Alternar nomes do mapa">🔤 Nomes</button>
             <button id="limpar" class="btn-limpar" type="button">Limpar</button>
           </div>
         </div>
@@ -120,11 +119,33 @@
       <div id="legenda" class="legenda" hidden></div>
       <p id="aviso-geo" class="aviso-geo" hidden></p>
     </section>
+
+    <!-- =============================== BÁSICO =============================== -->
+    <section id="view-basico" class="view" role="tabpanel" aria-label="Básico" hidden>
+      <p class="montar__intro">
+        O que ninguém te conta antes de chegar. Leia a chegada e o Suica <strong>antes</strong> de embarcar —
+        o resto dá pra consultar no caminho. Funciona offline.
+      </p>
+      <div class="bloco bloco--casa">
+        <div class="bloco__conteudo">
+          <label class="casa-campo">
+            <span class="casa-campo__rot">🏠 Endereço de casa (Airbnb)</span>
+            <input type="text" id="casa-endereco" class="casa-campo__input"
+                   placeholder="Cole aqui o endereço do Airbnb, de preferência em japonês" autocomplete="off" />
+          </label>
+          <p class="casa-campo__dica">
+            Fica salvo no celular e alimenta o botão <strong>🏠 Casa</strong> lá em cima, que abre a rota de
+            volta no Google Maps de onde você estiver. Mostre este endereço ao taxista.
+          </p>
+        </div>
+      </div>
+      <div id="basico-lista" class="basico-lista"></div>
+    </section>
   </main>
 
   <div id="carregando" class="carregando">Carregando guia…</div>
 
   <script src="vendor/leaflet/leaflet.js"></script>
-  <script src="js/app.js?v=5"></script>
+  <script src="js/app.js?v=6"></script>
 </body>
 </html>
