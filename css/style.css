@@ -516,3 +516,22 @@ html, body {
 .comer__meta small { color: var(--ink-faint); }
 .comer__aviso { color: #b91c1c; }
 .comer__conta { font-size: 12px; font-weight: 700; color: var(--ink-faint); background: var(--surface-2); padding: 2px 8px; border-radius: 999px; }
+
+/* ---------- Índice de bairros (aba Explorar) ---------- */
+.indice__cab { font-size: 13px; font-weight: 800; margin: 16px 0 8px; }
+.indice__cab:first-child { margin-top: 4px; }
+.indice { display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
+.bairro-linha {
+  position: relative; display: grid; gap: 2px; width: 100%; text-align: left;
+  appearance: none; cursor: pointer; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--line);
+  border-radius: 10px; padding: 12px 34px 12px 13px; min-height: 58px;
+}
+.bairro-linha:active { background: var(--surface-2); }
+.bairro-linha__nome { font-size: 15.5px; font-weight: 700; line-height: 1.3; }
+.bairro-linha__meta { font-size: 13px; font-weight: 600; color: var(--ink-soft); }
+.bairro-linha__vibe {
+  font-size: 13.5px; color: var(--ink-faint); line-height: 1.45; margin-top: 2px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.bairro-linha__seta { position: absolute; right: 13px; top: 50%; transform: translateY(-50%); color: var(--accent); font-size: 16px; }

@@ -798,6 +798,37 @@ function comboHTML(c) {
   </details>`;
 }
 
+/* ------------------- índice de todos os bairros ------------------------- */
+// Atalho pro painel de cada bairro, agrupado por esforço pra chegar. Sem ele,
+// ver a lista completa exigia rolar as 19 fichas abertas da aba Explorar.
+function renderIndiceBairros() {
+  const cont = $("#bairros-indice");
+  if (!cont) return;
+  const conta = $("#bairros-conta");
+  if (conta) conta.textContent = `${estado.zonas.length} no total, do mais perto ao mais longe`;
+
+  cont.innerHTML = ORDEM_MODO.map((modo) => {
+    const doGrupo = estado.zonas.filter((z) => z.modo === modo)
+      .sort((a, b) => a.zona.localeCompare(b.zona, "pt"));
+    if (!doGrupo.length) return "";
+    const m = MODOS[modo];
+    return `
+      <h3 class="indice__cab" style="color:${m.cor}">${esc(m.rotulo)}</h3>
+      <div class="indice">
+        ${doGrupo.map((z) => {
+          const n = (estado.pontosPorZona.get(z.zona) || []).length;
+          return `
+          <button type="button" class="bairro-linha" data-painel-bairro="${esc(z.zona)}" style="border-left-color:${m.cor}">
+            <span class="bairro-linha__nome">${esc(z.zona)}</span>
+            <span class="bairro-linha__meta">${esc(z.tempo_ate || m.curto)}${n ? ` · ${n} ${n > 1 ? "lugares" : "lugar"}` : ""}</span>
+            ${z.vibe ? `<span class="bairro-linha__vibe">${esc(z.vibe)}</span>` : ""}
+            <span class="bairro-linha__seta">→</span>
+          </button>`;
+        }).join("")}
+      </div>`;
+  }).join("");
+}
+
 /* --------------------- lista "Meus favoritos" --------------------------- */
 function renderFavoritos() {
   const cont = $("#fav-lista");
@@ -1530,6 +1561,7 @@ async function init() {
 
   initChips();
   explorarFiltrar();
+  renderIndiceBairros();
   renderBasico();
   preencherSelectsMapa();
   renderLegenda();

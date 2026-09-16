@@ -5,7 +5,7 @@
      (o que você já viu continua disponível offline, no Japão inteiro sem sinal)
    - previsão do tempo (open-meteo): rede primeiro (sempre fresca), sem cache
 */
-const VERSAO = "guia-toquio-v10";
+const VERSAO = "guia-toquio-v11";
 const CACHE_APP = VERSAO + "-app";
 const CACHE_TILES = VERSAO + "-tiles";
 

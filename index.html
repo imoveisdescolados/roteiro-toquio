@@ -14,7 +14,7 @@
   <meta name="apple-mobile-web-app-title" content="Guia Tóquio" />
 
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
-  <link rel="stylesheet" href="css/style.css?v=10" />
+  <link rel="stylesheet" href="css/style.css?v=11" />
 </head>
 <body>
   <header class="app-header">
@@ -62,6 +62,13 @@
         <div class="bloco__conteudo">
           <textarea id="anot-texto" placeholder="Anote o que quiser: reservas, ideias, o que comprar, horários…"></textarea>
         </div>
+      </details>
+
+      <!-- Índice de todos os bairros: atalho pro painel de cada um, sem
+           precisar rolar a lista de fichas inteira. -->
+      <details class="bloco" id="bairros-box">
+        <summary>🗾 Bairros <span class="bloco__dica" id="bairros-conta"></span></summary>
+        <div class="bloco__conteudo" id="bairros-indice"></div>
       </details>
 
       <details class="bloco bloco--filtros" id="filtros-box">
@@ -163,6 +170,6 @@
   <div id="carregando" class="carregando">Carregando guia…</div>
 
   <script src="vendor/leaflet/leaflet.js"></script>
-  <script src="js/app.js?v=10"></script>
+  <script src="js/app.js?v=11"></script>
 </body>
 </html>
