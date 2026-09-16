@@ -185,6 +185,8 @@ async function carregarDados() {
     pega("data/dias.json"),
     pega("data/basico.json"),
   ]);
+  // Opcional: só existe depois de rodar scripts/comer-perto.mjs
+  estado.comer = await pega("data/comer_perto.json").catch(() => null);
   estado.zonas = bairros.map((b) => ({ ...b, ...(guia[b.zona] || {}) }));
   estado.pontos = pontos;
   estado.pontoByKey = new Map(pontos.map((p) => [favKey(p), p]));
@@ -484,10 +486,53 @@ function renderHoje() {
       🏠 Rota de volta pra casa
     </a>
 
+    ${comerPertoHTML()}
+
     <details class="bloco" id="todas-datas">
       <summary>📅 Todas as datas presas da viagem <span class="bloco__dica">${estado.datas.length} avisos</span></summary>
       <div class="bloco__conteudo">
         <div class="hoje-alertas">${estado.datas.map(dataItemHTML).join("")}</div>
+      </div>
+    </details>`;
+}
+
+// Onde comer a pé de casa. Vem da Places API (scripts/comer-perto.mjs), não de
+// curadoria — por isso mostra nota e nº de avaliações, pra você julgar.
+function comerPertoHTML() {
+  const d = estado.comer;
+  if (!d?.lugares?.length) return "";
+  const hoje = diaReferencia();
+  const [a, m, dd] = hoje.split("-").map(Number);
+  const nomeDia = DIA_CURTO[new Date(Date.UTC(a, m - 1, dd)).getUTCDay()];
+
+  const linhas = d.lugares.map((x) => {
+    const fechado = x.horarios?.fecha_em?.includes(nomeDia);
+    const destino = x.nome_ja || x.nome;
+    return `
+      <div class="comer${fechado ? " comer--fechado" : ""}">
+        <div class="comer__topo">
+          <span class="comer__nome">${esc(x.nome)}</span>
+          <span class="comer__dist">🚶 ${x.minutos_a_pe} min</span>
+        </div>
+        ${x.nome_ja && x.nome_ja !== x.nome ? `<div class="comer__ja">${esc(x.nome_ja)}</div>` : ""}
+        <div class="comer__meta">
+          ${x.tipo ? esc(x.tipo) : ""}${x.nota != null ? ` · ⭐${esc(x.nota)} <small>(${x.avaliacoes.toLocaleString("pt-BR")})</small>` : ""}${x.faixa_preco ? ` · ${esc(x.faixa_preco)}` : ""}
+          ${fechado ? ` · <strong class="comer__aviso">fecha ${esc(nomeDia)}</strong>` : ""}
+        </div>
+        <div class="acoes">
+          <a class="btn-acao btn-acao--rota" href="${esc(urlRota(destino, x.place_id))}" target="_blank" rel="noopener">🧭 Ir</a>
+          ${x.maps_uri ? `<a class="btn-acao" href="${esc(x.maps_uri)}" target="_blank" rel="noopener">📍 Maps</a>` : ""}
+          ${x.site ? `<a class="btn-acao" href="${esc(x.site)}" target="_blank" rel="noopener">🔗 Site</a>` : ""}
+        </div>
+      </div>`;
+  }).join("");
+
+  return `
+    <details class="bloco" id="comer-perto">
+      <summary>🍜 Onde comer perto de casa <span class="bloco__dica">${d.lugares.length} lugares a até ${Math.max(...d.lugares.map((x) => x.minutos_a_pe))} min a pé</span></summary>
+      <div class="bloco__conteudo">
+        <p class="painel__dica">Puxado do Google por nota e nº de avaliações num raio de ${d.raio_m} m de casa — não é curadoria nossa. Ordenado por confiança da nota.</p>
+        <div class="comer-lista">${linhas}</div>
       </div>
     </details>`;
 }
@@ -693,9 +738,13 @@ function fichaHTML(z) {
         ${z.melhor_momento ? `<span>🕑 ${esc(z.melhor_momento)}</span>` : ""}
       </div>
 
+      ${raioXHTML(z.zona)}
+
       ${campo("Como chegar", z.como_chegar)}
       ${z.clima_nota ? `<p class="ficha__clima">${(z.clima || []).map((c) => CLIMA_EMOJI[c]).join(" ")} ${esc(z.clima_nota)}</p>` : ""}
-      ${campo("Comida / vida noturna", z.comida_vida_noturna)}
+      ${campoLinkado("Atrações", z.atracoes, z.zona)}
+      ${campoLinkado("Compras", z.compras, z.zona)}
+      ${campoLinkado("Comida / vida noturna", z.comida_vida_noturna, z.zona)}
       ${campo("Notas", z.notas)}
 
       ${lugares.length ? `
@@ -931,6 +980,111 @@ function painelLugarHTML(p) {
       </button>` : ""}`;
 }
 
+/* ------------- texto livre → links, e raio-X do bairro ------------------ */
+// Palavras que sozinhas não identificam lugar nenhum ("Square", "Hills").
+const GENERICOS = new Set(["square", "hills", "market", "center", "centre", "store", "plaza",
+  "mall", "tokyo", "park", "parque", "shrine", "museum", "museu", "books", "coffee", "gai",
+  "dori", "yokocho", "city", "line", "shop", "cafe", "garden", "place", "tower", "station"]);
+let _nomesDeBairro = null;
+function nomesDeBairro() {
+  if (_nomesDeBairro) return _nomesDeBairro;
+  _nomesDeBairro = new Set();
+  estado.pontos.forEach((p) => _nomesDeBairro.add(norm(p.bairro)));
+  estado.zonas.forEach((z) => z.zona.split(/[+/(]/).forEach((t) => _nomesDeBairro.add(norm(t.trim()))));
+  return _nomesDeBairro;
+}
+
+function apelidosDe(ponto) {
+  const bairros = nomesDeBairro();
+  const set = new Map();                       // apelido → é o nome exato?
+  set.set(ponto.nome, true);
+  // Nunca sobrescrever o nome exato: sem parênteses, semPar é igual ao nome,
+  // e um set() cego rebaixaria "Ameyoko" a apelido, fazendo a rua perder
+  // para a loja "Takeya (Ameyoko)" que fica dentro dela.
+  const guarda = (a, exato) => { if (a && !set.has(a)) set.set(a, exato); };
+  const semPar = ponto.nome.replace(/\s*\([^)]*\)/g, "").trim();
+  guarda(semPar, false);
+  guarda(ponto.nome.match(/\(([^)]+)\)/)?.[1]?.trim(), false);
+  // "Daikanyama T-Site" → "T-Site": tira só um prefixo que é nome de bairro
+  const partes = semPar.split(/\s+/);
+  if (partes.length > 1 && bairros.has(norm(partes[0]))) guarda(partes.slice(1).join(" "), false);
+
+  return [...set].filter(([a]) => {
+    const n = norm(a);
+    return n.replace(/[^a-z0-9]/g, "").length >= 4 && !GENERICOS.has(n) && !bairros.has(n);
+  });
+}
+
+// Transforma nomes citados em texto corrido nos lugares clicáveis que já temos.
+// Sem isso, "Itoya, Kyukyodo, Haibara" é texto morto embaixo de uma lista que
+// tem esses mesmos lugares com horário, nota e rota.
+function linkarLugares(texto, zona) {
+  if (!texto || texto === "-") return esc(texto);
+  const lista = estado.pontosPorZona.get(zona) || [];
+  if (!lista.length) return esc(texto);
+
+  const alvo = norm(texto);
+  const cands = [];
+  for (const ponto of lista) {
+    for (const [ap, exato] of apelidosDe(ponto)) cands.push({ ponto, exato, n: norm(ap) });
+  }
+  // Nome exato ganha do apelido: "Ameyoko" deve ir pra rua Ameyoko,
+  // não pra "Takeya (Ameyoko)". Depois, o mais longo ganha.
+  cands.sort((a, b) => (b.exato - a.exato) || (b.n.length - a.n.length));
+
+  const usado = new Array(alvo.length).fill(false);
+  const achados = [];
+  for (const c of cands) {
+    let i = alvo.indexOf(c.n);
+    while (i !== -1) {
+      const fim = i + c.n.length;
+      const livre = !usado.slice(i, fim).some(Boolean);
+      const borda = (i === 0 || /[^a-z0-9]/.test(alvo[i - 1])) && (fim >= alvo.length || /[^a-z0-9]/.test(alvo[fim]));
+      if (livre && borda) {
+        for (let k = i; k < fim; k++) usado[k] = true;
+        achados.push({ inicio: i, fim, ponto: c.ponto });
+        break;
+      }
+      i = alvo.indexOf(c.n, i + 1);
+    }
+  }
+  if (!achados.length) return esc(texto);
+
+  achados.sort((a, b) => a.inicio - b.inicio);
+  let saida = "", pos = 0;
+  for (const a of achados) {
+    saida += esc(texto.slice(pos, a.inicio));
+    saida += `<button type="button" class="link-lugar" data-painel-lugar="${esc(favKey(a.ponto))}">${esc(texto.slice(a.inicio, a.fim))}</button>`;
+    pos = a.fim;
+  }
+  return saida + esc(texto.slice(pos));
+}
+
+const campoLinkado = (rotulo, valor, zona) => (!valor || valor === "-") ? ""
+  : `<div class="ficha__campo"><span class="rotulo">${rotulo}</span>${linkarLugares(valor, zona)}</div>`;
+
+// Fatos que saem dos próprios lugares — nada escrito à mão.
+function raioXHTML(zona) {
+  const lista = estado.pontosPorZona.get(zona) || [];
+  if (lista.length < 2) return "";
+  const cats = {};
+  lista.forEach((p) => (cats[p.categoria] = (cats[p.categoria] || 0) + 1));
+  const composicao = Object.entries(cats).sort((a, b) => b[1] - a[1]).slice(0, 3)
+    .map(([k, v]) => `${v} ${k.toLowerCase()}`).join(" · ");
+
+  const top = [...lista].sort((a, b) => (b.google_avaliacoes || 0) - (a.google_avaliacoes || 0))[0];
+  const fecha = {};
+  lista.forEach((p) => (p.horarios?.fecha_em || []).forEach((d) => (fecha[d] = (fecha[d] || 0) + 1)));
+  const pior = Object.entries(fecha).sort((a, b) => b[1] - a[1])[0];
+
+  return `
+    <div class="raiox">
+      <div class="raiox__linha"><strong>${lista.length} lugares</strong> · ${esc(composicao)}</div>
+      ${top && top.google_avaliacoes ? `<div class="raiox__linha">⭐ Mais visitado: <strong>${esc(top.nome)}</strong> <span class="raiox__fraco">(${top.google_avaliacoes.toLocaleString("pt-BR")} avaliações)</span></div>` : ""}
+      ${pior ? `<div class="raiox__linha raiox__linha--alerta">⚠️ Pior dia: <strong>${esc(pior[0])}</strong> — ${pior[1]} ${pior[1] > 1 ? "lugares fecham" : "lugar fecha"}</div>` : ""}
+    </div>`;
+}
+
 function painelBairroHTML(z) {
   const m = MODOS[z.modo] || MODOS.trem;
   const destino = estacaoDaZona(z.zona);
@@ -976,6 +1130,8 @@ function painelBairroHTML(z) {
     ${z.vibe ? `<p class="painel__vibe">${esc(z.vibe)}</p>` : ""}
     ${z.resumo ? `<p class="painel__desc">${esc(z.resumo)}</p>` : ""}
 
+    ${raioXHTML(z.zona)}
+
     ${imperdiveis ? `<h3 class="painel__secao">✨ Não perca</h3><ul class="ficha__imperdiveis">${imperdiveis}</ul>` : ""}
 
     <div class="ficha__linha">
@@ -992,10 +1148,12 @@ function painelBairroHTML(z) {
 
     ${linhas ? `<h3 class="painel__secao">📍 ${lugares.length} lugares aqui</h3><div class="lugar-linhas">${linhas}</div>` : ""}
 
+    ${z.modo === "casa" ? comerPertoHTML() : ""}
+
     ${campo("Como chegar", z.como_chegar)}
-    ${campo("Atrações", z.atracoes)}
-    ${campo("Compras", z.compras)}
-    ${campo("Comida / vida noturna", z.comida_vida_noturna)}
+    ${campoLinkado("Atrações", z.atracoes, z.zona)}
+    ${campoLinkado("Compras", z.compras, z.zona)}
+    ${campoLinkado("Comida / vida noturna", z.comida_vida_noturna, z.zona)}
     ${campo("Notas", z.notas)}
 
     ${combos.length ? `<div class="ficha__campo"><span class="rotulo">Roteiros que passam aqui</span><span class="combina">${

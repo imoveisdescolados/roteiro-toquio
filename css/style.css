@@ -426,6 +426,25 @@ html, body {
 }
 .painel__dica { margin: -4px 0 8px; font-size: 13.5px; color: var(--ink-faint); line-height: 1.5; }
 
+/* Nome citado em texto corrido que virou destino clicável */
+.link-lugar {
+  appearance: none; border: 0; background: none; padding: 0; font: inherit;
+  color: var(--accent); font-weight: 700; cursor: pointer;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.link-lugar:active { opacity: .6; }
+
+/* Raio-X: fatos derivados dos próprios lugares, nada escrito à mão */
+.raiox {
+  background: var(--surface-2); border-radius: 10px; padding: 11px 13px;
+  margin: 14px 0 4px; display: flex; flex-direction: column; gap: 5px;
+}
+.raiox__linha { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+.raiox__linha strong { color: var(--ink); }
+.raiox__fraco { color: var(--ink-faint); font-size: 13px; }
+.raiox__linha--alerta { color: #9a3412; }
+.raiox__linha--alerta strong { color: #9a3412; }
+
 /* Salto do lugar para o bairro dele — o elo que faltava */
 .painel__salto {
   display: flex; align-items: center; gap: 10px; width: 100%; margin-top: 20px;
@@ -483,3 +502,16 @@ html, body {
   .legenda { grid-template-columns: repeat(3, 1fr); }
   .hoje-cab__data { font-size: 24px; }
 }
+
+/* ---------- Onde comer perto de casa (Places API) ---------- */
+.comer-lista { display: flex; flex-direction: column; }
+.comer { padding: 13px 0; border-bottom: 1px solid var(--line); }
+.comer:last-child { border-bottom: 0; padding-bottom: 2px; }
+.comer--fechado { opacity: .62; }
+.comer__topo { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.comer__nome { font-size: 15.5px; font-weight: 700; }
+.comer__dist { flex: none; font-size: 13px; font-weight: 700; color: var(--ink-soft); white-space: nowrap; }
+.comer__ja { font-size: 14px; font-weight: 600; color: var(--ink-soft); margin-top: 2px; }
+.comer__meta { font-size: 13.5px; color: var(--ink-faint); margin-top: 3px; line-height: 1.5; }
+.comer__meta small { color: var(--ink-faint); }
+.comer__aviso { color: #b91c1c; }

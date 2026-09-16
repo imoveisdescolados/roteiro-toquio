@@ -179,9 +179,44 @@ Correspondência automática erra, e pin errado é pior que pin aproximado. Por 
   `sem_correspondencia` quando o Google simplesmente não tem o lugar) e
   **sobrevivem a um `--refazer`**.
 
+## Onde comer perto de casa
+
+```bash
+node scripts/comer-perto.mjs --simular   # mostra, não grava
+node scripts/comer-perto.mjs             # grava data/comer_perto.json
+```
+
+Puxa da Places API os restaurantes bem avaliados a pé de Ebisu — com tipo de
+cozinha, nota, faixa de preço, horário e nome em japonês. Aparece na aba
+**Hoje** e no painel de Ebisu.
+
+**Só perto de casa, de propósito.** Nos outros bairros você come onde estiver;
+perto de casa é o caso real — chegando tarde, cansado, com as lojas fechando às
+20h. E sendo dado do Google, é factual: `AFURI Ebisu · ramen · ⭐4,3 (4.445) ·
+¥¥ · 2 min a pé`, em vez de "restaurantes no entorno".
+
+O ranking não é só a nota, é `nota × log10(avaliações)`: ⭐4,6 com 90 avaliações
+é menos confiável que ⭐4,3 com 4.445.
+
+## Bairro: o que é derivado e o que é escrito
+
+O painel do bairro mistura três origens, de propósito:
+
+- **Escrito à mão** (`bairros_guia.json`): vibe, resumo, "não perca".
+- **Derivado dos lugares**, sem ninguém escrever — o *raio-X*: quantos lugares,
+  a composição por categoria, o mais visitado e o pior dia pra ir (quantos
+  fecham). Muda sozinho quando um ponto entra ou sai.
+- **Ligado automaticamente**: os nomes citados em "atrações/compras/comida"
+  viram botões que abrem o lugar, com horário, nota e rota. São 71 links, e a
+  regra evita genéricos ("Square", "Hills") e nomes de bairro. Nome exato ganha
+  do apelido, senão "Ameyoko" abriria a loja *dentro* da Ameyoko.
+
 ## O que ainda falta
 
-- **Comida não é categoria.** Dos 170 pontos, 109 são compras — buscar "ramen"
-  não devolve nada. É a lacuna mais sentida por quem chega.
+- **Comida não é categoria** nos 175 pontos curados — buscar "ramen" só encontra
+  o que está em `comer_perto.json`, não no guia todo.
 - **Fotos.** O enriquecimento guardou a referência da primeira foto de cada lugar
   (`foto_ref` no cache), mas baixá-las é um SKU à parte.
+- **Texto de bairro escrito à mão**: por onde começar o passeio, o que pular com
+  pressa, quanto custa entrar. Hoje só 1 dos 19 bairros diz quanto tempo dedicar
+  e 2 mencionam preço.

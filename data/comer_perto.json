@@ -1,0 +1,413 @@
+{
+  "casa": "Ebisu Station, Shibuya City, Tokyo",
+  "raio_m": 700,
+  "gerado_em": "2026-09-16",
+  "lugares": [
+    {
+      "place_id": "ChIJgYtUxUGLGGAR2LLtCdmLFbs",
+      "nome": "AFURI Ebisu",
+      "nome_ja": "AFURI 恵比寿",
+      "endereco_ja": "渋谷区恵比寿１丁目１−７ 117ビル 1F",
+      "tipo": "Restaurante especializado em ramen",
+      "nota": 4.3,
+      "avaliacoes": 4445,
+      "faixa_preco": "¥¥",
+      "endereco": "Shibuya, Ebisu, 1-chōme−1−7 117ビル 1F",
+      "metros": 195,
+      "minutos_a_pe": 2,
+      "site": "https://afuri.com/",
+      "maps_uri": "https://maps.google.com/?cid=13480834823894184664&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.648302199999996,
+      "lng": 139.710881,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:00 – 05:00",
+          "terça-feira: 11:00 – 05:00",
+          "quarta-feira: 11:00 – 05:00",
+          "quinta-feira: 11:00 – 05:00",
+          "sexta-feira: 11:00 – 05:00",
+          "sábado: 11:00 – 05:00",
+          "domingo: 11:00 – 05:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJE3wQ9kSLGGARYiiIzj27g54",
+      "nome": "Spring Valley Brewery Tokyo",
+      "nome_ja": "スプリングバレーブルワリー東京",
+      "endereco_ja": "渋谷区代官山町１３−１ ログロード代官山 内",
+      "tipo": "Microcervejaria",
+      "nota": 4.3,
+      "avaliacoes": 3176,
+      "faixa_preco": "¥¥",
+      "endereco": "Shibuya, Daikanyamachō, 13−1 ログロード代官山 内",
+      "metros": 591,
+      "minutos_a_pe": 7,
+      "site": "https://www.springvalleybrewery.jp/pub/",
+      "maps_uri": "https://maps.google.com/?cid=11422178954074138722&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.6498747,
+      "lng": 139.7047505,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:00 – 23:00",
+          "terça-feira: 11:00 – 23:00",
+          "quarta-feira: 11:00 – 23:00",
+          "quinta-feira: 11:00 – 23:00",
+          "sexta-feira: 11:00 – 23:00",
+          "sábado: 11:00 – 23:00",
+          "domingo: 11:00 – 22:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJLRNVgBWLGGARMxGRyu03kZQ",
+      "nome": "Halal Ramen Honolu",
+      "nome_ja": "Halal Restaurant Honolu, Ebisu",
+      "endereco_ja": "渋谷区恵比寿南１丁目２３−１ 1F",
+      "tipo": "Restaurante especializado em ramen",
+      "nota": 4.5,
+      "avaliacoes": 2080,
+      "faixa_preco": "¥¥",
+      "endereco": "Shibuya, Ebisuminami, 1-chōme−23−1 1F",
+      "metros": 401,
+      "minutos_a_pe": 5,
+      "site": "http://halalramen-honolu.net/index.html",
+      "maps_uri": "https://maps.google.com/?cid=10705399283681661235&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.643374200000004,
+      "lng": 139.71171429999998,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:30 – 21:00",
+          "terça-feira: 11:30 – 21:00",
+          "quarta-feira: 11:30 – 21:00",
+          "quinta-feira: 11:30 – 21:00",
+          "sexta-feira: 11:30 – 21:00",
+          "sábado: 11:30 – 21:00",
+          "domingo: 11:30 – 21:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJLUA2hdKLGGARCXm5iPml7EU",
+      "nome": "Peter Luger Steak House Tokyo",
+      "nome_ja": "ピーター・ルーガー・ステーキハウス東京",
+      "endereco_ja": "渋谷区恵比寿４丁目１９−１９ Peter Luger Steak House Tokyo",
+      "tipo": "Restaurante de carne",
+      "nota": 4.4,
+      "avaliacoes": 1933,
+      "faixa_preco": "¥¥¥¥",
+      "endereco": "Shibuya, Ebisu, 4-chōme−19−19 Peter Luger Steak House Tokyo",
+      "metros": 476,
+      "minutos_a_pe": 6,
+      "site": "https://peterluger.co.jp/",
+      "maps_uri": "https://maps.google.com/?cid=5038584574280038665&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.6438736,
+      "lng": 139.7139535,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:00 – 15:00, 17:00 – 23:00",
+          "terça-feira: 11:00 – 15:00, 17:00 – 23:00",
+          "quarta-feira: 11:00 – 15:00, 17:00 – 23:00",
+          "quinta-feira: 11:00 – 15:00, 17:00 – 23:00",
+          "sexta-feira: 11:00 – 15:00, 17:00 – 23:00",
+          "sábado: 11:00 – 15:00, 17:00 – 23:00",
+          "domingo: 11:00 – 15:00, 17:00 – 23:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJw433RESLGGARouzrzt0jg_A",
+      "nome": "Teuchi Oyatori Chūkasoba Ayagawa",
+      "nome_ja": "親鶏中華そば 綾川 本店",
+      "endereco_ja": "渋谷区恵比寿１丁目２１−１８ ライツ恵比寿 1F",
+      "tipo": "Restaurante especializado em ramen",
+      "nota": 4.3,
+      "avaliacoes": 1850,
+      "faixa_preco": "¥¥",
+      "endereco": "Shibuya, Ebisu, 1-chōme−21−18 ライツ恵比寿 1F",
+      "metros": 331,
+      "minutos_a_pe": 4,
+      "site": "https://x.com/oyadori_ayagawa?utm_source=gbp?utm_medium=organic",
+      "maps_uri": "https://maps.google.com/?cid=17330735226618113186&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.6465702,
+      "lng": 139.71365609999998,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:00 – 21:30",
+          "terça-feira: 11:00 – 21:30",
+          "quarta-feira: 11:00 – 21:30",
+          "quinta-feira: 11:00 – 21:30",
+          "sexta-feira: 11:00 – 21:30",
+          "sábado: 11:00 – 21:30",
+          "domingo: 11:00 – 21:30"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJI5iLqGqLGGARqF9I9Ccnh3E",
+      "nome": "Yoroniku Ebisu",
+      "nome_ja": "蕃 YORONIKU",
+      "endereco_ja": "渋谷区恵比寿１丁目１１−５ GEMS恵比寿 8F",
+      "tipo": "Restaurante especializado em yakiniku",
+      "nota": 4.6,
+      "avaliacoes": 1072,
+      "faixa_preco": "¥¥¥¥",
+      "endereco": "Shibuya, Ebisu, 1-chōme−11−5 GEMS恵比寿 8F",
+      "metros": 168,
+      "minutos_a_pe": 2,
+      "site": "http://yoroniku-ebisu.com/",
+      "maps_uri": "https://maps.google.com/?cid=8180550300697386920&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.646357099999996,
+      "lng": 139.71180569999999,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 17:00 – 00:00",
+          "terça-feira: 17:00 – 00:00",
+          "quarta-feira: 17:00 – 00:00",
+          "quinta-feira: 17:00 – 00:00",
+          "sexta-feira: 17:00 – 00:00",
+          "sábado: 17:00 – 00:00",
+          "domingo: 17:00 – 00:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJq6aDrAiLGGAR_99_HFsCvqk",
+      "nome": "pizza marumo",
+      "nome_ja": "pizza marumo",
+      "endereco_ja": "渋谷区恵比寿南１丁目１１−１３ 恵比寿ヴェルソービル 1階",
+      "tipo": "Pizzaria",
+      "nota": 4.4,
+      "avaliacoes": 1420,
+      "faixa_preco": "¥¥",
+      "endereco": "Shibuya, Ebisuminami, 1-chōme−11−13 恵比寿ヴェルソービル 1階",
+      "metros": 206,
+      "minutos_a_pe": 3,
+      "site": "http://pizza-marumo.com/",
+      "maps_uri": "https://maps.google.com/?cid=12231216228328267775&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.645292999999995,
+      "lng": 139.7085094,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:30 – 14:30, 17:00 – 22:00",
+          "terça-feira: 11:30 – 14:30, 17:00 – 22:00",
+          "quarta-feira: 11:30 – 14:30, 17:00 – 22:00",
+          "quinta-feira: 11:30 – 14:30, 17:00 – 22:00",
+          "sexta-feira: 11:30 – 14:30, 17:00 – 22:00",
+          "sábado: 11:30 – 14:30, 17:00 – 22:00",
+          "domingo: 11:30 – 14:30, 17:00 – 22:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJDQ57VxWLGGARSXbWcNFv8lU",
+      "nome": "L'Antica Pizzeria da Michele Ebisu branch",
+      "nome_ja": "アンティーカ ピッツェリア ダ ミケーレ 恵比寿",
+      "endereco_ja": "渋谷区恵比寿４丁目４−７ 第６伊藤ビル １階",
+      "tipo": "Pizzaria",
+      "nota": 4.1,
+      "avaliacoes": 1686,
+      "faixa_preco": "¥¥",
+      "endereco": "Shibuya, Ebisu, 4-chōme−4−7 第６伊藤ビル １階",
+      "metros": 226,
+      "minutos_a_pe": 3,
+      "site": "https://damichele.jp/tokyo/",
+      "maps_uri": "https://maps.google.com/?cid=6193135382919804489&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.6452637,
+      "lng": 139.7117707,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:30 – 15:00, 17:30 – 21:30",
+          "terça-feira: 11:30 – 15:00, 17:30 – 21:30",
+          "quarta-feira: 11:30 – 15:00, 17:30 – 21:30",
+          "quinta-feira: 11:30 – 15:00, 17:30 – 21:30",
+          "sexta-feira: 11:30 – 15:00, 17:30 – 21:30",
+          "sábado: 11:30 – 21:30",
+          "domingo: 11:30 – 21:30"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJ--gb0UGLGGARYisuJQ1c7Zs",
+      "nome": "Udon Yamacho Ebisu",
+      "nome_ja": "うどん山長 恵比寿店",
+      "endereco_ja": "渋谷区恵比寿１丁目１−５ エビスオークビル 1 1F",
+      "tipo": "Restaurante japonês",
+      "nota": 4.2,
+      "avaliacoes": 1250,
+      "faixa_preco": "¥¥",
+      "endereco": "Shibuya, Ebisu, 1-chōme−1−5 Ebisu Oak Bldg., 1F",
+      "metros": 204,
+      "minutos_a_pe": 3,
+      "site": "https://www.instagram.com/udonyamacho_official/",
+      "maps_uri": "https://maps.google.com/?cid=11235737856887368546&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.6482915,
+      "lng": 139.71111539999998,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:30 – 15:30, 17:00 – 22:00",
+          "terça-feira: 11:30 – 15:30, 17:00 – 22:00",
+          "quarta-feira: 11:30 – 15:30, 17:00 – 22:00",
+          "quinta-feira: 11:30 – 15:30, 17:00 – 22:00",
+          "sexta-feira: 11:30 – 15:30, 17:00 – 22:00",
+          "sábado: 11:30 – 15:30, 17:00 – 22:00",
+          "domingo: 11:30 – 15:30, 17:00 – 22:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJiX4T-0CLGGARIdncuM0Y-2s",
+      "nome": "Shodai",
+      "nome_ja": "酒彩蕎麦 初代",
+      "endereco_ja": "渋谷区恵比寿南１丁目１−１０ サウスコラム 小林 1F",
+      "tipo": "Restaurante",
+      "nota": 4.1,
+      "avaliacoes": 1440,
+      "faixa_preco": null,
+      "endereco": "Shibuya, Ebisuminami, 1-chōme−1−10 South Column Kobayashi, 1F",
+      "metros": 146,
+      "minutos_a_pe": 2,
+      "site": "https://www.shodai-food.com/store/ebisu/",
+      "maps_uri": "https://maps.google.com/?cid=7780840053061507361&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.6464887,
+      "lng": 139.708406,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:30 – 22:00",
+          "terça-feira: 11:30 – 22:00",
+          "quarta-feira: 11:30 – 22:00",
+          "quinta-feira: 11:30 – 22:00",
+          "sexta-feira: 11:30 – 22:00",
+          "sábado: 11:30 – 22:00",
+          "domingo: 11:30 – 22:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJ41U59EOLGGARjVfz1cWSrLY",
+      "nome": "Cafe Accueil Ebisu",
+      "nome_ja": "カフェ アクイーユ 恵比寿店",
+      "endereco_ja": "渋谷区恵比寿西２丁目１０−１０ エレガンテヴィータ 1F",
+      "tipo": "Café",
+      "nota": 4,
+      "avaliacoes": 1350,
+      "faixa_preco": "¥¥",
+      "endereco": "Shibuya, Ebisunishi, 2-chōme−10−10 エレガンテヴィータ 1F",
+      "metros": 415,
+      "minutos_a_pe": 5,
+      "site": "http://www.accueil.co.jp/",
+      "maps_uri": "https://maps.google.com/?cid=13163057189292824461&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.649261599999996,
+      "lng": 139.7066559,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:00 – 22:00",
+          "terça-feira: 11:00 – 22:00",
+          "quarta-feira: 11:00 – 22:00",
+          "quinta-feira: 11:00 – 22:00",
+          "sexta-feira: 11:00 – 22:00",
+          "sábado: 11:00 – 22:00",
+          "domingo: 11:00 – 22:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJMW4u9rSLGGARulonfj5zXZ0",
+      "nome": "Jinrui-Minamenrui Tokyo main store",
+      "nome_ja": "人類みな麺類 東京本店",
+      "endereco_ja": "渋谷区恵比寿西２丁目１０−３ プラネックスアンペール １F",
+      "tipo": "Restaurante especializado em ramen",
+      "nota": 4,
+      "avaliacoes": 1255,
+      "faixa_preco": "¥¥",
+      "endereco": "Shibuya, Ebisunishi, 2-chōme−10−3 プラネックスアンペール １F",
+      "metros": 390,
+      "minutos_a_pe": 5,
+      "site": "https://www.unchi-co.com/",
+      "maps_uri": "https://maps.google.com/?cid=11339346149030451898&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.6490168,
+      "lng": 139.706759,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:00 – 23:30",
+          "terça-feira: 11:00 – 23:30",
+          "quarta-feira: 11:00 – 23:30",
+          "quinta-feira: 11:00 – 23:30",
+          "sexta-feira: 11:00 – 23:30",
+          "sábado: 10:00 – 23:30",
+          "domingo: 10:00 – 23:30"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJ06N2yEGLGGARycMkSbjIBYQ",
+      "nome": "Ebisu Yokocho",
+      "nome_ja": "恵比寿横丁",
+      "endereco_ja": "渋谷区恵比寿１丁目７−４",
+      "tipo": "Restaurante e izakaya",
+      "nota": 3.8,
+      "avaliacoes": 1670,
+      "faixa_preco": "¥¥",
+      "endereco": "1-chōme-7-4 Ebisu, Shibuya",
+      "metros": 178,
+      "minutos_a_pe": 2,
+      "site": "http://www.ebisu-yokocho.com/",
+      "maps_uri": "https://maps.google.com/?cid=9513230481716724681&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.6482178,
+      "lng": 139.7106409,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 17:00 – 05:00",
+          "terça-feira: 17:00 – 05:00",
+          "quarta-feira: 17:00 – 05:00",
+          "quinta-feira: 17:00 – 05:00",
+          "sexta-feira: 17:00 – 05:00",
+          "sábado: 17:00 – 05:00",
+          "domingo: 17:00 – 05:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJVVWx90SLGGARQXO5SgJybrg",
+      "nome": "GARDEN HOUSE CRAFTS DAIKANYAMA",
+      "nome_ja": "GARDEN HOUSE CRAFTS DAIKANYAMA ガーデンハウス クラフツ ダイカンヤマ",
+      "endereco_ja": "渋谷区代官山町１３−１ ログロード代官山 5号棟",
+      "tipo": "Café",
+      "nota": 4.3,
+      "avaliacoes": 689,
+      "faixa_preco": "¥¥",
+      "endereco": "Shibuya, Daikanyamachō, 13−1 ログロード代官山 5号棟",
+      "metros": 641,
+      "minutos_a_pe": 8,
+      "site": "https://ghghgh.jp/blogs/shoplist/garden-house-crafts-daikanyama",
+      "maps_uri": "https://maps.google.com/?cid=13289684904586081089&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.6512959,
+      "lng": 139.7057252,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 08:30 – 18:00",
+          "terça-feira: 08:30 – 18:00",
+          "quarta-feira: 08:30 – 18:00",
+          "quinta-feira: 08:30 – 18:00",
+          "sexta-feira: 08:30 – 18:00",
+          "sábado: 08:30 – 18:00",
+          "domingo: 08:30 – 18:00"
+        ],
+        "fecha_em": []
+      }
+    }
+  ]
+}
