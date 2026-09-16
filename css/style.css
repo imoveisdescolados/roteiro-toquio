@@ -320,7 +320,7 @@ html, body {
 .basico-lista { display: flex; flex-direction: column; }
 
 /* ---------- Filtros do mapa ---------- */
-.filtros { background: var(--surface); border-bottom: 1px solid var(--line); padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
+.filtros { background: var(--surface); padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 8px; }
 .filtros__busca { width: 100%; font-size: 16px; padding: 12px 14px; min-height: 48px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); color: var(--ink); }
 .filtros__busca:focus { outline: 2px solid var(--accent); border-color: var(--accent); background: #fff; }
 .filtros__selects { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -373,6 +373,106 @@ html, body {
 .legenda__item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-soft); }
 .legenda__cor { width: 14px; height: 14px; border-radius: 4px; flex: none; border: 1px solid rgba(0,0,0,.12); }
 .aviso-geo { background: #fef3c7; color: #92600a; font-size: 13.5px; padding: 10px 14px; margin: 0; }
+
+/* ================== PAINEL (lugar ↔ bairro) ==================
+   Sobe de baixo e deixa o mapa visível atrás — o popup do Leaflet
+   ocupava 132% da área do mapa e não levava a lugar nenhum.        */
+.painel {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 1500;
+  max-width: 780px; margin-inline: auto;   /* acompanha a largura do conteúdo */
+  display: flex; flex-direction: column;
+  height: 48dvh; max-height: 92dvh;
+  background: var(--surface); color: var(--ink);
+  border-top-left-radius: 18px; border-top-right-radius: 18px;
+  box-shadow: 0 -6px 28px rgba(17,24,39,.22);
+  transform: translateY(100%); transition: transform .22s ease-out;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.painel.is-aberto { transform: translateY(0); }
+.painel.is-arrastando { transition: none; }
+.painel[hidden] { display: none; }
+
+.painel__puxador {
+  flex: none; height: 26px; cursor: grab; touch-action: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.painel__puxador::before {
+  content: ""; width: 42px; height: 5px; border-radius: 999px; background: var(--line);
+}
+.painel__puxador:active { cursor: grabbing; }
+
+.painel__topo {
+  flex: none; display: flex; align-items: center; gap: 8px;
+  padding: 0 12px 10px; border-bottom: 1px solid var(--line);
+}
+.painel__titulo {
+  flex: 1; min-width: 0; margin: 0; font-size: 17.5px; font-weight: 700; line-height: 1.3;
+}
+.painel__nav {
+  flex: none; appearance: none; border: 1px solid var(--line); background: var(--surface-2);
+  color: var(--ink); font-size: 16px; line-height: 1; cursor: pointer;
+  width: 38px; height: 38px; border-radius: 999px;
+}
+.painel__nav:active { background: var(--line); }
+.painel__nav[hidden] { display: none; }
+
+.painel__corpo { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 14px 16px 22px; }
+.painel__desc { margin: 10px 0 0; font-size: 15.5px; line-height: 1.6; color: var(--ink); }
+.painel__vibe { margin: 10px 0 0; font-size: 15px; line-height: 1.55; color: var(--ink-soft); }
+.painel__meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.painel__secao {
+  font-size: 12.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--ink-faint); margin: 22px 0 8px;
+}
+.painel__dica { margin: -4px 0 8px; font-size: 13.5px; color: var(--ink-faint); line-height: 1.5; }
+
+/* Salto do lugar para o bairro dele — o elo que faltava */
+.painel__salto {
+  display: flex; align-items: center; gap: 10px; width: 100%; margin-top: 20px;
+  appearance: none; cursor: pointer; text-align: left;
+  background: var(--ink); color: #fff; border: 0;
+  border-radius: 12px; padding: 13px 15px; min-height: 56px;
+}
+.painel__salto:active { background: #2b3d54; }
+.painel__salto-rot { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #aab3bf; }
+.painel__salto-nome { flex: 1; font-size: 15.5px; font-weight: 700; }
+.painel__salto-seta { font-size: 17px; color: var(--dourado); }
+
+/* Bairros vizinhos, com o tempo real entre eles */
+.vizinhos { display: flex; flex-direction: column; gap: 8px; }
+.vizinho {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  appearance: none; cursor: pointer; text-align: left;
+  background: var(--surface-2); border: 1px solid var(--line); color: var(--ink);
+  border-radius: 10px; padding: 12px 14px; min-height: 54px;
+}
+.vizinho:active { background: var(--line); }
+.vizinho__nome { flex: 1; font-size: 15px; font-weight: 700; }
+.vizinho__como { font-size: 13px; font-weight: 600; color: var(--ink-soft); white-space: nowrap; }
+.vizinho__seta { color: var(--accent); font-size: 15px; }
+
+/* Lista compacta de lugares dentro do painel do bairro */
+.lugar-linhas { display: flex; flex-direction: column; }
+.lugar-linha {
+  display: flex; flex-direction: column; gap: 2px; width: 100%;
+  appearance: none; cursor: pointer; text-align: left;
+  background: none; border: 0; border-bottom: 1px solid var(--line);
+  padding: 12px 2px; min-height: 54px; color: var(--ink);
+}
+.lugar-linha:last-child { border-bottom: 0; }
+.lugar-linha:active { background: var(--surface-2); }
+.lugar-linha__nome { font-size: 15px; font-weight: 700; }
+.lugar-linha__meta { font-size: 13px; color: var(--ink-faint); }
+.lugar-linha__fechado { color: #b91c1c; font-weight: 700; }
+
+/* ---------- Filtros do mapa, recolhíveis ---------- */
+.filtros-box { flex: none; background: var(--surface); border-bottom: 1px solid var(--line); }
+.filtros-box > summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; padding: 13px 14px; min-height: 48px; font-size: 14.5px; font-weight: 700; color: var(--ink);
+}
+.filtros-box > summary::-webkit-details-marker { display: none; }
+.filtros-box[open] > summary { border-bottom: 1px solid var(--line); }
 
 /* ---------- Carregando ---------- */
 .carregando { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--bg); color: var(--ink-faint); font-size: 15px; z-index: 2000; }

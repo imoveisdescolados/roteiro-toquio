@@ -14,7 +14,7 @@
   <meta name="apple-mobile-web-app-title" content="Guia Tóquio" />
 
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
-  <link rel="stylesheet" href="css/style.css?v=6" />
+  <link rel="stylesheet" href="css/style.css?v=7" />
 </head>
 <body>
   <header class="app-header">
@@ -98,25 +98,29 @@
 
     <!-- ================================ MAPA ================================ -->
     <section id="view-mapa" class="view" role="tabpanel" aria-label="Mapa de pontos" hidden>
-      <div class="filtros">
-        <input type="search" id="busca" class="filtros__busca" placeholder="Buscar por nome ou bairro…" autocomplete="off" enterkeyhint="search" />
-        <div class="filtros__selects">
-          <select id="f-bairro" class="filtros__select" aria-label="Filtrar por bairro"></select>
-          <select id="f-categoria" class="filtros__select" aria-label="Filtrar por categoria"></select>
-        </div>
-        <div class="filtros__rodape">
+      <!-- Recolhido por padrão: aberto, os filtros comiam metade da tela do mapa -->
+      <details class="filtros-box" id="filtros-mapa">
+        <summary>
+          <span>🔎 Buscar e filtrar</span>
           <span id="contador" class="filtros__contador"></span>
+        </summary>
+        <div class="filtros">
+          <input type="search" id="busca" class="filtros__busca" placeholder="Buscar por nome ou bairro…" autocomplete="off" enterkeyhint="search" />
+          <div class="filtros__selects">
+            <select id="f-bairro" class="filtros__select" aria-label="Filtrar por bairro"></select>
+            <select id="f-categoria" class="filtros__select" aria-label="Filtrar por categoria"></select>
+          </div>
           <div class="filtros__acoes">
             <button id="fav-toggle" class="btn-chip" type="button" aria-pressed="false">★ Favoritos</button>
             <button id="perto" class="btn-chip" type="button">📍 Perto de mim</button>
             <button id="troca-mapa" class="btn-chip" type="button" title="Alternar nomes do mapa">🔤 Nomes</button>
+            <button id="toggle-legenda" class="btn-chip" type="button" aria-expanded="false">🎨 Legenda</button>
             <button id="limpar" class="btn-limpar" type="button">Limpar</button>
           </div>
+          <div id="legenda" class="legenda" hidden></div>
         </div>
-      </div>
+      </details>
       <div id="map" role="application" aria-label="Mapa interativo"></div>
-      <button id="toggle-legenda" class="legenda-toggle" type="button" aria-expanded="false">Legenda de cores</button>
-      <div id="legenda" class="legenda" hidden></div>
       <p id="aviso-geo" class="aviso-geo" hidden></p>
     </section>
 
@@ -143,9 +147,22 @@
     </section>
   </main>
 
+  <!-- Painel deslizante: serve tanto um LUGAR quanto um BAIRRO, com pilha de
+       navegação entre eles. Substitui o popup do Leaflet, que ficava maior que
+       o próprio mapa e não levava a lugar nenhum. -->
+  <div id="painel" class="painel" role="dialog" aria-modal="false" aria-labelledby="painel-titulo" hidden>
+    <div class="painel__puxador" id="painel-puxador" role="separator" aria-label="Arraste para redimensionar"></div>
+    <div class="painel__topo">
+      <button type="button" id="painel-voltar" class="painel__nav" aria-label="Voltar" hidden>←</button>
+      <h2 id="painel-titulo" class="painel__titulo"></h2>
+      <button type="button" id="painel-fechar" class="painel__nav" aria-label="Fechar">✕</button>
+    </div>
+    <div id="painel-corpo" class="painel__corpo"></div>
+  </div>
+
   <div id="carregando" class="carregando">Carregando guia…</div>
 
   <script src="vendor/leaflet/leaflet.js"></script>
-  <script src="js/app.js?v=6"></script>
+  <script src="js/app.js?v=7"></script>
 </body>
 </html>

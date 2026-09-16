@@ -69,6 +69,8 @@ const estado = {
   diaSel: null,             // índice do dia selecionado na aba Hoje
   climaPorDia: new Map(),   // iso -> { cat, max, min }
   climaAgora: null,
+  painel: { pilha: [], altura: 48 },   // pilha de navegação (lugar ↔ bairro)
+  centrosZona: new Map(),              // centro geográfico de cada bairro
   sel: { acesso: new Set(), clima: new Set(), vibe: new Set(), interesse: new Set() },
   mapaFiltros: { bairro: "", categoria: "", busca: "", soFav: false },
   map: null,
@@ -200,6 +202,36 @@ async function carregarDados() {
     porZona.get(z).push(p);
   }
   estado.pontosPorZona = porZona;
+
+  // Centro de cada bairro = média dos seus lugares. Serve pra dizer quanto
+  // tempo se leva a pé de um bairro ao outro — sem API, funciona offline.
+  for (const [zona, lista] of porZona) {
+    const comGeo = lista.filter((x) => x.lat != null);
+    if (!comGeo.length) continue;
+    estado.centrosZona.set(zona, [
+      comGeo.reduce((s, x) => s + x.lat, 0) / comGeo.length,
+      comGeo.reduce((s, x) => s + x.lng, 0) / comGeo.length,
+    ]);
+  }
+}
+
+/* ------------------------ distância entre bairros ----------------------- */
+function metrosEntre(a, b) {
+  const R = 6371000, rad = Math.PI / 180;
+  const dLat = (b[0] - a[0]) * rad, dLng = (b[1] - a[1]) * rad;
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(a[0] * rad) * Math.cos(b[0] * rad) * Math.sin(dLng / 2) ** 2;
+  return Math.round(2 * R * Math.asin(Math.sqrt(h)));
+}
+
+// Como se vai de um bairro ao vizinho. ~80 m/min é passo de turista, com paradas.
+function comoIrEntre(zonaA, zonaB) {
+  const a = estado.centrosZona.get(zonaA), b = estado.centrosZona.get(zonaB);
+  if (!a || !b) return null;
+  const m = metrosEntre(a, b);
+  const min = Math.round(m / 80);
+  if (m < 1600) return { m, texto: `🚶 ~${min} min a pé`, aPe: true };
+  if (m < 3000) return { m, texto: `🚶 ~${min} min a pé, ou 1 parada`, aPe: true };
+  return { m, texto: "🚆 melhor de trem", aPe: false };
 }
 
 // O combo é tão difícil quanto o bairro mais difícil que ele inclui.
@@ -740,12 +772,7 @@ function toggleFav(key) {
   if (estado.fav.has(key)) estado.fav.delete(key); else estado.fav.add(key);
   salvarFav();
   const item = estado.marcadores.find((m) => favKey(m.ponto) === key);
-  if (item) {
-    const fav = estado.fav.has(key);
-    item.marker.setIcon(iconeCategoria(item.ponto.categoria, fav));
-    const pop = item.marker.getPopup();
-    if (pop && pop.isOpen()) pop.setContent(popupHTML(item.ponto));
-  }
+  if (item) item.marker.setIcon(iconeCategoria(item.ponto.categoria, estado.fav.has(key)));
   // Atualiza a estrela onde ela estiver visível, sem redesenhar o mundo.
   $$(`[data-favkey="${CSS.escape(key)}"]`).forEach((b) => {
     const on = estado.fav.has(key);
@@ -822,6 +849,193 @@ function buscaGlobal(q) {
     (pontos.length ? `<p class="busca-res__cab">Lugares (${pontos.length}${pontos.length > 30 ? " · mostrando 30" : ""})</p>${linhas}` : "");
 }
 
+/* ================== PAINEL (lugar ↔ bairro) ============================== */
+/* Um painel só, com pilha de navegação, servindo mapa, busca e aba Hoje.
+   Antes: o popup do Leaflet ocupava 132% da área do mapa e não levava a
+   lugar nenhum — de um ponto não dava pra chegar ao bairro dele.           */
+
+function abrirPainel(tipo, id, { empilhar = true } = {}) {
+  if (!empilhar) estado.painel.pilha = [];
+  const topo = estado.painel.pilha[estado.painel.pilha.length - 1];
+  if (!topo || topo.tipo !== tipo || topo.id !== id) estado.painel.pilha.push({ tipo, id });
+  renderPainel();
+}
+function voltarPainel() {
+  estado.painel.pilha.pop();
+  if (!estado.painel.pilha.length) fecharPainel(); else renderPainel();
+}
+function fecharPainel() {
+  estado.painel.pilha = [];
+  const el = $("#painel");
+  el.classList.remove("is-aberto");
+  setTimeout(() => { if (!estado.painel.pilha.length) el.hidden = true; }, 220);
+}
+
+function renderPainel() {
+  const atual = estado.painel.pilha[estado.painel.pilha.length - 1];
+  if (!atual) return fecharPainel();
+  const el = $("#painel");
+  let titulo = "", corpo = "";
+
+  if (atual.tipo === "lugar") {
+    const p = estado.pontoByKey.get(atual.id);
+    if (!p) return fecharPainel();
+    titulo = p.nome;
+    corpo = painelLugarHTML(p);
+    if (p.lat != null) centralizarNoMapa(p.lat, p.lng);
+  } else {
+    const z = zonaPorNome(atual.id);
+    if (!z) return fecharPainel();
+    titulo = z.zona;
+    corpo = painelBairroHTML(z);
+  }
+
+  $("#painel-titulo").textContent = titulo;
+  $("#painel-corpo").innerHTML = corpo;
+  $("#painel-corpo").scrollTop = 0;
+  $("#painel-voltar").hidden = estado.painel.pilha.length < 2;
+  el.hidden = false;
+  el.style.height = estado.painel.altura + "dvh";
+  requestAnimationFrame(() => el.classList.add("is-aberto"));
+}
+
+function painelLugarHTML(p) {
+  const destino = destinoDe(p);
+  const fav = ehFav(p);
+  const zona = zonaDoBairro(p.bairro);
+  const endExtra = p.endereco && p.endereco.trim().toLowerCase() !== (p.bairro || "").trim().toLowerCase()
+    ? `<p class="lugar__end">📍 ${esc(p.endereco)}</p>` : "";
+  return `
+    <span class="pop__cat" style="background:${corCategoria(p.categoria)}">${esc(p.categoria)}</span>
+    ${japonesHTML(p)}
+    ${p.descricao ? `<p class="painel__desc">${esc(p.descricao)}</p>` : ""}
+    ${horariosHTML(p)}
+    ${metaHTML(p)}
+    ${endExtra}
+    ${p.notas ? `<p class="lugar__notas">💡 ${esc(p.notas)}</p>` : ""}
+    <div class="acoes">
+      <a class="btn-acao btn-acao--rota" href="${esc(urlRota(destino, p.place_id))}" target="_blank" rel="noopener">🧭 Como chegar</a>
+      <a class="btn-acao" href="${esc(urlVer(destino, p.place_id))}" target="_blank" rel="noopener">📍 No Maps</a>
+      ${p.site_oficial ? `<a class="btn-acao" href="${esc(p.site_oficial)}" target="_blank" rel="noopener">🔗 Site</a>` : ""}
+    </div>
+    <button type="button" class="pop__fav${fav ? " is-on" : ""}" data-favkey="${esc(favKey(p))}">${fav ? "★ Nos favoritos" : "☆ Salvar nos favoritos"}</button>
+    <label class="pop__nota-wrap">
+      <span class="pop__nota-rot">📝 Sua nota</span>
+      <textarea class="pop__nota" data-notakey="${esc(favKey(p))}" rows="2" placeholder="Ex.: pedir o tamago; fecha 17h; comprar aqui…">${esc(getNota(p))}</textarea>
+    </label>
+    ${zona ? `
+      <button type="button" class="painel__salto" data-painel-bairro="${esc(zona)}">
+        <span class="painel__salto-rot">Fica no bairro</span>
+        <span class="painel__salto-nome">${esc(zona)}</span>
+        <span class="painel__salto-seta">→</span>
+      </button>` : ""}`;
+}
+
+function painelBairroHTML(z) {
+  const m = MODOS[z.modo] || MODOS.trem;
+  const destino = estacaoDaZona(z.zona);
+  const lugares = estado.pontosPorZona.get(z.zona) || [];
+  const combos = combosPorZona(z.zona);
+
+  const passeio = (z.combina_com || []).map((nome) => {
+    const v = zonaPorNome(nome);
+    if (!v) return "";
+    const ir = comoIrEntre(z.zona, nome);
+    return `
+      <button type="button" class="vizinho" data-painel-bairro="${esc(nome)}">
+        <span class="vizinho__nome">${esc(nome)}</span>
+        <span class="vizinho__como">${ir ? esc(ir.texto) : esc(v.tempo_ate || "")}</span>
+        <span class="vizinho__seta">→</span>
+      </button>`;
+  }).join("");
+
+  const imperdiveis = (z.imperdiveis || [])
+    .map((d) => `<li><strong>${esc(d.nome)}</strong> — ${esc(d.nota)}</li>`).join("");
+
+  const linhas = lugares.map((p) => {
+    const h = horarioDoDia(p, diaReferencia());
+    return `
+      <button type="button" class="lugar-linha" data-painel-lugar="${esc(favKey(p))}">
+        <span class="lugar-linha__nome">${esc(p.nome)}</span>
+        <span class="lugar-linha__meta">
+          ${esc(p.categoria)}${p.google_nota != null ? ` · ⭐${esc(p.google_nota)}` : ""}${h && h.fechado ? ` · <span class="lugar-linha__fechado">fecha ${esc(h.dia)}</span>` : ""}
+        </span>
+      </button>`;
+  }).join("");
+
+  return `
+    <div class="painel__meta">
+      <span class="pilula" style="background:${m.cor}1a;color:${m.cor}">${esc(z.tempo_ate || m.curto)}</span>
+      ${iconesClima(z.clima)}
+    </div>
+    <div class="acoes">
+      ${z.modo !== "casa" ? `<a class="btn-acao btn-acao--rota" href="${esc(urlRota(destino))}" target="_blank" rel="noopener">🧭 Como chegar</a>` : ""}
+      <button type="button" class="btn-acao btn-mapa-zona" data-zona="${esc(z.zona)}">🗺️ Ver no mapa</button>
+    </div>
+
+    ${z.vibe ? `<p class="painel__vibe">${esc(z.vibe)}</p>` : ""}
+    ${z.resumo ? `<p class="painel__desc">${esc(z.resumo)}</p>` : ""}
+
+    ${imperdiveis ? `<h3 class="painel__secao">✨ Não perca</h3><ul class="ficha__imperdiveis">${imperdiveis}</ul>` : ""}
+
+    <div class="ficha__linha">
+      ${z.tempo_ideal ? `<span>⏱ ${esc(z.tempo_ideal)}</span>` : ""}
+      ${z.movimento ? `<span>📊 ${esc(z.movimento)}</span>` : ""}
+      ${z.melhor_momento ? `<span>🕑 ${esc(z.melhor_momento)}</span>` : ""}
+    </div>
+    ${z.clima_nota ? `<p class="ficha__clima">${(z.clima || []).map((c) => CLIMA_EMOJI[c]).join(" ")} ${esc(z.clima_nota)}</p>` : ""}
+
+    ${passeio ? `
+      <h3 class="painel__secao">🚶 Passeio — emenda com</h3>
+      <p class="painel__dica">Bairros que funcionam no mesmo dia, com o tempo real entre eles.</p>
+      <div class="vizinhos">${passeio}</div>` : ""}
+
+    ${linhas ? `<h3 class="painel__secao">📍 ${lugares.length} lugares aqui</h3><div class="lugar-linhas">${linhas}</div>` : ""}
+
+    ${campo("Como chegar", z.como_chegar)}
+    ${campo("Atrações", z.atracoes)}
+    ${campo("Compras", z.compras)}
+    ${campo("Comida / vida noturna", z.comida_vida_noturna)}
+    ${campo("Notas", z.notas)}
+
+    ${combos.length ? `<div class="ficha__campo"><span class="rotulo">Roteiros que passam aqui</span><span class="combina">${
+      combos.map((c) => `<button type="button" class="link-combo" data-comboid="${esc(c.id)}">${esc(c.nome)}</button>`).join(" · ")
+    }</span></div>` : ""}`;
+}
+
+// Sobe o ponto na tela pra ele não ficar escondido atrás do painel.
+function centralizarNoMapa(lat, lng) {
+  if (!estado.map || $("#view-mapa").hidden) return;
+  estado.map.setView([lat, lng], Math.max(estado.map.getZoom(), 15), { animate: true });
+  const desloca = (estado.painel.altura / 100) * window.innerHeight * 0.45;
+  setTimeout(() => estado.map.panBy([0, desloca], { animate: true }), 80);
+}
+
+function ligarArrastePainel() {
+  const puxador = $("#painel-puxador"), painel = $("#painel");
+  let inicioY = 0, alturaInicial = 0, arrastando = false;
+  puxador.addEventListener("pointerdown", (e) => {
+    arrastando = true; inicioY = e.clientY; alturaInicial = estado.painel.altura;
+    painel.classList.add("is-arrastando");
+    puxador.setPointerCapture(e.pointerId);
+  });
+  puxador.addEventListener("pointermove", (e) => {
+    if (!arrastando) return;
+    const delta = ((inicioY - e.clientY) / window.innerHeight) * 100;
+    estado.painel.altura = Math.min(92, Math.max(16, alturaInicial + delta));
+    painel.style.height = estado.painel.altura + "dvh";
+  });
+  const fim = () => {
+    if (!arrastando) return;
+    arrastando = false;
+    painel.classList.remove("is-arrastando");
+    if (estado.painel.altura < 28) { estado.painel.altura = 48; fecharPainel(); }
+    else if (estado.painel.altura > 75) { estado.painel.altura = 92; painel.style.height = "92dvh"; }
+  };
+  puxador.addEventListener("pointerup", fim);
+  puxador.addEventListener("pointercancel", fim);
+}
+
 /* --------------------------------- mapa --------------------------------- */
 // O mapa padrão do OSM rotula o Japão só em kanji (渋谷区), o que deixa o mapa
 // mudo pra quem não lê japonês. O World Street Map da Esri escreve o romaji
@@ -839,33 +1053,6 @@ const TILES = {
     rotulo: "🇯🇵 Nomes em japonês (OpenStreetMap)",
   },
 };
-
-function popupHTML(p) {
-  const cor = corCategoria(p.categoria);
-  const destino = destinoDe(p);
-  const links = [
-    `<a class="pop__link pop__link--rota" href="${esc(urlRota(destino, p.place_id))}" target="_blank" rel="noopener">🧭 Como chegar</a>`,
-    `<a class="pop__link pop__link--maps" href="${esc(urlVer(destino, p.place_id))}" target="_blank" rel="noopener">📍 No Maps</a>`,
-  ];
-  if (p.site_oficial) links.push(`<a class="pop__link pop__link--site" href="${esc(p.site_oficial)}" target="_blank" rel="noopener">🔗 Site</a>`);
-  const endExtra = p.endereco && p.endereco.trim().toLowerCase() !== (p.bairro || "").trim().toLowerCase() ? " · " + esc(p.endereco) : "";
-  const fav = ehFav(p);
-  return `
-    <h3>${esc(p.nome)}</h3>
-    <span class="pop__cat" style="background:${cor}">${esc(p.categoria)}</span>
-    ${japonesHTML(p)}
-    <p class="pop__desc">${esc(p.descricao)}</p>
-    ${horariosHTML(p)}
-    ${metaHTML(p)}
-    <p class="pop__desc" style="font-size:13px"><strong>${esc(p.bairro)}</strong>${endExtra}</p>
-    ${p.notas ? `<p class="pop__notas">💡 ${esc(p.notas)}</p>` : ""}
-    <div class="pop__links">${links.join("")}</div>
-    <button type="button" class="pop__fav${fav ? " is-on" : ""}" data-favkey="${esc(favKey(p))}">${fav ? "★ Nos favoritos" : "☆ Salvar nos favoritos"}</button>
-    <label class="pop__nota-wrap">
-      <span class="pop__nota-rot">📝 Sua nota</span>
-      <textarea class="pop__nota" data-notakey="${esc(favKey(p))}" rows="2" placeholder="Ex.: pedir o tamago; fecha 17h; comprar aqui…">${esc(getNota(p))}</textarea>
-    </label>`;
-}
 
 function iconeCategoria(cat, fav) {
   return L.divIcon({
@@ -893,7 +1080,8 @@ function initMapa() {
   const comGeo = estado.pontos.filter((p) => p.lat != null && p.lng != null);
   estado.marcadores = comGeo.map((ponto) => {
     const marker = L.marker([ponto.lat, ponto.lng], { icon: iconeCategoria(ponto.categoria, ehFav(ponto)) });
-    marker.bindPopup(() => popupHTML(ponto), { maxWidth: 290 });
+    // Sem popup: abre o painel, que cabe na tela e leva ao bairro.
+    marker.on("click", () => abrirPainel("lugar", favKey(ponto), { empilhar: false }));
     return { ponto, marker };
   });
   const semGeo = estado.pontos.length - comGeo.length;
@@ -1036,14 +1224,6 @@ function trocarView(nome) {
   window.scrollTo({ top: 0 });
 }
 
-function abrirFicha(zonaNome) {
-  trocarView("explorar");
-  const alvo = $("#ficha-" + slug(zonaNome), $("#view-explorar"));
-  if (alvo) {
-    alvo.open = true;
-    setTimeout(() => alvo.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
-  }
-}
 function abrirCombo(id) {
   trocarView("explorar");
   const alvo = document.querySelector(`#view-explorar [data-comboid="${CSS.escape(id)}"]`);
@@ -1070,14 +1250,21 @@ document.addEventListener("click", (e) => {
     return;
   }
 
-  const mz = e.target.closest(".btn-mapa-zona");
-  if (mz) { e.preventDefault(); mapaDaZona(mz.dataset.zona); return; }
+  const pl = e.target.closest("[data-painel-lugar]");
+  if (pl) { e.preventDefault(); abrirPainel("lugar", pl.dataset.painelLugar); return; }
 
+  const pb = e.target.closest("[data-painel-bairro]");
+  if (pb) { e.preventDefault(); abrirPainel("bairro", pb.dataset.painelBairro); return; }
+
+  const mz = e.target.closest(".btn-mapa-zona");
+  if (mz) { e.preventDefault(); fecharPainel(); mapaDaZona(mz.dataset.zona); return; }
+
+  // Nome de bairro em qualquer lugar (busca, Hoje, ficha) abre o painel dele.
   const lz = e.target.closest(".link-zona");
-  if (lz) { e.preventDefault(); abrirFicha(lz.dataset.zona); return; }
+  if (lz) { e.preventDefault(); abrirPainel("bairro", lz.dataset.zona, { empilhar: false }); return; }
 
   const lc = e.target.closest(".link-combo");
-  if (lc) { e.preventDefault(); abrirCombo(lc.dataset.comboid); return; }
+  if (lc) { e.preventDefault(); fecharPainel(); abrirCombo(lc.dataset.comboid); return; }
 
   const fb = e.target.closest("[data-favkey]");
   if (fb) { e.preventDefault(); toggleFav(fb.dataset.favkey); return; }
@@ -1117,6 +1304,21 @@ function ligarEventos() {
   toggle.addEventListener("click", () => {
     const leg = $("#legenda"); leg.hidden = !leg.hidden;
     toggle.setAttribute("aria-expanded", leg.hidden ? "false" : "true");
+    toggle.classList.toggle("is-on", !leg.hidden);
+  });
+
+  $("#painel-fechar").addEventListener("click", fecharPainel);
+  $("#painel-voltar").addEventListener("click", voltarPainel);
+  ligarArrastePainel();
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape" || $("#painel").hidden) return;
+    estado.painel.pilha.length > 1 ? voltarPainel() : fecharPainel();
+  });
+  // Trocar de aba fecha o painel: ele é sempre sobre o conteúdo atual.
+  $$(".tab").forEach((t) => t.addEventListener("click", fecharPainel));
+  // Recolher/abrir os filtros muda a altura do mapa.
+  $("#filtros-mapa").addEventListener("toggle", () => {
+    if (estado.map) setTimeout(() => estado.map.invalidateSize(), 220);
   });
 
   $("#fav-toggle").addEventListener("click", (e) => {
