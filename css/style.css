@@ -515,3 +515,4 @@ html, body {
 .comer__meta { font-size: 13.5px; color: var(--ink-faint); margin-top: 3px; line-height: 1.5; }
 .comer__meta small { color: var(--ink-faint); }
 .comer__aviso { color: #b91c1c; }
+.comer__conta { font-size: 12px; font-weight: 700; color: var(--ink-faint); background: var(--surface-2); padding: 2px 8px; border-radius: 999px; }

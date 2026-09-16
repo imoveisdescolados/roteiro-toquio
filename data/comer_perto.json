@@ -5,6 +5,7 @@
   "lugares": [
     {
       "place_id": "ChIJgYtUxUGLGGAR2LLtCdmLFbs",
+      "cozinha": "geral",
       "nome": "AFURI Ebisu",
       "nome_ja": "AFURI 恵比寿",
       "endereco_ja": "渋谷区恵比寿１丁目１−７ 117ビル 1F",
@@ -34,6 +35,7 @@
     },
     {
       "place_id": "ChIJE3wQ9kSLGGARYiiIzj27g54",
+      "cozinha": "geral",
       "nome": "Spring Valley Brewery Tokyo",
       "nome_ja": "スプリングバレーブルワリー東京",
       "endereco_ja": "渋谷区代官山町１３−１ ログロード代官山 内",
@@ -63,6 +65,7 @@
     },
     {
       "place_id": "ChIJLRNVgBWLGGARMxGRyu03kZQ",
+      "cozinha": "geral",
       "nome": "Halal Ramen Honolu",
       "nome_ja": "Halal Restaurant Honolu, Ebisu",
       "endereco_ja": "渋谷区恵比寿南１丁目２３−１ 1F",
@@ -91,36 +94,8 @@
       }
     },
     {
-      "place_id": "ChIJLUA2hdKLGGARCXm5iPml7EU",
-      "nome": "Peter Luger Steak House Tokyo",
-      "nome_ja": "ピーター・ルーガー・ステーキハウス東京",
-      "endereco_ja": "渋谷区恵比寿４丁目１９−１９ Peter Luger Steak House Tokyo",
-      "tipo": "Restaurante de carne",
-      "nota": 4.4,
-      "avaliacoes": 1933,
-      "faixa_preco": "¥¥¥¥",
-      "endereco": "Shibuya, Ebisu, 4-chōme−19−19 Peter Luger Steak House Tokyo",
-      "metros": 476,
-      "minutos_a_pe": 6,
-      "site": "https://peterluger.co.jp/",
-      "maps_uri": "https://maps.google.com/?cid=5038584574280038665&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
-      "lat": 35.6438736,
-      "lng": 139.7139535,
-      "horarios": {
-        "descricao": [
-          "segunda-feira: 11:00 – 15:00, 17:00 – 23:00",
-          "terça-feira: 11:00 – 15:00, 17:00 – 23:00",
-          "quarta-feira: 11:00 – 15:00, 17:00 – 23:00",
-          "quinta-feira: 11:00 – 15:00, 17:00 – 23:00",
-          "sexta-feira: 11:00 – 15:00, 17:00 – 23:00",
-          "sábado: 11:00 – 15:00, 17:00 – 23:00",
-          "domingo: 11:00 – 15:00, 17:00 – 23:00"
-        ],
-        "fecha_em": []
-      }
-    },
-    {
       "place_id": "ChIJw433RESLGGARouzrzt0jg_A",
+      "cozinha": "geral",
       "nome": "Teuchi Oyatori Chūkasoba Ayagawa",
       "nome_ja": "親鶏中華そば 綾川 本店",
       "endereco_ja": "渋谷区恵比寿１丁目２１−１８ ライツ恵比寿 1F",
@@ -150,6 +125,7 @@
     },
     {
       "place_id": "ChIJI5iLqGqLGGARqF9I9Ccnh3E",
+      "cozinha": "geral",
       "nome": "Yoroniku Ebisu",
       "nome_ja": "蕃 YORONIKU",
       "endereco_ja": "渋谷区恵比寿１丁目１１−５ GEMS恵比寿 8F",
@@ -178,36 +154,8 @@
       }
     },
     {
-      "place_id": "ChIJq6aDrAiLGGAR_99_HFsCvqk",
-      "nome": "pizza marumo",
-      "nome_ja": "pizza marumo",
-      "endereco_ja": "渋谷区恵比寿南１丁目１１−１３ 恵比寿ヴェルソービル 1階",
-      "tipo": "Pizzaria",
-      "nota": 4.4,
-      "avaliacoes": 1420,
-      "faixa_preco": "¥¥",
-      "endereco": "Shibuya, Ebisuminami, 1-chōme−11−13 恵比寿ヴェルソービル 1階",
-      "metros": 206,
-      "minutos_a_pe": 3,
-      "site": "http://pizza-marumo.com/",
-      "maps_uri": "https://maps.google.com/?cid=12231216228328267775&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
-      "lat": 35.645292999999995,
-      "lng": 139.7085094,
-      "horarios": {
-        "descricao": [
-          "segunda-feira: 11:30 – 14:30, 17:00 – 22:00",
-          "terça-feira: 11:30 – 14:30, 17:00 – 22:00",
-          "quarta-feira: 11:30 – 14:30, 17:00 – 22:00",
-          "quinta-feira: 11:30 – 14:30, 17:00 – 22:00",
-          "sexta-feira: 11:30 – 14:30, 17:00 – 22:00",
-          "sábado: 11:30 – 14:30, 17:00 – 22:00",
-          "domingo: 11:30 – 14:30, 17:00 – 22:00"
-        ],
-        "fecha_em": []
-      }
-    },
-    {
       "place_id": "ChIJDQ57VxWLGGARSXbWcNFv8lU",
+      "cozinha": "geral",
       "nome": "L'Antica Pizzeria da Michele Ebisu branch",
       "nome_ja": "アンティーカ ピッツェリア ダ ミケーレ 恵比寿",
       "endereco_ja": "渋谷区恵比寿４丁目４−７ 第６伊藤ビル １階",
@@ -237,6 +185,7 @@
     },
     {
       "place_id": "ChIJ--gb0UGLGGARYisuJQ1c7Zs",
+      "cozinha": "geral",
       "nome": "Udon Yamacho Ebisu",
       "nome_ja": "うどん山長 恵比寿店",
       "endereco_ja": "渋谷区恵比寿１丁目１−５ エビスオークビル 1 1F",
@@ -266,6 +215,7 @@
     },
     {
       "place_id": "ChIJiX4T-0CLGGARIdncuM0Y-2s",
+      "cozinha": "geral",
       "nome": "Shodai",
       "nome_ja": "酒彩蕎麦 初代",
       "endereco_ja": "渋谷区恵比寿南１丁目１−１０ サウスコラム 小林 1F",
@@ -295,6 +245,7 @@
     },
     {
       "place_id": "ChIJ41U59EOLGGARjVfz1cWSrLY",
+      "cozinha": "geral",
       "nome": "Cafe Accueil Ebisu",
       "nome_ja": "カフェ アクイーユ 恵比寿店",
       "endereco_ja": "渋谷区恵比寿西２丁目１０−１０ エレガンテヴィータ 1F",
@@ -324,6 +275,7 @@
     },
     {
       "place_id": "ChIJMW4u9rSLGGARulonfj5zXZ0",
+      "cozinha": "geral",
       "nome": "Jinrui-Minamenrui Tokyo main store",
       "nome_ja": "人類みな麺類 東京本店",
       "endereco_ja": "渋谷区恵比寿西２丁目１０−３ プラネックスアンペール １F",
@@ -353,6 +305,7 @@
     },
     {
       "place_id": "ChIJ06N2yEGLGGARycMkSbjIBYQ",
+      "cozinha": "geral",
       "nome": "Ebisu Yokocho",
       "nome_ja": "恵比寿横丁",
       "endereco_ja": "渋谷区恵比寿１丁目７−４",
@@ -382,6 +335,7 @@
     },
     {
       "place_id": "ChIJVVWx90SLGGARQXO5SgJybrg",
+      "cozinha": "geral",
       "nome": "GARDEN HOUSE CRAFTS DAIKANYAMA",
       "nome_ja": "GARDEN HOUSE CRAFTS DAIKANYAMA ガーデンハウス クラフツ ダイカンヤマ",
       "endereco_ja": "渋谷区代官山町１３−１ ログロード代官山 5号棟",
@@ -408,6 +362,235 @@
         ],
         "fecha_em": []
       }
+    },
+    {
+      "place_id": "ChIJQ9wNFVuLGGARwWj00x_zdGc",
+      "cozinha": "ocidental",
+      "nome": "PIZZA SLICE",
+      "nome_ja": "PIZZA SLICE",
+      "endereco_ja": "渋谷区猿楽町１−３ １Ｆ",
+      "tipo": "Pizzaria",
+      "nota": 4.4,
+      "avaliacoes": 2299,
+      "faixa_preco": "¥¥",
+      "endereco": "Shibuya, Sarugakuchō, 1−3 １Ｆ",
+      "metros": 878,
+      "minutos_a_pe": 11,
+      "site": "http://pizzaslice.jp/",
+      "maps_uri": "https://maps.google.com/?cid=7454850601230559425&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.6535158,
+      "lng": 139.7051046,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:00 – 22:00",
+          "terça-feira: 11:00 – 22:00",
+          "quarta-feira: 11:00 – 22:00",
+          "quinta-feira: 11:00 – 22:00",
+          "sexta-feira: 11:00 – 22:00",
+          "sábado: 11:00 – 22:00",
+          "domingo: 11:00 – 22:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJDxVYR0WLGGARVrfI38KyHZE",
+      "cozinha": "ocidental",
+      "nome": "Hacienda",
+      "nome_ja": "アシエンダ デル シエロ",
+      "endereco_ja": "渋谷区猿楽町１０−１ 9F",
+      "tipo": "Restaurante mexicano",
+      "nota": 4.2,
+      "avaliacoes": 3277,
+      "faixa_preco": "¥¥",
+      "endereco": "Shibuya, Sarugakuchō, 10−1 9F",
+      "metros": 788,
+      "minutos_a_pe": 10,
+      "site": "https://www.huge.co.jp/restaurant/modern-mexicano/hacienda",
+      "maps_uri": "https://maps.google.com/?cid=10456710459872032598&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.6504276,
+      "lng": 139.7025852,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:30 – 23:00",
+          "terça-feira: 11:30 – 23:00",
+          "quarta-feira: 11:30 – 23:00",
+          "quinta-feira: 11:30 – 23:00",
+          "sexta-feira: 11:30 – 23:00",
+          "sábado: 11:00 – 23:00",
+          "domingo: 11:00 – 22:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJLUA2hdKLGGARCXm5iPml7EU",
+      "cozinha": "ocidental",
+      "nome": "Peter Luger Steak House Tokyo",
+      "nome_ja": "ピーター・ルーガー・ステーキハウス東京",
+      "endereco_ja": "渋谷区恵比寿４丁目１９−１９ Peter Luger Steak House Tokyo",
+      "tipo": "Restaurante de carne",
+      "nota": 4.4,
+      "avaliacoes": 1933,
+      "faixa_preco": "¥¥¥¥",
+      "endereco": "Shibuya, Ebisu, 4-chōme−19−19 Peter Luger Steak House Tokyo",
+      "metros": 476,
+      "minutos_a_pe": 6,
+      "site": "https://peterluger.co.jp/",
+      "maps_uri": "https://maps.google.com/?cid=5038584574280038665&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.6438736,
+      "lng": 139.7139535,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:00 – 15:00, 17:00 – 23:00",
+          "terça-feira: 11:00 – 15:00, 17:00 – 23:00",
+          "quarta-feira: 11:00 – 15:00, 17:00 – 23:00",
+          "quinta-feira: 11:00 – 15:00, 17:00 – 23:00",
+          "sexta-feira: 11:00 – 15:00, 17:00 – 23:00",
+          "sábado: 11:00 – 15:00, 17:00 – 23:00",
+          "domingo: 11:00 – 15:00, 17:00 – 23:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJFeLX1RWLGGAR8q6UH3-pGPc",
+      "cozinha": "ocidental",
+      "nome": "Lawry's The Prime Rib",
+      "nome_ja": "ロウリーズ・ザ・プライムリブ 恵比寿ガーデンプレイス店",
+      "endereco_ja": "渋谷区恵比寿４丁目２０−３ ガーデンプレイスタワ B2F",
+      "tipo": "Restaurante norte-americano",
+      "nota": 4.4,
+      "avaliacoes": 1839,
+      "faixa_preco": "¥¥¥¥",
+      "endereco": "Shibuya, Ebisu, 4-chōme−20−3 ガーデンプレイスタワ B2F",
+      "metros": 600,
+      "minutos_a_pe": 8,
+      "site": "http://www.lawrys.jp/ebisu/",
+      "maps_uri": "https://maps.google.com/?cid=17805167490265034482&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.642202999999995,
+      "lng": 139.713665,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:30 – 15:00, 17:00 – 22:00",
+          "terça-feira: 11:30 – 15:00, 17:00 – 22:00",
+          "quarta-feira: 11:30 – 15:00, 17:00 – 22:00",
+          "quinta-feira: 11:30 – 15:00, 17:00 – 22:00",
+          "sexta-feira: 11:30 – 15:00, 17:00 – 22:00",
+          "sábado: 11:00 – 15:00, 17:00 – 22:00",
+          "domingo: 11:00 – 15:00, 17:00 – 22:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJq6aDrAiLGGAR_99_HFsCvqk",
+      "cozinha": "ocidental",
+      "nome": "pizza marumo",
+      "nome_ja": "pizza marumo",
+      "endereco_ja": "渋谷区恵比寿南１丁目１１−１３ 恵比寿ヴェルソービル 1階",
+      "tipo": "Pizzaria",
+      "nota": 4.4,
+      "avaliacoes": 1420,
+      "faixa_preco": "¥¥",
+      "endereco": "Shibuya, Ebisuminami, 1-chōme−11−13 恵比寿ヴェルソービル 1階",
+      "metros": 206,
+      "minutos_a_pe": 3,
+      "site": "http://pizza-marumo.com/",
+      "maps_uri": "https://maps.google.com/?cid=12231216228328267775&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.645292999999995,
+      "lng": 139.7085094,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:30 – 14:30, 17:00 – 22:00",
+          "terça-feira: 11:30 – 14:30, 17:00 – 22:00",
+          "quarta-feira: 11:30 – 14:30, 17:00 – 22:00",
+          "quinta-feira: 11:30 – 14:30, 17:00 – 22:00",
+          "sexta-feira: 11:30 – 14:30, 17:00 – 22:00",
+          "sábado: 11:30 – 14:30, 17:00 – 22:00",
+          "domingo: 11:30 – 14:30, 17:00 – 22:00"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJGQRJhBaLGGAR5ZTJp9mQgtQ",
+      "cozinha": "ocidental",
+      "nome": "Gastronomy “Joël Robuchon”",
+      "nome_ja": "ガストロノミー “ジョエル・ロブション”",
+      "endereco_ja": "目黒区三田１丁目１３−１ 恵比寿ガーデンプレイス内",
+      "tipo": "Restaurante francês",
+      "nota": 4.5,
+      "avaliacoes": 1040,
+      "faixa_preco": "¥¥¥¥",
+      "endereco": "Meguro City, Mita, 1-chōme−13−1 恵比寿ガーデンプレイス内",
+      "metros": 673,
+      "minutos_a_pe": 8,
+      "site": "https://www.robuchon.jp/",
+      "maps_uri": "https://maps.google.com/?cid=15312960947510416613&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.6419322,
+      "lng": 139.7145827,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 17:30 – 19:30",
+          "terça-feira: 17:30 – 19:30",
+          "quarta-feira: 17:30 – 19:30",
+          "quinta-feira: 17:30 – 19:30",
+          "sexta-feira: 17:30 – 19:30",
+          "sábado: 11:30 – 12:00, 18:00 – 19:30",
+          "domingo: 11:30 – 12:00, 18:00 – 19:30"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJETGsREGLGGAR3BpeFbTXuEI",
+      "cozinha": "ocidental",
+      "nome": "The Latria Table HEARTH",
+      "nome_ja": "HEARTH【ハース】恵比寿",
+      "endereco_ja": "渋谷区恵比寿西１丁目１５−８ Sun EbisuB1･1F",
+      "tipo": "Restaurante",
+      "nota": 4.4,
+      "avaliacoes": 1164,
+      "faixa_preco": "¥¥",
+      "endereco": "Shibuya, Ebisunishi, 1-chōme−15−8 Sun EbisuB1･1F",
+      "metros": 283,
+      "minutos_a_pe": 4,
+      "site": "https://hearth-tables.com/restaurant/hearth-ebisu",
+      "maps_uri": "https://maps.google.com/?cid=4807829770670578396&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.648106299999995,
+      "lng": 139.70739419999998,
+      "horarios": {
+        "descricao": [
+          "segunda-feira: 11:30 – 15:30, 18:00 – 22:30",
+          "terça-feira: 11:30 – 15:30, 18:00 – 22:30",
+          "quarta-feira: 11:30 – 15:30, 18:00 – 22:30",
+          "quinta-feira: 11:30 – 15:30, 18:00 – 22:30",
+          "sexta-feira: 11:30 – 15:30, 18:00 – 23:00",
+          "sábado: 11:30 – 23:00",
+          "domingo: 11:30 – 22:30"
+        ],
+        "fecha_em": []
+      }
+    },
+    {
+      "place_id": "ChIJ-dl-7kWLGGARs8XRqb3pGGM",
+      "cozinha": "ocidental",
+      "nome": "HENRY'S BURGER Daikanyama",
+      "nome_ja": "ヘンリーズ バーガー 代官山",
+      "endereco_ja": "渋谷区恵比寿西１丁目３６−６",
+      "tipo": "Hamburgueria",
+      "nota": 4.3,
+      "avaliacoes": 1285,
+      "faixa_preco": "¥¥",
+      "endereco": "1-chōme-36-6 Ebisunishi, Shibuya",
+      "metros": 715,
+      "minutos_a_pe": 9,
+      "site": "https://www.henrysburger.com/",
+      "maps_uri": "https://maps.google.com/?cid=7140714210003109299&g_mp=Cilnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaE5lYXJieRACGAQgAA",
+      "lat": 35.6474012,
+      "lng": 139.70212899999999,
+      "horarios": null
     }
   ]
 }

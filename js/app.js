@@ -505,7 +505,7 @@ function comerPertoHTML() {
   const [a, m, dd] = hoje.split("-").map(Number);
   const nomeDia = DIA_CURTO[new Date(Date.UTC(a, m - 1, dd)).getUTCDay()];
 
-  const linhas = d.lugares.map((x) => {
+  const umLugar = (x) => {
     const fechado = x.horarios?.fecha_em?.includes(nomeDia);
     const destino = x.nome_ja || x.nome;
     return `
@@ -525,14 +525,28 @@ function comerPertoHTML() {
           ${x.site ? `<a class="btn-acao" href="${esc(x.site)}" target="_blank" rel="noopener">🔗 Site</a>` : ""}
         </div>
       </div>`;
+  };
+
+  const GRUPOS_COMER = [
+    { id: "geral", titulo: "🍜 Os mais populares", dica: "Qualquer cozinha — é o que o bairro mais usa." },
+    { id: "ocidental", titulo: "🍝 Ocidental", dica: "Pra quando bater o cansaço de comida japonesa." },
+  ];
+  const secoes = GRUPOS_COMER.map((g) => {
+    const doGrupo = d.lugares.filter((x) => (x.cozinha || "geral") === g.id);
+    if (!doGrupo.length) return "";
+    return `
+      <h3 class="painel__secao">${g.titulo} <span class="comer__conta">${doGrupo.length}</span></h3>
+      <p class="painel__dica">${g.dica}</p>
+      <div class="comer-lista">${doGrupo.map(umLugar).join("")}</div>`;
   }).join("");
 
+  const maisLonge = Math.max(...d.lugares.map((x) => x.minutos_a_pe));
   return `
     <details class="bloco" id="comer-perto">
-      <summary>🍜 Onde comer perto de casa <span class="bloco__dica">${d.lugares.length} lugares a até ${Math.max(...d.lugares.map((x) => x.minutos_a_pe))} min a pé</span></summary>
+      <summary>🍜 Onde comer perto de casa <span class="bloco__dica">${d.lugares.length} lugares, até ${maisLonge} min a pé</span></summary>
       <div class="bloco__conteudo">
-        <p class="painel__dica">Puxado do Google por nota e nº de avaliações num raio de ${d.raio_m} m de casa — não é curadoria nossa. Ordenado por confiança da nota.</p>
-        <div class="comer-lista">${linhas}</div>
+        <p class="painel__dica">Puxado do Google por nota e nº de avaliações, a pé de casa — não é curadoria nossa. Ordenado por confiança da nota, não só pela nota: ⭐4,6 com 90 avaliações vale menos que ⭐4,3 com 4.445.</p>
+        ${secoes}
       </div>
     </details>`;
 }
